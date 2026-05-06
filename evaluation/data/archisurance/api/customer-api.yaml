@@ -1,0 +1,23 @@
+openapi: "3.0.3"
+info:
+  title: Customer API
+  description: |
+    REST API for the Customer Self-Service Portal (ApplicationComponent).
+    Serves Customer Onboarding and Complaint Handling.
+  version: "2.1.0"
+
+paths:
+  /customers:
+    post:
+      operationId: createCustomer
+      summary: Onboard new customer
+  /customers/{customerId}:
+    get:
+      operationId: getCustomer
+  /customers/{customerId}/claims:
+    get:
+      operationId: getCustomerClaims
+      description: Cross-service call to Claims Management Platform
+  /customers/{customerId}/complaints:
+    post:
+      operationId: fileComplaint

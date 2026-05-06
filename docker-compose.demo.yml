@@ -1,0 +1,77 @@
+# KnowledgeForge demo stack — fully offline / local-only.
+# Spins up: Spanner emulator + kb-agent (DEMO_MODE) + kb-frontend + (optional) liteparse mock.
+# Quick start:
+#   docker compose -f docker-compose.demo.yml up -d
+#   ./demo/scripts/seed.sh
+#   ./demo/scripts/queries.sh
+
+services:
+  spanner-emulator:
+    image: gcr.io/cloud-spanner-emulator/emulator:latest
+    container_name: kf-spanner-emulator
+    ports:
+      - "9010:9010"   # gRPC
+      - "9020:9020"   # REST
+    # Note: the spanner-emulator image is distroless and ships without `nc`,
+    # `curl`, or a shell, so we cannot run an in-container healthcheck.
+    # kb-agent uses `depends_on: condition: service_started` instead and
+    # tolerates a few connection retries on first call.
+
+  kb-agent:
+    build:
+      context: ./kb-agent
+      dockerfile: Dockerfile
+    container_name: kf-kb-agent
+    environment:
+      DEMO_MODE: "true"
+      SPANNER_EMULATOR_HOST: "spanner-emulator:9010"
+      GOOGLE_CLOUD_PROJECT: "demo-project"
+      # Force google-genai SDK into AI Studio mode (uses GEMINI_API_KEY).
+      # Otherwise the SDK sees GOOGLE_CLOUD_PROJECT and tries Vertex (ADC).
+      GOOGLE_GENAI_USE_VERTEXAI: "false"
+      SPANNER_PROJECT: "demo-project"
+      SPANNER_INSTANCE: "demo-instance"
+      SPANNER_DATABASE: "demo-db"
+      # Real LiteParse service (Node + PDFium) — same image used in prod (Cloud Run).
+      # Falls back to pypdf in document_ingester if liteparse is unreachable.
+      DOCLING_URL: "http://liteparse:8090"
+      PORT: "8080"
+      # GEMINI_API_KEY is loaded from kb-agent/.env via env_file below.
+      # Defining it here would override env_file with an empty string when
+      # the host shell has no GEMINI_API_KEY exported.
+    env_file:
+      # Reads GEMINI_API_KEY (and any other agent secrets) from kb-agent/.env
+      # if present (gitignored). Avoids re-exporting in every shell session.
+      - path: ./kb-agent/.env
+        required: false
+    ports:
+      - "8080:8080"
+    depends_on:
+      spanner-emulator:
+        # Distroless emulator image has no shell -> can't run a healthcheck.
+        # service_started is the best we can do; the agent retries on first call.
+        condition: service_started
+
+  kb-frontend:
+    build:
+      context: ./kb-frontend
+      dockerfile: Dockerfile
+    container_name: kf-kb-frontend
+    environment:
+      BACKEND_URL: "http://kb-agent:8080"
+      NEXT_PUBLIC_BACKEND_URL: "http://localhost:8080"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - kb-agent
+
+  # Real LiteParse microservice (Node 20 + LlamaIndex liteparse + PDFium).
+  # Same Dockerfile used in prod (Cloud Run). Replaces the previous nginx mock
+  # so the demo extracts real text/tables/images from PDF/DOCX uploads.
+  liteparse:
+    build:
+      context: ./liteparse-service
+      dockerfile: Dockerfile
+    container_name: kf-liteparse
+    ports:
+      - "8090:8090"

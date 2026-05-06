@@ -1,0 +1,297 @@
+[
+  {
+    "id": "code_extract_1",
+    "question": "What Spring Boot dependencies does the Claims Service use?",
+    "expected_answer": "spring-boot-starter-web, spring-boot-starter-data-jpa, postgresql driver, spring-kafka, spring-boot-starter-data-redis",
+    "expected_entities": ["Claims Management Platform", "PostgreSQL 15", "Apache Kafka", "Redis"],
+    "hop_count": 0,
+    "category": "code_extraction",
+    "requires_graph": false,
+    "source_type": "java"
+  },
+  {
+    "id": "code_extract_2",
+    "question": "What business processes does the Risk Engine Python service serve?",
+    "expected_answer": "Risk Evaluation and Premium Calculation, as documented in risk_calculator.py docstrings",
+    "expected_entities": ["Risk Engine", "Risk Evaluation", "Premium Calculation"],
+    "hop_count": 1,
+    "category": "code_extraction",
+    "requires_graph": false,
+    "source_type": "python"
+  },
+  {
+    "id": "code_extract_3",
+    "question": "Which DataObjects does the TypeScript Customer Portal access?",
+    "expected_answer": "Customer Record (via CustomerEntity TypeORM) and Customer Profile (via CRM client)",
+    "expected_entities": ["Customer Self-Service Portal", "Customer Record"],
+    "hop_count": 1,
+    "category": "code_extraction",
+    "requires_graph": false,
+    "source_type": "typescript"
+  },
+  {
+    "id": "code_extract_4",
+    "question": "What inter-service calls does the Customer Portal make?",
+    "expected_answer": "Calls CRM System for customer sync and Claims Management Platform for retrieving customer claims",
+    "expected_entities": ["Customer Self-Service Portal", "CRM System", "Claims Management Platform"],
+    "hop_count": 1,
+    "category": "code_extraction",
+    "requires_graph": true,
+    "source_type": "typescript"
+  },
+  {
+    "id": "code_extract_5",
+    "question": "What Kafka topics does the Risk Engine publish to?",
+    "expected_answer": "risk.scores topic, consumed by Fraud Detection Engine, Data Warehouse, and Notification Service",
+    "expected_entities": ["Risk Engine", "Apache Kafka"],
+    "hop_count": 1,
+    "category": "code_extraction",
+    "requires_graph": false,
+    "source_type": "python"
+  },
+  {
+    "id": "iac_extract_1",
+    "question": "What GKE cluster configuration is defined in Terraform?",
+    "expected_answer": "Cluster archisurance-app-cluster in europe-west1 with 3 nodes of e2-standard-4, private cluster enabled",
+    "expected_entities": ["Kubernetes", "App Server Cluster"],
+    "hop_count": 0,
+    "category": "iac_extraction",
+    "requires_graph": false,
+    "source_type": "terraform"
+  },
+  {
+    "id": "iac_extract_2",
+    "question": "What networks are defined in the Terraform infrastructure?",
+    "expected_answer": "archisurance-vpc (Corporate LAN), dmz-subnet (DMZ Network), private-subnet, management-subnet (Management VLAN), Cloud VPN",
+    "expected_entities": ["Corporate LAN", "DMZ Network"],
+    "hop_count": 0,
+    "category": "iac_extraction",
+    "requires_graph": false,
+    "source_type": "terraform"
+  },
+  {
+    "id": "iac_extract_3",
+    "question": "What service accounts are defined and what roles do they have?",
+    "expected_answer": "claims-service SA with roles/owner (overprivileged), risk-engine SA with roles/cloudsql.client",
+    "expected_entities": ["Claims Management Platform", "Risk Engine"],
+    "hop_count": 1,
+    "category": "iac_extraction",
+    "requires_graph": false,
+    "source_type": "terraform"
+  },
+  {
+    "id": "dbt_lineage_1",
+    "question": "What is the data lineage from raw claims to fraud scores?",
+    "expected_answer": "raw_claims.claims → stg_claims (staging) → fraud_scores (mart), also joined with raw_fraud_external.fraud_signals",
+    "expected_entities": ["Claim Record", "Fraud Score Dataset"],
+    "hop_count": 2,
+    "category": "data_lineage",
+    "requires_graph": true,
+    "source_type": "dbt"
+  },
+  {
+    "id": "dbt_lineage_2",
+    "question": "Which dbt models consume the stg_claims staging model?",
+    "expected_answer": "fraud_scores and premium_analytics both reference stg_claims",
+    "expected_entities": ["Fraud Score Dataset"],
+    "hop_count": 1,
+    "category": "data_lineage",
+    "requires_graph": true,
+    "source_type": "dbt"
+  },
+  {
+    "id": "conformance_1",
+    "question": "Does the Claims Service Java code follow Hexagonal Architecture?",
+    "expected_answer": "No — ClaimsController directly imports ClaimsRepository, bypassing the service layer. The getClaimStatus endpoint queries the repository directly instead of going through ClaimsService.",
+    "expected_entities": ["Claims Management Platform"],
+    "hop_count": 0,
+    "category": "conformance",
+    "requires_graph": false,
+    "violation_id": "CODE-V1"
+  },
+  {
+    "id": "conformance_2",
+    "question": "Are there any overpermissive IAM bindings in the Terraform configuration?",
+    "expected_answer": "Yes — the claims-service service account has roles/owner, which is overprivileged. It should have roles/cloudsql.client or a custom role.",
+    "expected_entities": ["Claims Management Platform"],
+    "hop_count": 0,
+    "category": "conformance",
+    "requires_graph": false,
+    "violation_id": "IAC-V5"
+  },
+  {
+    "id": "conformance_3",
+    "question": "Is the Cloud SQL primary database properly configured for disaster recovery?",
+    "expected_answer": "No — the Terraform configuration is missing backup_configuration block. The database has no automated backups.",
+    "expected_entities": ["PostgreSQL 15", "Database Server Primary"],
+    "hop_count": 0,
+    "category": "conformance",
+    "requires_graph": false,
+    "violation_id": "IAC-V3"
+  },
+  {
+    "id": "conformance_4",
+    "question": "Are there any security issues in the network firewall rules?",
+    "expected_answer": "Yes — the allow-all-internal firewall rule allows traffic from 0.0.0.0/0 (any source), which is overly permissive and should be restricted to internal CIDR ranges.",
+    "expected_entities": ["Corporate LAN"],
+    "hop_count": 0,
+    "category": "conformance",
+    "requires_graph": false,
+    "violation_id": "IAC-V2"
+  },
+  {
+    "id": "conformance_5",
+    "question": "Does the claims-api.yaml OpenAPI spec match the actual Java implementation?",
+    "expected_answer": "No — the spec defines a /claims/bulk endpoint for batch import that does not exist in ClaimsController.java. This is API spec drift.",
+    "expected_entities": ["Claims Management Platform", "Claims API"],
+    "hop_count": 0,
+    "category": "conformance",
+    "requires_graph": false,
+    "violation_id": "API-V1"
+  },
+  {
+    "id": "data_gov_1",
+    "question": "Are all dbt models properly documented?",
+    "expected_answer": "No — the premium_analytics model in schema.yml has no description field.",
+    "expected_entities": [],
+    "hop_count": 0,
+    "category": "data_governance",
+    "requires_graph": false,
+    "violation_id": "DBT-V4"
+  },
+  {
+    "id": "data_gov_2",
+    "question": "Do all dbt sources have freshness monitoring?",
+    "expected_answer": "No — raw_customers source is missing loaded_at_field, so freshness cannot be monitored.",
+    "expected_entities": ["Customer Profile"],
+    "hop_count": 0,
+    "category": "data_governance",
+    "requires_graph": false,
+    "violation_id": "DBT-V6"
+  },
+  {
+    "id": "data_gov_3",
+    "question": "Does the stg_claims model follow dbt best practices for source references?",
+    "expected_answer": "No — it uses a direct table reference (`archisurance_raw.claims.claims`) instead of the dbt source() macro.",
+    "expected_entities": ["Claim Record"],
+    "hop_count": 0,
+    "category": "data_governance",
+    "requires_graph": false,
+    "violation_id": "DBT-V1"
+  },
+  {
+    "id": "data_gov_4",
+    "question": "Are primary key columns properly tested in the dbt models?",
+    "expected_answer": "Partially — fraud_scores has both unique and not_null on claim_id, but stg_claims only has unique without not_null on claim_id.",
+    "expected_entities": [],
+    "hop_count": 0,
+    "category": "data_governance",
+    "requires_graph": false,
+    "violation_id": "DBT-V5"
+  },
+  {
+    "id": "data_gov_5",
+    "question": "Does the fraud_scores model access data through proper staging layers?",
+    "expected_answer": "No — it directly references the external fraud_signals table instead of going through a staging model.",
+    "expected_entities": ["Fraud Score Dataset"],
+    "hop_count": 0,
+    "category": "data_governance",
+    "requires_graph": false,
+    "violation_id": "DBT-V2"
+  },
+  {
+    "id": "impact_1",
+    "question": "If the GKE cluster defined in Terraform is deleted, what is the impact?",
+    "expected_answer": "All containerized services (Claims Platform, Risk Engine, Customer Portal, Fraud Detection, API Gateway) would be down, affecting all business processes they serve.",
+    "expected_entities": ["Kubernetes", "Claims Management Platform", "Risk Engine", "Customer Self-Service Portal", "Fraud Detection Engine"],
+    "hop_count": 2,
+    "category": "impact_analysis",
+    "requires_graph": true,
+    "source_type": "terraform"
+  },
+  {
+    "id": "impact_2",
+    "question": "If the fraud_scores dbt model fails, which downstream processes are affected?",
+    "expected_answer": "premium_analytics model fails (depends on fraud_scores), affecting Risk Engine and Fraud Detection Engine which consume these data products.",
+    "expected_entities": ["Fraud Score Dataset", "Risk Engine", "Fraud Detection Engine"],
+    "hop_count": 2,
+    "category": "impact_analysis",
+    "requires_graph": true,
+    "source_type": "dbt"
+  },
+  {
+    "id": "impact_3",
+    "question": "What is the blast radius if Apache Kafka becomes unavailable?",
+    "expected_answer": "Risk Engine cannot publish risk scores, Fraud Detection Engine loses event stream, Enterprise Service Bus stops integrating CRM/Billing/PAS, and Notification Service cannot send alerts.",
+    "expected_entities": ["Apache Kafka", "Risk Engine", "Fraud Detection Engine", "Enterprise Service Bus", "Notification Service"],
+    "hop_count": 1,
+    "category": "impact_analysis",
+    "requires_graph": true
+  },
+  {
+    "id": "entity_res_cross_1",
+    "question": "Is the 'archisurance-app-cluster' in Terraform the same as the 'App Server Cluster' in architecture documents?",
+    "expected_answer": "Yes — google_container_cluster.app_cluster in gke.tf maps to the App Server Cluster (Node) running Kubernetes (SystemSoftware).",
+    "expected_entities": ["App Server Cluster", "Kubernetes"],
+    "hop_count": 0,
+    "category": "entity_resolution_cross_format",
+    "requires_graph": false
+  },
+  {
+    "id": "entity_res_cross_2",
+    "question": "Is the ClaimsService.java the same as the 'Claims Management Platform' in architecture documents?",
+    "expected_answer": "Yes — the Java ClaimsService class implements the Claims Management Platform ApplicationComponent.",
+    "expected_entities": ["Claims Management Platform"],
+    "hop_count": 0,
+    "category": "entity_resolution_cross_format",
+    "requires_graph": false
+  },
+  {
+    "id": "entity_res_cross_3",
+    "question": "Is the 'raw_claims.claims' dbt source the same as the 'Claim Record' DataObject?",
+    "expected_answer": "Yes — raw_claims.claims is the raw data source for the Claim Record DataObject, processed through the stg_claims staging model.",
+    "expected_entities": ["Claim Record"],
+    "hop_count": 0,
+    "category": "entity_resolution_cross_format",
+    "requires_graph": false
+  },
+  {
+    "id": "cross_format_1",
+    "question": "Does the Risk Engine component diagram match the actual Terraform infrastructure?",
+    "expected_answer": "No — the component diagram shows Risk Engine connected to PostgreSQL, but some services in Terraform are configured to use Oracle (legacy database). This is an architecture drift.",
+    "expected_entities": ["Risk Engine", "PostgreSQL 15"],
+    "hop_count": 1,
+    "category": "cross_format_consistency",
+    "requires_graph": false,
+    "violation_id": "DIAG-V1"
+  },
+  {
+    "id": "cross_format_2",
+    "question": "Trace the full path from a customer filing a complaint in the portal to the data stored in the warehouse.",
+    "expected_answer": "Customer → Customer Portal (TypeScript) → CRM System (via crm-client.service.ts) → PostgreSQL 15 → stg_claims (dbt staging) → fraud_scores / premium_analytics (dbt marts) → Data Warehouse (BigQuery)",
+    "expected_entities": ["Customer Self-Service Portal", "CRM System", "PostgreSQL 15", "Data Warehouse"],
+    "hop_count": 4,
+    "category": "cross_format_consistency",
+    "requires_graph": true
+  },
+  {
+    "id": "long_doc_1",
+    "question": "In the Full Architecture Dossier (doc_18), what are the key architecture decisions for the claims processing domain?",
+    "expected_answer": "Should be extractable from the 80-page document — tests long document retrieval",
+    "expected_entities": ["Claims Management Platform"],
+    "hop_count": 0,
+    "category": "long_document",
+    "requires_graph": false,
+    "notes": "Tests retrieval from 80-page document"
+  },
+  {
+    "id": "long_doc_2",
+    "question": "In the Annual EA Report (doc_19), what strategic goals were achieved in 2025?",
+    "expected_answer": "Should be extractable from the 120-page document — tests very long document handling",
+    "expected_entities": ["Achieve 99.9% System Availability"],
+    "hop_count": 0,
+    "category": "long_document",
+    "requires_graph": false,
+    "notes": "Tests retrieval from 120-page document with position bias"
+  }
+]

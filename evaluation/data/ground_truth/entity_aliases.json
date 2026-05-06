@@ -1,0 +1,175 @@
+{
+  "CRM System": [
+    "Salesforce CRM",
+    "Customer Management Platform",
+    "CRM"
+  ],
+  "Policy Administration System": [
+    "PAS",
+    "Policy Admin",
+    "Guidewire PolicyCenter"
+  ],
+  "Claims Management Platform": [
+    "Claims Platform",
+    "CMP",
+    "Claims Processing System"
+  ],
+  "Risk Engine": [
+    "Risk Scoring Engine",
+    "Actuarial Risk Module",
+    "Risk Calculator"
+  ],
+  "Customer Self-Service Portal": [
+    "Customer Portal",
+    "Self-Service Web App",
+    "MyArchiSurance Portal"
+  ],
+  "Document Management System": [
+    "DMS",
+    "Alfresco DMS",
+    "Document Repository"
+  ],
+  "Fraud Detection Engine": [
+    "Fraud Engine",
+    "Anti-Fraud Module",
+    "FDE"
+  ],
+  "Reporting & Analytics Platform": [
+    "BI Platform",
+    "Analytics Dashboard",
+    "Cognos Analytics"
+  ],
+  "Enterprise Service Bus": [
+    "ESB",
+    "Integration Bus",
+    "MuleSoft ESB"
+  ],
+  "Identity & Access Management": [
+    "IAM",
+    "Access Management System",
+    "Okta IAM"
+  ],
+  "API Gateway": [
+    "Kong API Gateway",
+    "API Management Layer",
+    "Gateway"
+  ],
+  "Data Warehouse": [
+    "DWH",
+    "Enterprise Data Warehouse",
+    "Oracle DWH"
+  ],
+  "Billing System": [
+    "Billing Engine",
+    "Revenue Management System",
+    "Billing"
+  ],
+  "Notification Service": [
+    "Notification Engine",
+    "Alert Service",
+    "Messaging Service"
+  ],
+  "Workflow Engine": [
+    "BPM Engine",
+    "Process Automation Engine",
+    "Camunda BPM"
+  ],
+  "PostgreSQL 15": [
+    "Postgres",
+    "PostgreSQL DB",
+    "the primary relational database"
+  ],
+  "Oracle Database 19c": [
+    "Oracle DB",
+    "the legacy Oracle database",
+    "Oracle RDBMS"
+  ],
+  "Kubernetes": [
+    "K8s",
+    "the container orchestration platform",
+    "Kubernetes Cluster"
+  ],
+  "Apache Kafka": [
+    "Kafka",
+    "the event streaming platform",
+    "Kafka Cluster"
+  ],
+  "Redis": [
+    "Redis Cache",
+    "the in-memory cache",
+    "Redis Cluster"
+  ],
+  "Elasticsearch": [
+    "Elastic",
+    "the search engine cluster",
+    "ELK Stack"
+  ],
+  "Docker Engine": [
+    "Docker",
+    "the container runtime",
+    "Docker CE"
+  ],
+  "Claims Department": [
+    "Claims Division",
+    "Claims Unit",
+    "Claims Dept."
+  ],
+  "Underwriting Team": [
+    "Underwriting Department",
+    "UW Team",
+    "Underwriting Division"
+  ],
+  "Customer Onboarding": [
+    "New Customer Registration",
+    "Client Onboarding",
+    "Customer Enrollment"
+  ],
+  "Claims Registration": [
+    "Claim Intake",
+    "First Notice of Loss",
+    "FNOL Process"
+  ],
+  "Claims Assessment": [
+    "Claim Evaluation",
+    "Claim Adjudication",
+    "Loss Assessment"
+  ],
+  "Fraud Detection": [
+    "Fraud Screening",
+    "Anti-Fraud Analysis",
+    "Fraud Check"
+  ],
+  "Reduce Claims Processing Time by 40%": [
+    "40% Claims STP Target",
+    "Claims Efficiency Goal"
+  ],
+  "Achieve 99.9% System Availability": [
+    "Four-Nines Uptime Goal",
+    "99.9% SLA Target"
+  ],
+  "Load Balancer F5": [
+    "F5 Big-IP",
+    "the load balancer",
+    "F5 LB"
+  ],
+  "Firewall Palo Alto": [
+    "Palo Alto NGFW",
+    "the perimeter firewall",
+    "PA Firewall"
+  ],
+  "App Server Cluster": [
+    "Application Server Farm",
+    "Compute Cluster",
+    "App Nodes"
+  ],
+  "Corporate LAN": [
+    "Internal Network",
+    "Office LAN",
+    "Corporate Ethernet"
+  ],
+  "DMZ Network": [
+    "Demilitarized Zone",
+    "the DMZ",
+    "Perimeter Network"
+  ]
+}

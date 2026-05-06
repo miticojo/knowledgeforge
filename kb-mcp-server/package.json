@@ -1,0 +1,22 @@
+{
+  "name": "kf-mcp",
+  "version": "0.1.0",
+  "description": "Node shim that launches the KnowledgeForge MCP stdio server (Python).",
+  "bin": {
+    "kf-mcp": "./bin/kf-mcp.js"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["mcp", "knowledgeforge", "archimate", "graphrag"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miticojo-labs/knowledgeforge.git",
+    "directory": "kb-mcp-server"
+  }
+}

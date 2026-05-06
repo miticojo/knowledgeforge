@@ -1,0 +1,460 @@
+[
+  {
+    "id": "single_hop_1",
+    "question": "Which business processes does the Claims Management Platform serve?",
+    "expected_answer": "Claims Registration and Claims Assessment",
+    "expected_entities": [
+      "Claims Management Platform",
+      "Claims Registration",
+      "Claims Assessment"
+    ],
+    "hop_count": 1,
+    "category": "single_hop",
+    "requires_graph": false,
+    "notes": "Direct Serving relationship"
+  },
+  {
+    "id": "single_hop_2",
+    "question": "What database system does the Policy Administration System use?",
+    "expected_answer": "PostgreSQL 15",
+    "expected_entities": [
+      "Policy Administration System",
+      "PostgreSQL 15"
+    ],
+    "hop_count": 1,
+    "category": "single_hop",
+    "requires_graph": false
+  },
+  {
+    "id": "single_hop_3",
+    "question": "Who is responsible for Risk Evaluation?",
+    "expected_answer": "The Underwriting Team is assigned to Risk Evaluation",
+    "expected_entities": [
+      "Underwriting Team",
+      "Risk Evaluation"
+    ],
+    "hop_count": 1,
+    "category": "single_hop",
+    "requires_graph": false
+  },
+  {
+    "id": "single_hop_4",
+    "question": "What data objects does the Fraud Detection Engine access?",
+    "expected_answer": "Fraud Score Dataset",
+    "expected_entities": [
+      "Fraud Detection Engine",
+      "Fraud Score Dataset"
+    ],
+    "hop_count": 1,
+    "category": "single_hop",
+    "requires_graph": false
+  },
+  {
+    "id": "single_hop_5",
+    "question": "Which application component realizes the Payment API?",
+    "expected_answer": "Billing System",
+    "expected_entities": [
+      "Payment API",
+      "Billing System"
+    ],
+    "hop_count": 1,
+    "category": "single_hop",
+    "requires_graph": false
+  },
+  {
+    "id": "single_hop_6",
+    "question": "What system software hosts the API Gateway?",
+    "expected_answer": "Kubernetes",
+    "expected_entities": [
+      "API Gateway",
+      "Kubernetes"
+    ],
+    "hop_count": 1,
+    "category": "single_hop",
+    "requires_graph": false
+  },
+  {
+    "id": "single_hop_7",
+    "question": "Which stakeholder champions the goal 'Zero Data Breaches by 2026'?",
+    "expected_answer": "CISO and Chief Risk Officer",
+    "expected_entities": [
+      "CISO",
+      "Chief Risk Officer",
+      "Zero Data Breaches by 2026"
+    ],
+    "hop_count": 1,
+    "category": "single_hop",
+    "requires_graph": false
+  },
+  {
+    "id": "single_hop_8",
+    "question": "What does the Enterprise Service Bus serve?",
+    "expected_answer": "CRM System, Billing System, and Policy Administration System",
+    "expected_entities": [
+      "Enterprise Service Bus",
+      "CRM System",
+      "Billing System",
+      "Policy Administration System"
+    ],
+    "hop_count": 1,
+    "category": "single_hop",
+    "requires_graph": false
+  },
+  {
+    "id": "multi_hop_1",
+    "question": "If we decommission Kubernetes, which business processes would be affected?",
+    "expected_answer": "Claims Registration, Claims Assessment (via Claims Management Platform), Risk Evaluation, Premium Calculation (via Risk Engine), Fraud Detection (via Fraud Detection Engine), Customer Onboarding and Complaint Handling (via API Gateway -> Customer Self-Service Portal)",
+    "expected_entities": [
+      "Kubernetes",
+      "Claims Management Platform",
+      "Risk Engine",
+      "Fraud Detection Engine",
+      "API Gateway",
+      "Claims Registration",
+      "Claims Assessment",
+      "Risk Evaluation",
+      "Premium Calculation",
+      "Fraud Detection"
+    ],
+    "hop_count": 2,
+    "category": "multi_hop",
+    "requires_graph": true,
+    "notes": "Requires traversal: Kubernetes -[Assignment]-> Applications -[Serving]-> Processes"
+  },
+  {
+    "id": "multi_hop_2",
+    "question": "What data objects are accessed by applications that serve Claims Assessment?",
+    "expected_answer": "Claim Record (via Claims Management Platform), Premium Calculation Data (via Risk Engine), Fraud Score Dataset (via Fraud Detection Engine indirectly)",
+    "expected_entities": [
+      "Claims Assessment",
+      "Claims Management Platform",
+      "Risk Engine",
+      "Claim Record",
+      "Premium Calculation Data"
+    ],
+    "hop_count": 2,
+    "category": "multi_hop",
+    "requires_graph": true
+  },
+  {
+    "id": "multi_hop_3",
+    "question": "Which stakeholders are affected if the Database Server Primary fails?",
+    "expected_answer": "Head of Claims (via PostgreSQL -> Claims Platform -> Claims processes -> Claims Processing goal), CTO (via system availability goal), CFO (via Oracle -> Billing -> cost reduction goal)",
+    "expected_entities": [
+      "Database Server Primary",
+      "PostgreSQL 15",
+      "Oracle Database 19c",
+      "Claims Management Platform",
+      "Billing System",
+      "Head of Claims",
+      "CTO",
+      "CFO"
+    ],
+    "hop_count": 3,
+    "category": "multi_hop",
+    "requires_graph": true,
+    "notes": "3-hop: DB Server -> DB Software -> Applications -> Processes -> Goals -> Stakeholders"
+  },
+  {
+    "id": "multi_hop_4",
+    "question": "Trace the dependency chain from the SAN Storage Array to business processes.",
+    "expected_answer": "SAN Storage Array serves Database Server Primary and Replica, which host PostgreSQL 15 and Oracle Database 19c, which serve Claims Management Platform, Policy Administration System, CRM System, Billing System, and Data Warehouse, which serve Claims Registration, Claims Assessment, Policy Issuance, Customer Onboarding, Broker Commission Settlement, etc.",
+    "expected_entities": [
+      "SAN Storage Array",
+      "Database Server Primary",
+      "Database Server Replica",
+      "PostgreSQL 15",
+      "Oracle Database 19c"
+    ],
+    "hop_count": 3,
+    "category": "multi_hop",
+    "requires_graph": true
+  },
+  {
+    "id": "multi_hop_5",
+    "question": "What capabilities are realized by processes that the Risk Engine serves?",
+    "expected_answer": "Risk Assessment Intelligence (via Risk Evaluation) and Data-Driven Underwriting (via Premium Calculation)",
+    "expected_entities": [
+      "Risk Engine",
+      "Risk Evaluation",
+      "Premium Calculation",
+      "Risk Assessment Intelligence",
+      "Data-Driven Underwriting"
+    ],
+    "hop_count": 2,
+    "category": "multi_hop",
+    "requires_graph": true
+  },
+  {
+    "id": "multi_hop_6",
+    "question": "If Apache Kafka goes down, which business services would be impacted?",
+    "expected_answer": "Kafka serves the Enterprise Service Bus and Batch Processing Engine. ESB serves CRM System, Billing System, Policy Administration System. These serve multiple business processes linked to Insurance Policy Service, Claims Handling Service, Premium Collection Service, etc.",
+    "expected_entities": [
+      "Apache Kafka",
+      "Enterprise Service Bus",
+      "Batch Processing Engine",
+      "CRM System",
+      "Billing System",
+      "Policy Administration System"
+    ],
+    "hop_count": 3,
+    "category": "multi_hop",
+    "requires_graph": true
+  },
+  {
+    "id": "multi_hop_7",
+    "question": "What infrastructure supports the Fraud Scoring API end-to-end?",
+    "expected_answer": "Fraud Scoring API is realized by Fraud Detection Engine, which runs on Kubernetes, deployed on App Server Cluster, connected via Corporate LAN",
+    "expected_entities": [
+      "Fraud Scoring API",
+      "Fraud Detection Engine",
+      "Kubernetes",
+      "App Server Cluster"
+    ],
+    "hop_count": 3,
+    "category": "multi_hop",
+    "requires_graph": true
+  },
+  {
+    "id": "multi_hop_8",
+    "question": "Which goals are impacted by the constraint 'Legacy Oracle DB Migration Deadline Q4 2026'?",
+    "expected_answer": "The constraint influences 'Migrate 100% Workloads to Cloud by 2027', which is championed by the CTO and Enterprise Architect. The migration also connects to 'Reduce IT Operational Costs by 25%' championed by the CFO.",
+    "expected_entities": [
+      "Legacy Oracle DB Migration Deadline Q4 2026",
+      "Migrate 100% Workloads to Cloud by 2027",
+      "CTO",
+      "Enterprise Architect",
+      "CFO"
+    ],
+    "hop_count": 2,
+    "category": "multi_hop",
+    "requires_graph": true
+  },
+  {
+    "id": "cross_doc_1",
+    "question": "How does the CRM System relate to the strategic goal of Customer Satisfaction?",
+    "expected_answer": "CRM System serves Customer Onboarding process, which is realized by the Omnichannel Distribution capability, connected to the Digital Customer Experience capability which realizes the Customer Portal Service. The goal 'Increase Customer Satisfaction to NPS 60+' is championed by the Chief Risk Officer.",
+    "expected_entities": [
+      "CRM System",
+      "Customer Onboarding",
+      "Digital Customer Experience",
+      "Increase Customer Satisfaction to NPS 60+"
+    ],
+    "hop_count": 3,
+    "category": "cross_document",
+    "requires_graph": true,
+    "notes": "Information spans docs 01 (overview), 04 (CRM), 12 (roadmap)"
+  },
+  {
+    "id": "cross_doc_2",
+    "question": "What infrastructure supports the Risk Scoring API?",
+    "expected_answer": "Risk Scoring API is realized by Risk Engine, which runs on Kubernetes, deployed on App Server Cluster",
+    "expected_entities": [
+      "Risk Scoring API",
+      "Risk Engine",
+      "Kubernetes",
+      "App Server Cluster"
+    ],
+    "hop_count": 3,
+    "category": "cross_document",
+    "requires_graph": true,
+    "notes": "Spans docs 02 (app portfolio), 03 (infrastructure), 07 (integration)"
+  },
+  {
+    "id": "cross_doc_3",
+    "question": "What is the full impact chain of the Oracle Database 19c migration on business processes?",
+    "expected_answer": "Oracle Database 19c serves Billing System and Data Warehouse. Billing System serves Broker Commission Settlement and Premium Calculation. Data Warehouse serves Reporting & Analytics Platform which serves Regulatory Reporting and SLA Monitoring. Migration details are in the ERP Migration document.",
+    "expected_entities": [
+      "Oracle Database 19c",
+      "Billing System",
+      "Data Warehouse",
+      "Broker Commission Settlement",
+      "Premium Calculation",
+      "Regulatory Reporting"
+    ],
+    "hop_count": 3,
+    "category": "cross_document",
+    "requires_graph": true,
+    "notes": "Spans docs 03 (infra), 05 (claims), 14 (vendor), 17 (migration)"
+  },
+  {
+    "id": "cross_doc_4",
+    "question": "Which documents describe the Fraud Detection Engine and its role?",
+    "expected_answer": "The Application Portfolio (doc 02) catalogs it, the Claims Processing Workflow (doc 05) describes its role in claims fraud screening, the Integration Architecture (doc 07) shows its Kafka integration, and the Operational Runbook (doc 15) covers operational procedures.",
+    "expected_entities": [
+      "Fraud Detection Engine"
+    ],
+    "hop_count": 0,
+    "category": "cross_document",
+    "requires_graph": false,
+    "notes": "Tests cross-document awareness for a single entity across 4+ documents"
+  },
+  {
+    "id": "cross_doc_5",
+    "question": "How do security requirements trace from regulatory frameworks to technology controls?",
+    "expected_answer": "The goal 'Achieve Full Regulatory Compliance' drives GDPR, PCI-DSS, and SOX requirements (doc 16). These map to Data Encryption (doc 06), Role-based Access Control via IAM (doc 06), and audit logging. Technology controls include HSM Appliance for key management and Elasticsearch for log aggregation.",
+    "expected_entities": [
+      "Achieve Full Regulatory Compliance",
+      "GDPR Compliance",
+      "PCI-DSS Level 1 Certification",
+      "SOX Audit Trail",
+      "HSM Appliance",
+      "Identity & Access Management"
+    ],
+    "hop_count": 3,
+    "category": "cross_document",
+    "requires_graph": true,
+    "notes": "Spans docs 06 (security), 12 (roadmap), 16 (compliance)"
+  },
+  {
+    "id": "cross_doc_6",
+    "question": "Describe the end-to-end claims processing flow from customer to settlement, including systems and infrastructure.",
+    "expected_answer": "Customer submits via Self-Service Portal or Call Center -> CRM System creates Customer Record -> Claims Management Platform creates Claim Record (Claims Registration) -> Claims Assessment via Workflow Engine -> Risk Engine evaluates -> Fraud Detection Engine screens -> Notification Service sends updates -> Billing System processes payment. Infrastructure: all run on Kubernetes/Docker on App Server Cluster, PostgreSQL for persistence.",
+    "expected_entities": [
+      "Customer",
+      "Customer Self-Service Portal",
+      "CRM System",
+      "Claims Management Platform",
+      "Workflow Engine",
+      "Risk Engine",
+      "Fraud Detection Engine",
+      "Notification Service",
+      "Billing System",
+      "Kubernetes",
+      "PostgreSQL 15"
+    ],
+    "hop_count": 4,
+    "category": "cross_document",
+    "requires_graph": true,
+    "notes": "End-to-end flow spanning docs 04, 05, 02, 03, 07"
+  },
+  {
+    "id": "entity_resolution_1",
+    "question": "Are 'Salesforce CRM', 'Customer Management Platform', and 'CRM System' the same entity?",
+    "expected_answer": "Yes, they are all aliases for the CRM System application component. It appears in multiple documents with different names.",
+    "expected_entities": [
+      "CRM System"
+    ],
+    "hop_count": 0,
+    "category": "entity_resolution",
+    "requires_graph": false,
+    "notes": "Tests alias resolution -- CRM System has 3 aliases"
+  },
+  {
+    "id": "entity_resolution_2",
+    "question": "What is the relationship between 'PAS', 'Guidewire PolicyCenter', and 'Policy Administration System'?",
+    "expected_answer": "They are all names for the same application component: the Policy Administration System. Different documents use different names.",
+    "expected_entities": [
+      "Policy Administration System"
+    ],
+    "hop_count": 0,
+    "category": "entity_resolution",
+    "requires_graph": false,
+    "notes": "Tests alias resolution for PAS"
+  },
+  {
+    "id": "entity_resolution_3",
+    "question": "Is 'First Notice of Loss' the same as 'Claims Registration'?",
+    "expected_answer": "Yes, FNOL (First Notice of Loss) is an alias for the Claims Registration business process.",
+    "expected_entities": [
+      "Claims Registration"
+    ],
+    "hop_count": 0,
+    "category": "entity_resolution",
+    "requires_graph": false
+  },
+  {
+    "id": "entity_resolution_4",
+    "question": "When documents mention 'K8s', 'the container orchestration platform', and 'Kubernetes Cluster', are they referring to the same thing?",
+    "expected_answer": "Yes, they are all aliases for Kubernetes, the system software used for container orchestration.",
+    "expected_entities": [
+      "Kubernetes"
+    ],
+    "hop_count": 0,
+    "category": "entity_resolution",
+    "requires_graph": false
+  },
+  {
+    "id": "completeness_1",
+    "question": "List all application components in the ArchiSurance architecture.",
+    "expected_answer": "CRM System, Policy Administration System, Claims Management Platform, Risk Engine, Customer Self-Service Portal, Document Management System, Notification Service, Fraud Detection Engine, Reporting & Analytics Platform, Enterprise Service Bus, Identity & Access Management, Billing System, Broker Portal, Data Warehouse, Workflow Engine, API Gateway, Content Delivery Network, Email Service, Mobile App Backend, Batch Processing Engine",
+    "expected_entities": [
+      "CRM System",
+      "Policy Administration System",
+      "Claims Management Platform",
+      "Risk Engine",
+      "Customer Self-Service Portal",
+      "Document Management System",
+      "Notification Service",
+      "Fraud Detection Engine",
+      "Reporting & Analytics Platform",
+      "Enterprise Service Bus",
+      "Identity & Access Management",
+      "Billing System",
+      "Broker Portal",
+      "Data Warehouse",
+      "Workflow Engine",
+      "API Gateway",
+      "Content Delivery Network",
+      "Email Service",
+      "Mobile App Backend",
+      "Batch Processing Engine"
+    ],
+    "hop_count": 0,
+    "category": "completeness",
+    "requires_graph": false,
+    "notes": "Tests extraction completeness -- should find all 20 ApplicationComponents"
+  },
+  {
+    "id": "completeness_2",
+    "question": "List all strategic goals defined in the ArchiSurance architecture.",
+    "expected_answer": "Reduce Claims Processing Time by 40%, Achieve 99.9% System Availability, Increase Customer Satisfaction to NPS 60+, Automate 80% of Underwriting Decisions, Zero Data Breaches by 2026, Reduce IT Operational Costs by 25%, Achieve Full Regulatory Compliance, Migrate 100% Workloads to Cloud by 2027",
+    "expected_entities": [
+      "Reduce Claims Processing Time by 40%",
+      "Achieve 99.9% System Availability",
+      "Increase Customer Satisfaction to NPS 60+",
+      "Automate 80% of Underwriting Decisions",
+      "Zero Data Breaches by 2026",
+      "Reduce IT Operational Costs by 25%",
+      "Achieve Full Regulatory Compliance",
+      "Migrate 100% Workloads to Cloud by 2027"
+    ],
+    "hop_count": 0,
+    "category": "completeness",
+    "requires_graph": false,
+    "notes": "Tests extraction completeness -- should find all 8 Goals"
+  },
+  {
+    "id": "graph_advantage_1",
+    "question": "What is the full dependency chain from the Load Balancer F5 to business goals?",
+    "expected_answer": "Load Balancer F5 is assigned to DMZ Network. Firewall Palo Alto also connects DMZ to Corporate LAN. Through the network, traffic reaches the App Server Cluster running Kubernetes, which hosts the Claims Management Platform and Risk Engine. These serve Claims processes linked to the goal 'Reduce Claims Processing Time by 40%' and the system availability goal.",
+    "expected_entities": [
+      "Load Balancer F5",
+      "DMZ Network",
+      "App Server Cluster",
+      "Kubernetes",
+      "Claims Management Platform",
+      "Reduce Claims Processing Time by 40%"
+    ],
+    "hop_count": 5,
+    "category": "graph_advantage",
+    "requires_graph": true,
+    "notes": "Deep traversal that vector search alone cannot answer"
+  },
+  {
+    "id": "graph_advantage_2",
+    "question": "If the HSM Appliance fails, what is the blast radius across all architecture layers?",
+    "expected_answer": "HSM Appliance realizes Secrets Management Service and Certificate Management Service. Without secrets, all TLS certificates expire affecting all network communication. All applications relying on encrypted connections (CRM, PAS, Claims Platform, etc.) would be impacted. PCI-DSS compliance for the Billing System would be violated. The goal 'Zero Data Breaches by 2026' would be at risk.",
+    "expected_entities": [
+      "HSM Appliance",
+      "Secrets Management Service",
+      "Certificate Management Service",
+      "Zero Data Breaches by 2026",
+      "Data Encryption at Rest and in Transit"
+    ],
+    "hop_count": 4,
+    "category": "graph_advantage",
+    "requires_graph": true,
+    "notes": "Tests deep impact analysis across all layers"
+  }
+]

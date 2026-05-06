@@ -1,0 +1,72 @@
+# Node
+node_modules/
+.next/
+out/
+build/
+dist/
+.pnp*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+!kb-frontend/lib/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+.venv/
+env/
+
+# Secrets / env
+.env
+.env.*
+!.env.example
+**/credentials*.json
+**/service-account*.json
+*.pem
+*.key
+
+# Logs
+*.log
+
+# MacOS
+.DS_Store
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Internal planning + AI assistant tool artifacts
+.planning/
+**/.planning/
+.agent/
+.assistant/
+.cursor/
+
+# Large benchmark data (regenerated locally)
+evaluation/data/qa_pairs_embedded.json
+evaluation/data/qa_pairs_summary.json
+.claude/

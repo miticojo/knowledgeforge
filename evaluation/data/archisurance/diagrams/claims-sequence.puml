@@ -1,0 +1,32 @@
+@startuml Claims Processing Sequence
+title Claims Processing Flow — End to End
+
+actor Customer
+participant "Self-Service Portal" as CSP
+participant "API Gateway" as GW
+participant "Claims Platform" as CMP
+participant "Risk Engine" as RE
+participant "Fraud Detection" as FDE
+participant "Notification Service" as NS
+database "PostgreSQL 15" as DB
+queue "Apache Kafka" as KAFKA
+
+Customer -> CSP: Submit claim
+CSP -> GW: POST /claims
+GW -> CMP: Forward request
+CMP -> DB: Save Claim Record
+CMP -> KAFKA: Publish claim.registered
+KAFKA -> FDE: Consume event
+FDE -> FDE: Screen for fraud
+FDE -> KAFKA: Publish fraud.result
+CMP -> RE: POST /risk/score
+RE -> RE: Calculate risk
+RE -> KAFKA: Publish risk.scored
+CMP -> DB: Update claim with scores
+CMP -> NS: Send notification
+NS -> Customer: Email/SMS update
+CMP -> GW: Return ClaimResponse
+GW -> CSP: 201 Created
+CSP -> Customer: Show confirmation
+
+@enduml

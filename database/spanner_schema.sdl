@@ -1,0 +1,883 @@
+-- Agentic Knowledge Base: Spanner Graph DDL
+-- ArchiMate 3.2 Wave 2 Ontology - Full Coverage
+-- ============================================================================
+
+-- ============================================================================
+-- SECTION 1: AI MODELS
+-- ============================================================================
+
+CREATE MODEL TextEmbeddings
+INPUT(content STRING(MAX))
+OUTPUT(embeddings STRUCT<values ARRAY<FLOAT32>>)
+REMOTE OPTIONS (
+  endpoint = '//aiplatform.googleapis.com/projects/kb-prj/locations/us-central1/publishers/google/models/text-embedding-004'
+);
+
+CREATE MODEL GeminiFlash
+INPUT(prompt STRING(MAX))
+OUTPUT(content STRING(MAX))
+REMOTE OPTIONS (
+  endpoint = '//aiplatform.googleapis.com/projects/kb-prj/locations/us-central1/publishers/google/models/gemini-2.5-flash',
+  default_batch_size = 1
+);
+
+-- ============================================================================
+-- SECTION 2: NODE TABLES - Core Document Store
+-- ============================================================================
+
+CREATE TABLE Documents (
+    doc_id STRING(MAX) NOT NULL,
+    title STRING(MAX),
+    source_uri STRING(MAX),
+    content_chunk STRING(MAX),
+    chunk_embedding ARRAY<FLOAT32>,
+    document_date STRING(MAX),
+    created_at TIMESTAMP OPTIONS (allow_commit_timestamp=true)
+) PRIMARY KEY(doc_id);
+
+-- ============================================================================
+-- SECTION 3: NODE TABLES - ArchiMate Business Layer
+-- ============================================================================
+
+CREATE TABLE BusinessActors (
+    actor_id STRING(36) NOT NULL,
+    actor_name STRING(MAX),
+    description STRING(MAX),
+    actor_type STRING(100),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    actor_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(actor_id);
+
+CREATE TABLE BusinessRoles (
+    role_id STRING(36) NOT NULL,
+    role_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    role_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(role_id);
+
+CREATE TABLE BusinessProcesses (
+    process_id STRING(36) NOT NULL,
+    process_name STRING(MAX),
+    description STRING(MAX),
+    process_domain STRING(100),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    process_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(process_id);
+
+CREATE TABLE BusinessFunctions (
+    function_id STRING(36) NOT NULL,
+    function_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    function_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(function_id);
+
+CREATE TABLE BusinessServices (
+    service_id STRING(36) NOT NULL,
+    service_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    service_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(service_id);
+
+CREATE TABLE BusinessObjects (
+    object_id STRING(36) NOT NULL,
+    object_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    object_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(object_id);
+
+CREATE TABLE Contracts (
+    contract_id STRING(36) NOT NULL,
+    contract_name STRING(MAX),
+    description STRING(MAX),
+    contract_type STRING(100),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    contract_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(contract_id);
+
+-- ============================================================================
+-- SECTION 4: NODE TABLES - ArchiMate Application Layer
+-- ============================================================================
+
+CREATE TABLE ApplicationComponents (
+    app_id STRING(36) NOT NULL,
+    app_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    app_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(app_id);
+
+CREATE TABLE ApplicationServices (
+    service_id STRING(36) NOT NULL,
+    service_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    service_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(service_id);
+
+CREATE TABLE ApplicationInterfaces (
+    interface_id STRING(36) NOT NULL,
+    interface_name STRING(MAX),
+    description STRING(MAX),
+    protocol STRING(100),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    interface_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(interface_id);
+
+CREATE TABLE DataObjects (
+    model_id STRING(36) NOT NULL,
+    model_name STRING(255),
+    description STRING(MAX),
+    schema_definition STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    model_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(model_id);
+
+-- ============================================================================
+-- SECTION 5: NODE TABLES - ArchiMate Technology Layer
+-- ============================================================================
+
+CREATE TABLE Nodes (
+    node_id STRING(36) NOT NULL,
+    node_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    node_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(node_id);
+
+CREATE TABLE SystemSoftwares (
+    software_id STRING(36) NOT NULL,
+    software_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    software_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(software_id);
+
+CREATE TABLE TechnologyServices (
+    service_id STRING(36) NOT NULL,
+    service_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    service_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(service_id);
+
+CREATE TABLE Artifacts (
+    artifact_id STRING(36) NOT NULL,
+    artifact_name STRING(MAX),
+    description STRING(MAX),
+    artifact_type STRING(100),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    artifact_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(artifact_id);
+
+CREATE TABLE Devices (
+    device_id STRING(36) NOT NULL,
+    device_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    device_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(device_id);
+
+CREATE TABLE CommunicationNetworks (
+    network_id STRING(36) NOT NULL,
+    network_name STRING(MAX),
+    description STRING(MAX),
+    network_type STRING(100),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    network_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(network_id);
+
+-- ============================================================================
+-- SECTION 6: NODE TABLES - ArchiMate Strategy & Motivation Layer
+-- ============================================================================
+
+CREATE TABLE Requirements (
+    req_id STRING(36) NOT NULL,
+    req_code STRING(50),
+    title STRING(MAX),
+    description STRING(MAX),
+    status STRING(50),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    req_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(req_id);
+
+CREATE TABLE Goals (
+    goal_id STRING(36) NOT NULL,
+    goal_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    goal_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(goal_id);
+
+CREATE TABLE Constraints (
+    constraint_id STRING(36) NOT NULL,
+    constraint_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    constraint_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(constraint_id);
+
+CREATE TABLE Stakeholders (
+    stakeholder_id STRING(36) NOT NULL,
+    stakeholder_name STRING(MAX),
+    description STRING(MAX),
+    stakeholder_type STRING(100),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    stakeholder_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(stakeholder_id);
+
+CREATE TABLE Capabilities (
+    capability_id STRING(36) NOT NULL,
+    capability_name STRING(MAX),
+    description STRING(MAX),
+    archimate_layer STRING(50),
+    source_doc_id STRING(MAX),
+    capability_embedding ARRAY<FLOAT32>
+) PRIMARY KEY(capability_id);
+
+-- ============================================================================
+-- SECTION 7: EDGE TABLES - Document Relationships
+-- ============================================================================
+
+CREATE TABLE DocumentMentions (
+    doc_id STRING(MAX) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    target_type STRING(50),
+    mention_context STRING(MAX)
+) PRIMARY KEY(doc_id, target_id),
+  INTERLEAVE IN PARENT Documents ON DELETE CASCADE;
+
+-- Document Chunks (chunked content with per-chunk embeddings for RAG)
+CREATE TABLE DocumentChunks (
+    chunk_id STRING(36) NOT NULL,
+    doc_id STRING(MAX) NOT NULL,
+    chunk_index INT64 NOT NULL,
+    chunk_text STRING(MAX),
+    chunk_type STRING(20),
+    image_uri STRING(MAX),
+    page_number INT64,
+    chunk_embedding ARRAY<FLOAT32>,
+) PRIMARY KEY(doc_id, chunk_id),
+  INTERLEAVE IN PARENT Documents ON DELETE CASCADE;
+
+-- ScaNN vector index for ANN search on chunk embeddings (COSINE distance)
+CREATE VECTOR INDEX ChunkEmbeddingIndex
+ON DocumentChunks(chunk_embedding)
+WHERE chunk_embedding IS NOT NULL
+OPTIONS (
+  distance_type = 'COSINE',
+  tree_depth = 2,
+  num_leaves = 1000
+);
+
+-- Chunk-to-Entity mentions (which chunk mentions which entity)
+CREATE TABLE ChunkMentions (
+    chunk_id STRING(36) NOT NULL,
+    doc_id STRING(MAX) NOT NULL,
+    entity_id STRING(36) NOT NULL,
+    entity_type STRING(50),
+    mention_context STRING(MAX)
+) PRIMARY KEY(doc_id, chunk_id, entity_id),
+  INTERLEAVE IN PARENT DocumentChunks ON DELETE CASCADE;
+
+-- ============================================================================
+-- SECTION 8: EDGE TABLES - ArchiMate Structural Relationships
+-- ============================================================================
+
+CREATE TABLE Composition (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    details STRING(MAX),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+CREATE TABLE Aggregation (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    details STRING(MAX),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+CREATE TABLE Assignment (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    role_name STRING(100),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+CREATE TABLE Realization (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    details STRING(MAX),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+-- ============================================================================
+-- SECTION 9: EDGE TABLES - ArchiMate Dependency Relationships
+-- ============================================================================
+
+CREATE TABLE Serving (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    serving_details STRING(MAX),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+CREATE TABLE Access (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    access_type STRING(50),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+-- ============================================================================
+-- SECTION 10: EDGE TABLES - ArchiMate Dynamic Relationships
+-- ============================================================================
+
+CREATE TABLE Triggering (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    details STRING(MAX),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+CREATE TABLE Flow (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    flow_label STRING(MAX),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+-- ============================================================================
+-- SECTION 11: EDGE TABLES - ArchiMate Other Relationships
+-- ============================================================================
+
+CREATE TABLE Influence (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    influence_strength STRING(100),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+CREATE TABLE Association (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    association_details STRING(MAX),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+CREATE TABLE Specialization (
+    source_id STRING(36) NOT NULL,
+    target_id STRING(36) NOT NULL,
+    source_type STRING(50),
+    target_type STRING(50),
+    details STRING(MAX),
+    confidence STRING(16)
+) PRIMARY KEY(source_id, target_id);
+
+-- ============================================================================
+-- SECTION 12: PROPERTY GRAPH DEFINITION
+-- ============================================================================
+
+CREATE PROPERTY GRAPH KnowledgeGraph
+  NODE TABLES (
+    -- Core
+    Documents,
+    DocumentChunks,
+    -- Business Layer
+    BusinessActors,
+    BusinessRoles,
+    BusinessProcesses,
+    BusinessFunctions,
+    BusinessServices,
+    BusinessObjects,
+    Contracts,
+    -- Application Layer
+    ApplicationComponents,
+    ApplicationServices,
+    ApplicationInterfaces,
+    DataObjects,
+    -- Technology Layer
+    Nodes,
+    SystemSoftwares,
+    TechnologyServices,
+    Artifacts,
+    Devices,
+    CommunicationNetworks,
+    -- Strategy & Motivation Layer
+    Requirements,
+    Goals,
+    Constraints,
+    Stakeholders,
+    Capabilities
+  )
+  EDGE TABLES (
+
+    -- ================================================================
+    -- DocumentMentions edges
+    -- ================================================================
+    DocumentMentions
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsDataObject
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES DataObjects(model_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsRequirement
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES Requirements(req_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsBusinessProcess
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsBusinessActor
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessActors(actor_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsBusinessRole
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessRoles(role_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsBusinessFunction
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessFunctions(function_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsBusinessService
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessServices(service_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsBusinessObject
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessObjects(object_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsContract
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES Contracts(contract_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsApplicationService
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationServices(service_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsApplicationInterface
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationInterfaces(interface_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsNode
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES Nodes(node_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsSystemSoftware
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES SystemSoftwares(software_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsTechnologyService
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES TechnologyServices(service_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsArtifact
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES Artifacts(artifact_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsDevice
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES Devices(device_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsCommunicationNetwork
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES CommunicationNetworks(network_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsGoal
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES Goals(goal_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsConstraint
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES Constraints(constraint_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsStakeholder
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES Stakeholders(stakeholder_id)
+      LABEL Mentions,
+    DocumentMentions AS MentionsCapability
+      SOURCE KEY(doc_id) REFERENCES Documents(doc_id)
+      DESTINATION KEY(target_id) REFERENCES Capabilities(capability_id)
+      LABEL Mentions,
+
+    -- ================================================================
+    -- ChunkMentions edges
+    -- ================================================================
+    ChunkMentions
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES ApplicationComponents(app_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsDataObject
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES DataObjects(model_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsRequirement
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES Requirements(req_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsBusinessProcess
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES BusinessProcesses(process_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsBusinessActor
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES BusinessActors(actor_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsBusinessRole
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES BusinessRoles(role_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsBusinessFunction
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES BusinessFunctions(function_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsBusinessService
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES BusinessServices(service_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsBusinessObject
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES BusinessObjects(object_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsContract
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES Contracts(contract_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsApplicationService
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES ApplicationServices(service_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsApplicationInterface
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES ApplicationInterfaces(interface_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsNode
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES Nodes(node_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsSystemSoftware
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES SystemSoftwares(software_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsTechnologyService
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES TechnologyServices(service_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsArtifact
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES Artifacts(artifact_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsDevice
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES Devices(device_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsCommunicationNetwork
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES CommunicationNetworks(network_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsGoal
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES Goals(goal_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsConstraint
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES Constraints(constraint_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsStakeholder
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES Stakeholders(stakeholder_id)
+      LABEL ChunkMention,
+    ChunkMentions AS ChunkMentionsCapability
+      SOURCE KEY(doc_id, chunk_id) REFERENCES DocumentChunks(doc_id, chunk_id)
+      DESTINATION KEY(entity_id) REFERENCES Capabilities(capability_id)
+      LABEL ChunkMention,
+
+    -- ================================================================
+    -- Realization edges
+    -- ================================================================
+    Realization
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES Requirements(req_id)
+      LABEL Realization,
+    Realization AS RealizationAppToProcess
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Realization,
+    Realization AS RealizationAppToBizService
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessServices(service_id)
+      LABEL Realization,
+    Realization AS RealizationAppSvcToProcess
+      SOURCE KEY(source_id) REFERENCES ApplicationServices(service_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Realization,
+    Realization AS RealizationAppSvcToBizService
+      SOURCE KEY(source_id) REFERENCES ApplicationServices(service_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessServices(service_id)
+      LABEL Realization,
+    Realization AS RealizationArtifactToApp
+      SOURCE KEY(source_id) REFERENCES Artifacts(artifact_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Realization,
+    Realization AS RealizationArtifactToData
+      SOURCE KEY(source_id) REFERENCES Artifacts(artifact_id)
+      DESTINATION KEY(target_id) REFERENCES DataObjects(model_id)
+      LABEL Realization,
+    Realization AS RealizationDataToBizObject
+      SOURCE KEY(source_id) REFERENCES DataObjects(model_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessObjects(object_id)
+      LABEL Realization,
+    Realization AS RealizationNodeToTechService
+      SOURCE KEY(source_id) REFERENCES Nodes(node_id)
+      DESTINATION KEY(target_id) REFERENCES TechnologyServices(service_id)
+      LABEL Realization,
+    Realization AS RealizationSoftwareToTechService
+      SOURCE KEY(source_id) REFERENCES SystemSoftwares(software_id)
+      DESTINATION KEY(target_id) REFERENCES TechnologyServices(service_id)
+      LABEL Realization,
+
+    -- ================================================================
+    -- Assignment edges
+    -- ================================================================
+    Assignment
+      SOURCE KEY(source_id) REFERENCES BusinessActors(actor_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Assignment,
+    Assignment AS AssignmentActorToProcess
+      SOURCE KEY(source_id) REFERENCES BusinessActors(actor_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Assignment,
+    Assignment AS AssignmentActorToFunction
+      SOURCE KEY(source_id) REFERENCES BusinessActors(actor_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessFunctions(function_id)
+      LABEL Assignment,
+    Assignment AS AssignmentActorToData
+      SOURCE KEY(source_id) REFERENCES BusinessActors(actor_id)
+      DESTINATION KEY(target_id) REFERENCES DataObjects(model_id)
+      LABEL Assignment,
+    Assignment AS AssignmentRoleToProcess
+      SOURCE KEY(source_id) REFERENCES BusinessRoles(role_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Assignment,
+    Assignment AS AssignmentRoleToFunction
+      SOURCE KEY(source_id) REFERENCES BusinessRoles(role_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessFunctions(function_id)
+      LABEL Assignment,
+    Assignment AS AssignmentNodeToSoftware
+      SOURCE KEY(source_id) REFERENCES Nodes(node_id)
+      DESTINATION KEY(target_id) REFERENCES SystemSoftwares(software_id)
+      LABEL Assignment,
+    Assignment AS AssignmentNodeToArtifact
+      SOURCE KEY(source_id) REFERENCES Nodes(node_id)
+      DESTINATION KEY(target_id) REFERENCES Artifacts(artifact_id)
+      LABEL Assignment,
+    Assignment AS AssignmentSoftwareToApp
+      SOURCE KEY(source_id) REFERENCES SystemSoftwares(software_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Assignment,
+
+    -- ================================================================
+    -- Serving edges
+    -- ================================================================
+    Serving
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Serving,
+    Serving AS ServingAppToFunction
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessFunctions(function_id)
+      LABEL Serving,
+    Serving AS ServingAppSvcToProcess
+      SOURCE KEY(source_id) REFERENCES ApplicationServices(service_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Serving,
+    Serving AS ServingAppSvcToApp
+      SOURCE KEY(source_id) REFERENCES ApplicationServices(service_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Serving,
+    Serving AS ServingTechSvcToApp
+      SOURCE KEY(source_id) REFERENCES TechnologyServices(service_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Serving,
+    Serving AS ServingTechSvcToNode
+      SOURCE KEY(source_id) REFERENCES TechnologyServices(service_id)
+      DESTINATION KEY(target_id) REFERENCES Nodes(node_id)
+      LABEL Serving,
+    Serving AS ServingSoftwareToApp
+      SOURCE KEY(source_id) REFERENCES SystemSoftwares(software_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Serving,
+    Serving AS ServingBizSvcToProcess
+      SOURCE KEY(source_id) REFERENCES BusinessServices(service_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Serving,
+
+    -- ================================================================
+    -- Access edges
+    -- ================================================================
+    Access
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES DataObjects(model_id)
+      LABEL Access,
+    Access AS AccessAppToBizObject
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessObjects(object_id)
+      LABEL Access,
+    Access AS AccessProcessToData
+      SOURCE KEY(source_id) REFERENCES BusinessProcesses(process_id)
+      DESTINATION KEY(target_id) REFERENCES DataObjects(model_id)
+      LABEL Access,
+    Access AS AccessProcessToBizObject
+      SOURCE KEY(source_id) REFERENCES BusinessProcesses(process_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessObjects(object_id)
+      LABEL Access,
+    Access AS AccessFunctionToData
+      SOURCE KEY(source_id) REFERENCES BusinessFunctions(function_id)
+      DESTINATION KEY(target_id) REFERENCES DataObjects(model_id)
+      LABEL Access,
+
+    -- ================================================================
+    -- Composition edges
+    -- ================================================================
+    Composition
+      SOURCE KEY(source_id) REFERENCES Nodes(node_id)
+      DESTINATION KEY(target_id) REFERENCES Devices(device_id)
+      LABEL Composition,
+    Composition AS CompositionNodeToSoftware
+      SOURCE KEY(source_id) REFERENCES Nodes(node_id)
+      DESTINATION KEY(target_id) REFERENCES SystemSoftwares(software_id)
+      LABEL Composition,
+    Composition AS CompositionAppToApp
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Composition,
+
+    -- ================================================================
+    -- Aggregation edges
+    -- ================================================================
+    Aggregation
+      SOURCE KEY(source_id) REFERENCES BusinessFunctions(function_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Aggregation,
+    Aggregation AS AggregationCapabilityToFunction
+      SOURCE KEY(source_id) REFERENCES Capabilities(capability_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessFunctions(function_id)
+      LABEL Aggregation,
+    Aggregation AS AggregationAppToApp
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Aggregation,
+
+    -- ================================================================
+    -- Flow edges
+    -- ================================================================
+    Flow
+      SOURCE KEY(source_id) REFERENCES BusinessProcesses(process_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Flow,
+    Flow AS FlowAppToApp
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Flow,
+    Flow AS FlowProcessToApp
+      SOURCE KEY(source_id) REFERENCES BusinessProcesses(process_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Flow,
+
+    -- ================================================================
+    -- Triggering edges
+    -- ================================================================
+    Triggering
+      SOURCE KEY(source_id) REFERENCES BusinessProcesses(process_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessProcesses(process_id)
+      LABEL Triggering,
+
+    -- ================================================================
+    -- Influence edges
+    -- ================================================================
+    Influence
+      SOURCE KEY(source_id) REFERENCES Stakeholders(stakeholder_id)
+      DESTINATION KEY(target_id) REFERENCES Goals(goal_id)
+      LABEL Influence,
+    Influence AS InfluenceGoalToReq
+      SOURCE KEY(source_id) REFERENCES Goals(goal_id)
+      DESTINATION KEY(target_id) REFERENCES Requirements(req_id)
+      LABEL Influence,
+    Influence AS InfluenceGoalToConstraint
+      SOURCE KEY(source_id) REFERENCES Goals(goal_id)
+      DESTINATION KEY(target_id) REFERENCES Constraints(constraint_id)
+      LABEL Influence,
+    Influence AS InfluenceConstraintToReq
+      SOURCE KEY(source_id) REFERENCES Constraints(constraint_id)
+      DESTINATION KEY(target_id) REFERENCES Requirements(req_id)
+      LABEL Influence,
+
+    -- ================================================================
+    -- Specialization edges
+    -- ================================================================
+    Specialization
+      SOURCE KEY(source_id) REFERENCES Constraints(constraint_id)
+      DESTINATION KEY(target_id) REFERENCES Requirements(req_id)
+      LABEL Specialization,
+
+    -- ================================================================
+    -- Association edges (generic fallback)
+    -- ================================================================
+    Association
+      SOURCE KEY(source_id) REFERENCES ApplicationComponents(app_id)
+      DESTINATION KEY(target_id) REFERENCES ApplicationComponents(app_id)
+      LABEL Association,
+    Association AS AssociationActorToRole
+      SOURCE KEY(source_id) REFERENCES BusinessActors(actor_id)
+      DESTINATION KEY(target_id) REFERENCES BusinessRoles(role_id)
+      LABEL Association
+  );

@@ -1,0 +1,512 @@
+{
+  "L1_KG_Construction": {
+    "layer": "L1_KG_Construction",
+    "entity_f1": {
+      "per_type": {
+        "Capability": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 10,
+          "missing": [
+            "claims processing automation",
+            "cyber risk mitigation",
+            "data-driven underwriting",
+            "digital customer experience",
+            "omnichannel distribution",
+            "operational resilience",
+            "partner ecosystem integration",
+            "product innovation",
+            "regulatory compliance management",
+            "risk assessment intelligence"
+          ],
+          "extra": []
+        },
+        "BusinessActor": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 16,
+          "missing": [
+            "archisurance hq",
+            "board of directors",
+            "broker network",
+            "call center",
+            "claims department",
+            "customer",
+            "data analytics team",
+            "finance department",
+            "hr department",
+            "internal audit",
+            "it operations",
+            "legal & compliance",
+            "product development unit",
+            "reinsurance partner",
+            "sales division",
+            "underwriting team"
+          ],
+          "extra": []
+        },
+        "BusinessRole": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 11,
+          "missing": [
+            "business analyst",
+            "claims handler",
+            "compliance officer",
+            "customer service representative",
+            "data steward",
+            "it service manager",
+            "policy administrator",
+            "release manager",
+            "risk analyst",
+            "security officer",
+            "underwriter"
+          ],
+          "extra": []
+        },
+        "BusinessProcess": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 15,
+          "missing": [
+            "broker commission settlement",
+            "claims assessment",
+            "claims registration",
+            "complaint handling",
+            "customer identity verification",
+            "customer onboarding",
+            "document digitization",
+            "fraud detection",
+            "policy issuance",
+            "policy renewal",
+            "premium calculation",
+            "regulatory reporting",
+            "reinsurance ceding",
+            "risk evaluation",
+            "sla monitoring"
+          ],
+          "extra": []
+        },
+        "BusinessService": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "missing": [
+            "broker portal service",
+            "claims handling service",
+            "customer portal service",
+            "fraud investigation service",
+            "insurance policy service",
+            "premium collection service",
+            "regulatory filing service",
+            "underwriting service"
+          ],
+          "extra": []
+        },
+        "BusinessObject": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 10,
+          "missing": [
+            "claim",
+            "commission statement",
+            "complaint ticket",
+            "customer profile",
+            "fraud alert",
+            "insurance policy",
+            "invoice",
+            "regulatory report",
+            "reinsurance treaty",
+            "risk score"
+          ],
+          "extra": []
+        },
+        "Contract": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "missing": [
+            "broker distribution agreement",
+            "cloud hosting sla",
+            "reinsurance agreement",
+            "sla premium support",
+            "third-party data provider contract"
+          ],
+          "extra": []
+        },
+        "ApplicationComponent": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 20,
+          "missing": [
+            "api gateway",
+            "batch processing engine",
+            "billing system",
+            "broker portal",
+            "claims management platform",
+            "content delivery network",
+            "crm system",
+            "customer self-service portal",
+            "data warehouse",
+            "document management system",
+            "email service",
+            "enterprise service bus",
+            "fraud detection engine",
+            "identity & access management",
+            "mobile app backend",
+            "notification service",
+            "policy administration system",
+            "reporting & analytics platform",
+            "risk engine",
+            "workflow engine"
+          ],
+          "extra": []
+        },
+        "ApplicationService": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 10,
+          "missing": [
+            "authentication api",
+            "claims api",
+            "customer api",
+            "document api",
+            "fraud scoring api",
+            "notification api",
+            "payment api",
+            "policy api",
+            "reporting api",
+            "risk scoring api"
+          ],
+          "extra": []
+        },
+        "ApplicationInterface": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "missing": [
+            "graphql analytics endpoint",
+            "mobile app interface",
+            "partner integration hub",
+            "rest api gateway",
+            "soap legacy interface"
+          ],
+          "extra": []
+        },
+        "DataObject": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 10,
+          "missing": [
+            "analytics cube",
+            "audit log",
+            "claim record",
+            "commission ledger",
+            "customer record",
+            "document metadata",
+            "fraud score dataset",
+            "policy record",
+            "premium calculation data",
+            "regulatory submission record"
+          ],
+          "extra": []
+        },
+        "Node": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 10,
+          "missing": [
+            "app server cluster",
+            "batch processing node",
+            "ci/cd build server",
+            "database server primary",
+            "database server replica",
+            "dr recovery node",
+            "edge cache node",
+            "gpu analytics node",
+            "log aggregation node",
+            "monitoring server"
+          ],
+          "extra": []
+        },
+        "Device": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "missing": [
+            "backup tape library",
+            "firewall palo alto",
+            "hsm appliance",
+            "load balancer f5",
+            "network switch cisco nexus",
+            "san storage array",
+            "wan accelerator",
+            "wireless access controller"
+          ],
+          "extra": []
+        },
+        "SystemSoftware": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 10,
+          "missing": [
+            "apache kafka",
+            "docker engine",
+            "elasticsearch",
+            "kubernetes",
+            "microsoft sql server 2022",
+            "nginx",
+            "oracle database 19c",
+            "postgresql 15",
+            "red hat linux 9",
+            "redis"
+          ],
+          "extra": []
+        },
+        "TechnologyService": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "missing": [
+            "certificate management service",
+            "container orchestration",
+            "database service",
+            "dns service",
+            "log aggregation service",
+            "message queue service",
+            "object storage service",
+            "secrets management service"
+          ],
+          "extra": []
+        },
+        "Artifact": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 7,
+          "missing": [
+            "api-gateway-routes.json",
+            "claims-service.jar",
+            "etl-pipeline-config.yaml",
+            "fraud-scoring-model.onnx",
+            "notification-worker.jar",
+            "policy-api-v2.war",
+            "risk-model-weights.pkl"
+          ],
+          "extra": []
+        },
+        "CommunicationNetwork": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "missing": [
+            "cloud vpn",
+            "corporate lan",
+            "dmz network",
+            "management vlan"
+          ],
+          "extra": []
+        },
+        "Goal": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "missing": [
+            "achieve 99.9% system availability",
+            "achieve full regulatory compliance",
+            "automate 80% of underwriting decisions",
+            "increase customer satisfaction to nps 60+",
+            "migrate 100% workloads to cloud by 2027",
+            "reduce claims processing time by 40%",
+            "reduce it operational costs by 25%",
+            "zero data breaches by 2026"
+          ],
+          "extra": []
+        },
+        "Requirement": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 10,
+          "missing": [
+            "data encryption at rest and in transit",
+            "gdpr compliance",
+            "multi-channel access",
+            "pci-dss level 1 certification",
+            "real-time risk scoring",
+            "role-based access control",
+            "rpo of 15 minutes",
+            "rto of 1 hour",
+            "sox audit trail",
+            "sub-second api response time"
+          ],
+          "extra": []
+        },
+        "Constraint": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "missing": [
+            "budget cap eur 2m annual",
+            "legacy oracle db migration deadline q4 2026",
+            "minimum 3 availability zones",
+            "no public cloud for pii data (until 2026 review)",
+            "vendor lock-in avoidance"
+          ],
+          "extra": []
+        },
+        "Stakeholder": {
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 6,
+          "missing": [
+            "cfo",
+            "chief risk officer",
+            "ciso",
+            "cto",
+            "enterprise architect",
+            "head of claims"
+          ],
+          "extra": []
+        }
+      },
+      "macro_f1": 0,
+      "micro_f1": 0,
+      "total_ground_truth": 196,
+      "total_extracted": 0
+    },
+    "relationship_f1": {
+      "per_type": {
+        "Access": {
+          "ground_truth": 13,
+          "extracted": 0,
+          "delta": -13
+        },
+        "Assignment": {
+          "ground_truth": 57,
+          "extracted": 0,
+          "delta": -57
+        },
+        "Association": {
+          "ground_truth": 11,
+          "extracted": 0,
+          "delta": -11
+        },
+        "Flow": {
+          "ground_truth": 2,
+          "extracted": 0,
+          "delta": -2
+        },
+        "Influence": {
+          "ground_truth": 15,
+          "extracted": 0,
+          "delta": -15
+        },
+        "Realization": {
+          "ground_truth": 40,
+          "extracted": 0,
+          "delta": -40
+        },
+        "Serving": {
+          "ground_truth": 63,
+          "extracted": 0,
+          "delta": -63
+        },
+        "Triggering": {
+          "ground_truth": 7,
+          "extracted": 0,
+          "delta": -7
+        }
+      },
+      "total_ground_truth": 208,
+      "total_extracted": 0,
+      "type_coverage": 0.0
+    },
+    "entity_resolution": {
+      "types_with_duplicates": 0,
+      "total_duplicate_entities": 0,
+      "details": {}
+    },
+    "confidence_distribution": {
+      "totals": {
+        "EXTRACTED": 0,
+        "INFERRED": 0,
+        "AMBIGUOUS": 0,
+        "NULL": 0
+      },
+      "per_type": {},
+      "pct_extracted": 0.0,
+      "pct_inferred": 0.0,
+      "pct_ambiguous": 0.0,
+      "pct_null": 0.0
+    }
+  },
+  "metadata": {
+    "timestamp": "20260412_131322",
+    "elapsed_seconds": 24.8,
+    "layers_run": [
+      "L1_KG_Construction"
+    ]
+  }
+}

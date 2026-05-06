@@ -1,0 +1,532 @@
+{
+  "benchmark": "reranker_comparison",
+  "per_question": [
+    {
+      "id": "single_hop_1",
+      "category": "single_hop",
+      "rrf": {
+        "recall": 0.333,
+        "time_ms": 4851
+      },
+      "vertex_ai": {
+        "recall": 0.333,
+        "time_ms": 574
+      },
+      "gemini": {
+        "recall": 0.333,
+        "time_ms": 11577
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "single_hop_2",
+      "category": "single_hop",
+      "rrf": {
+        "recall": 1.0,
+        "time_ms": 2645
+      },
+      "vertex_ai": {
+        "recall": 1.0,
+        "time_ms": 593
+      },
+      "gemini": {
+        "recall": 1.0,
+        "time_ms": 7875
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "single_hop_3",
+      "category": "single_hop",
+      "rrf": {
+        "recall": 0.5,
+        "time_ms": 2331
+      },
+      "vertex_ai": {
+        "recall": 0.5,
+        "time_ms": 725
+      },
+      "gemini": {
+        "recall": 0.5,
+        "time_ms": 13325
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "single_hop_4",
+      "category": "single_hop",
+      "rrf": {
+        "recall": 0.5,
+        "time_ms": 2515
+      },
+      "vertex_ai": {
+        "recall": 0.5,
+        "time_ms": 579
+      },
+      "gemini": {
+        "recall": 0.5,
+        "time_ms": 8784
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "single_hop_5",
+      "category": "single_hop",
+      "rrf": {
+        "recall": 0.5,
+        "time_ms": 2548
+      },
+      "vertex_ai": {
+        "recall": 0.5,
+        "time_ms": 602
+      },
+      "gemini": {
+        "recall": 0.5,
+        "time_ms": 8422
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "single_hop_6",
+      "category": "single_hop",
+      "rrf": {
+        "recall": 0.5,
+        "time_ms": 2373
+      },
+      "vertex_ai": {
+        "recall": 0.5,
+        "time_ms": 566
+      },
+      "gemini": {
+        "recall": 0.5,
+        "time_ms": 9827
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "single_hop_7",
+      "category": "single_hop",
+      "rrf": {
+        "recall": 1.0,
+        "time_ms": 4040
+      },
+      "vertex_ai": {
+        "recall": 1.0,
+        "time_ms": 566
+      },
+      "gemini": {
+        "recall": 1.0,
+        "time_ms": 18467
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "single_hop_8",
+      "category": "single_hop",
+      "rrf": {
+        "recall": 0.25,
+        "time_ms": 3126
+      },
+      "vertex_ai": {
+        "recall": 0.25,
+        "time_ms": 596
+      },
+      "gemini": {
+        "recall": 0.25,
+        "time_ms": 6519
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "multi_hop_1",
+      "category": "multi_hop",
+      "rrf": {
+        "recall": 0.3,
+        "time_ms": 2055
+      },
+      "vertex_ai": {
+        "recall": 0.3,
+        "time_ms": 568
+      },
+      "gemini": {
+        "recall": 0.3,
+        "time_ms": 11016
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "multi_hop_2",
+      "category": "multi_hop",
+      "rrf": {
+        "recall": 0.4,
+        "time_ms": 2335
+      },
+      "vertex_ai": {
+        "recall": 0.4,
+        "time_ms": 568
+      },
+      "gemini": {
+        "recall": 0.4,
+        "time_ms": 14303
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "multi_hop_3",
+      "category": "multi_hop",
+      "rrf": {
+        "recall": 0.25,
+        "time_ms": 7263
+      },
+      "vertex_ai": {
+        "recall": 0.25,
+        "time_ms": 568
+      },
+      "gemini": {
+        "recall": 0.25,
+        "time_ms": 14468
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "multi_hop_4",
+      "category": "multi_hop",
+      "rrf": {
+        "recall": 0.6,
+        "time_ms": 3720
+      },
+      "vertex_ai": {
+        "recall": 0.6,
+        "time_ms": 772
+      },
+      "gemini": {
+        "recall": 0.6,
+        "time_ms": 10971
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "multi_hop_5",
+      "category": "multi_hop",
+      "rrf": {
+        "recall": 0.6,
+        "time_ms": 2168
+      },
+      "vertex_ai": {
+        "recall": 0.6,
+        "time_ms": 549
+      },
+      "gemini": {
+        "recall": 0.6,
+        "time_ms": 12750
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "multi_hop_6",
+      "category": "multi_hop",
+      "rrf": {
+        "recall": 0.667,
+        "time_ms": 5116
+      },
+      "vertex_ai": {
+        "recall": 0.667,
+        "time_ms": 583
+      },
+      "gemini": {
+        "recall": 0.667,
+        "time_ms": 9860
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "multi_hop_7",
+      "category": "multi_hop",
+      "rrf": {
+        "recall": 0.25,
+        "time_ms": 3596
+      },
+      "vertex_ai": {
+        "recall": 0.25,
+        "time_ms": 568
+      },
+      "gemini": {
+        "recall": 0.25,
+        "time_ms": 12434
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "multi_hop_8",
+      "category": "multi_hop",
+      "rrf": {
+        "recall": 1.0,
+        "time_ms": 7468
+      },
+      "vertex_ai": {
+        "recall": 1.0,
+        "time_ms": 566
+      },
+      "gemini": {
+        "recall": 1.0,
+        "time_ms": 11719
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "cross_doc_1",
+      "category": "cross_document",
+      "rrf": {
+        "recall": 0.25,
+        "time_ms": 10651
+      },
+      "vertex_ai": {
+        "recall": 0.25,
+        "time_ms": 601
+      },
+      "gemini": {
+        "recall": 0.25,
+        "time_ms": 9603
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "cross_doc_2",
+      "category": "cross_document",
+      "rrf": {
+        "recall": 0.25,
+        "time_ms": 10930
+      },
+      "vertex_ai": {
+        "recall": 0.25,
+        "time_ms": 555
+      },
+      "gemini": {
+        "recall": 0.25,
+        "time_ms": 10746
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "cross_doc_3",
+      "category": "cross_document",
+      "rrf": {
+        "recall": 1.0,
+        "time_ms": 1970
+      },
+      "vertex_ai": {
+        "recall": 1.0,
+        "time_ms": 5477
+      },
+      "gemini": {
+        "recall": 1.0,
+        "time_ms": 10602
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "cross_doc_4",
+      "category": "cross_document",
+      "rrf": {
+        "recall": 0.0,
+        "time_ms": 2537
+      },
+      "vertex_ai": {
+        "recall": 0.0,
+        "time_ms": 602
+      },
+      "gemini": {
+        "recall": 0.0,
+        "time_ms": 6382
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "cross_doc_5",
+      "category": "cross_document",
+      "rrf": {
+        "recall": 0.333,
+        "time_ms": 2539
+      },
+      "vertex_ai": {
+        "recall": 0.333,
+        "time_ms": 554
+      },
+      "gemini": {
+        "recall": 0.333,
+        "time_ms": 18410
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "cross_doc_6",
+      "category": "cross_document",
+      "rrf": {
+        "recall": 0.455,
+        "time_ms": 2062
+      },
+      "vertex_ai": {
+        "recall": 0.455,
+        "time_ms": 603
+      },
+      "gemini": {
+        "recall": 0.455,
+        "time_ms": 12390
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "entity_resolution_1",
+      "category": "entity_resolution",
+      "rrf": {
+        "recall": 1.0,
+        "time_ms": 4332
+      },
+      "vertex_ai": {
+        "recall": 1.0,
+        "time_ms": 560
+      },
+      "gemini": {
+        "recall": 1.0,
+        "time_ms": 8725
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "entity_resolution_2",
+      "category": "entity_resolution",
+      "rrf": {
+        "recall": 1.0,
+        "time_ms": 7776
+      },
+      "vertex_ai": {
+        "recall": 1.0,
+        "time_ms": 546
+      },
+      "gemini": {
+        "recall": 1.0,
+        "time_ms": 9091
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "entity_resolution_3",
+      "category": "entity_resolution",
+      "rrf": {
+        "recall": 1.0,
+        "time_ms": 2026
+      },
+      "vertex_ai": {
+        "recall": 1.0,
+        "time_ms": 566
+      },
+      "gemini": {
+        "recall": 1.0,
+        "time_ms": 5109
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "entity_resolution_4",
+      "category": "entity_resolution",
+      "rrf": {
+        "recall": 1.0,
+        "time_ms": 2720
+      },
+      "vertex_ai": {
+        "recall": 1.0,
+        "time_ms": 569
+      },
+      "gemini": {
+        "recall": 1.0,
+        "time_ms": 5902
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "completeness_1",
+      "category": "completeness",
+      "rrf": {
+        "recall": 0.5,
+        "time_ms": 2500
+      },
+      "vertex_ai": {
+        "recall": 0.5,
+        "time_ms": 688
+      },
+      "gemini": {
+        "recall": 0.5,
+        "time_ms": 7460
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "completeness_2",
+      "category": "completeness",
+      "rrf": {
+        "recall": 0.375,
+        "time_ms": 2978
+      },
+      "vertex_ai": {
+        "recall": 0.375,
+        "time_ms": 590
+      },
+      "gemini": {
+        "recall": 0.375,
+        "time_ms": 6117
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "graph_advantage_1",
+      "category": "graph_advantage",
+      "rrf": {
+        "recall": 0.333,
+        "time_ms": 3906
+      },
+      "vertex_ai": {
+        "recall": 0.333,
+        "time_ms": 590
+      },
+      "gemini": {
+        "recall": 0.333,
+        "time_ms": 9151
+      },
+      "winner": "RRF+Vertex+Gemini"
+    },
+    {
+      "id": "graph_advantage_2",
+      "category": "graph_advantage",
+      "rrf": {
+        "recall": 0.6,
+        "time_ms": 2921
+      },
+      "vertex_ai": {
+        "recall": 0.6,
+        "time_ms": 565
+      },
+      "gemini": {
+        "recall": 0.6,
+        "time_ms": 10950
+      },
+      "winner": "RRF+Vertex+Gemini"
+    }
+  ],
+  "aggregates": {
+    "rrf": {
+      "avg_recall": 0.558,
+      "wins": 30
+    },
+    "vertex_ai": {
+      "avg_recall": 0.558,
+      "avg_latency_ms": 754,
+      "wins": 30
+    },
+    "gemini": {
+      "avg_recall": 0.558,
+      "avg_latency_ms": 10432,
+      "wins": 30
+    },
+    "questions_total": 30
+  }
+}

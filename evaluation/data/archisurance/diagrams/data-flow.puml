@@ -1,0 +1,40 @@
+@startuml Data Flow
+title ArchiSurance — Data Flow Diagram
+
+package "Data Sources" {
+  [Claims Platform] as CMP
+  [CRM System] as CRM
+  [External Fraud Feed] as EFF
+}
+
+package "Data Processing (dbt)" {
+  [stg_claims] as STG
+  [fraud_scores] as FS
+  [premium_analytics] as PA
+}
+
+package "Data Consumers" {
+  [Risk Engine] as RE
+  [Fraud Detection] as FDE
+  [Reporting Platform] as RP
+}
+
+database "PostgreSQL 15" as PG
+database "BigQuery" as BQ
+
+CMP --> PG : writes Claim Records
+CRM --> PG : writes Customer Profiles
+PG --> STG : source (raw_claims)
+EFF --> FS : external fraud signals
+STG --> FS : ref
+STG --> PA : ref
+FS --> PA : ref
+
+FS --> BQ : materialized
+PA --> BQ : materialized
+
+BQ --> RE : reads fraud scores
+BQ --> FDE : reads fraud patterns
+BQ --> RP : reads analytics
+
+@enduml

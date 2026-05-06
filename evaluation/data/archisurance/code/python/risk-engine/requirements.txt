@@ -1,0 +1,20 @@
+# Risk Engine dependencies
+# ApplicationComponent: Risk Engine
+# Deployed on: Kubernetes (SystemSoftware) / App Server Cluster (Node)
+
+fastapi>=0.110.0
+uvicorn>=0.29.0
+pydantic>=2.0.0
+
+# Database access -- PostgreSQL 15 (SystemSoftware)
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
+
+# Message broker -- Apache Kafka (SystemSoftware)
+confluent-kafka>=2.3.0
+
+# ML model serving -- fraud-scoring-model.onnx (Artifact)
+onnxruntime>=1.17.0
+
+# Monitoring -- Elasticsearch (SystemSoftware)
+elasticsearch>=8.12.0

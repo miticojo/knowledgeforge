@@ -1,0 +1,117 @@
+openapi: "3.0.3"
+info:
+  title: Claims API
+  description: |
+    REST API for the Claims Management Platform (ApplicationComponent).
+    Serves Claims Registration and Claims Assessment business processes.
+  version: "2.1.0"
+  contact:
+    name: Claims Team
+    email: claims-team@archisurance.com
+
+servers:
+  - url: https://api.archisurance.com/v2
+    description: Production (via API Gateway)
+
+paths:
+  /claims:
+    post:
+      operationId: registerClaim
+      summary: Register a new insurance claim
+      description: Entry point for Claims Registration business process.
+      tags: [Claims]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimRequest'
+      responses:
+        '201':
+          description: Claim registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimResponse'
+
+  /claims/{claimId}:
+    get:
+      operationId: getClaim
+      summary: Get claim details
+      parameters:
+        - name: claimId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimResponse'
+
+  /claims/{claimId}/assess:
+    post:
+      operationId: assessClaim
+      summary: Trigger claim assessment
+      description: Initiates Claims Assessment process, calls Risk Engine and Fraud Detection.
+
+  # INTENTIONAL DRIFT: This endpoint exists in spec but NOT in ClaimsController.java
+  /claims/bulk:
+    post:
+      operationId: bulkRegisterClaims
+      summary: Bulk register claims (batch import)
+      description: |
+        Batch endpoint for importing claims from legacy systems.
+        NOT YET IMPLEMENTED — planned for Q3 2026 migration.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ClaimRequest'
+
+components:
+  schemas:
+    ClaimRequest:
+      type: object
+      required: [customerId, policyId, type, amount]
+      properties:
+        customerId:
+          type: string
+        policyId:
+          type: string
+        type:
+          type: string
+          enum: [AUTO, HEALTH, PROPERTY, LIABILITY]
+        amount:
+          type: number
+          format: double
+        description:
+          type: string
+
+    ClaimResponse:
+      type: object
+      properties:
+        claimId:
+          type: string
+        status:
+          type: string
+          enum: [REGISTERED, PENDING_ASSESSMENT, APPROVED, REJECTED]
+        riskScore:
+          type: number
+          format: double
+        createdAt:
+          type: string
+          format: date-time
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []

@@ -1,0 +1,148 @@
+{
+  "version": "2.0",
+  "description": "Extended ground truth for ArchiSurance v2 benchmark. Includes entities and relationships from code, IaC, dbt, API specs, and diagrams.",
+
+  "new_entities": {
+    "from_code": {
+      "ApplicationInterface": [
+        "Claims API (Java REST)",
+        "Risk Scoring API (Python FastAPI)",
+        "Customer API (TypeScript NestJS)"
+      ],
+      "ApplicationComponent": [
+        "claims-service module",
+        "risk-engine module",
+        "customer-portal module"
+      ],
+      "DataObject": [
+        "ClaimEntity (JPA)",
+        "RiskScoreRequest (Pydantic)",
+        "CustomerEntity (TypeORM)"
+      ],
+      "SystemSoftware_dependency": [
+        "spring-boot-starter-web",
+        "postgresql-driver",
+        "confluent-kafka",
+        "fastapi",
+        "sqlalchemy",
+        "nestjs-core",
+        "typeorm",
+        "axios"
+      ]
+    },
+    "from_terraform": {
+      "Node": [
+        "archisurance-app-cluster (GKE)",
+        "archisurance-db-primary (Cloud SQL)",
+        "archisurance-db-replica (Cloud SQL)"
+      ],
+      "SystemSoftware": [
+        "Kubernetes (from GKE)",
+        "PostgreSQL 15 (from Cloud SQL)"
+      ],
+      "CommunicationNetwork": [
+        "archisurance-vpc",
+        "dmz-subnet",
+        "private-subnet",
+        "management-subnet"
+      ],
+      "BusinessRole": [
+        "claims-service SA",
+        "risk-engine SA"
+      ]
+    },
+    "from_dbt": {
+      "DataObject": [
+        "stg_claims (staging model)",
+        "fraud_scores (mart model)",
+        "premium_analytics (mart model)",
+        "raw_claims.claims (source)",
+        "raw_customers.customers (source)",
+        "raw_fraud_external.fraud_signals (source)"
+      ],
+      "Flow": [
+        "raw_claims → stg_claims",
+        "stg_claims → fraud_scores",
+        "stg_claims → premium_analytics",
+        "fraud_scores → premium_analytics",
+        "raw_fraud_external → fraud_scores"
+      ]
+    },
+    "from_api_specs": {
+      "ApplicationInterface": [
+        "POST /claims (registerClaim)",
+        "GET /claims/{claimId}",
+        "POST /claims/{claimId}/assess",
+        "POST /claims/bulk (NOT IMPLEMENTED)",
+        "POST /risk/score",
+        "POST /risk/premium",
+        "POST /customers",
+        "GET /customers/{customerId}"
+      ]
+    },
+    "from_diagrams": {
+      "note": "Diagrams reference entities already in ground truth but add visual relationships that may differ from code/IaC (intentional drift)"
+    }
+  },
+
+  "intentional_violations": {
+    "code": [
+      {"id": "CODE-V1", "file": "ClaimsController.java", "violation": "Controller imports Repository directly (layer bypass)", "rule": "CODE-002"},
+      {"id": "CODE-V2", "file": "ClaimsController.java", "violation": "getClaimStatus bypasses Service, queries Repository", "rule": "CODE-002"},
+      {"id": "CODE-V3", "file": "crm-client.service.ts", "violation": "Hardcoded service URL instead of config injection", "rule": "CODE-003"}
+    ],
+    "terraform": [
+      {"id": "IAC-V1", "file": "gke.tf", "violation": "GKE cluster missing labels (environment, team)", "rule": "IAC-001"},
+      {"id": "IAC-V2", "file": "networking.tf", "violation": "Firewall allows 0.0.0.0/0 ingress", "rule": "IAC-002"},
+      {"id": "IAC-V3", "file": "cloudsql.tf", "violation": "Cloud SQL primary missing backup_configuration", "rule": "IAC-003"},
+      {"id": "IAC-V4", "file": "gke.tf", "violation": "GKE missing network_policy", "rule": "IAC-004"},
+      {"id": "IAC-V5", "file": "iam.tf", "violation": "claims-service SA has roles/owner", "rule": "IAC-005"},
+      {"id": "IAC-V6", "file": "terraform.tfvars", "violation": "Hardcoded IP address", "rule": "IAC-006"}
+    ],
+    "dbt": [
+      {"id": "DBT-V1", "file": "stg_claims.sql", "violation": "Direct table reference instead of source()", "rule": "DBT-003"},
+      {"id": "DBT-V2", "file": "fraud_scores.sql", "violation": "Accesses raw table directly instead of staged", "rule": "DBT-003"},
+      {"id": "DBT-V3", "file": "fraud_scores.sql", "violation": "No materialization config specified", "rule": "DBT-004"},
+      {"id": "DBT-V4", "file": "schema.yml", "violation": "premium_analytics model missing description", "rule": "DG-003"},
+      {"id": "DBT-V5", "file": "schema.yml", "violation": "stg_claims.claim_id missing not_null test", "rule": "DG-009"},
+      {"id": "DBT-V6", "file": "sources.yml", "violation": "raw_customers missing loaded_at_field", "rule": "DG-004"}
+    ],
+    "api_spec": [
+      {"id": "API-V1", "file": "claims-api.yaml", "violation": "/claims/bulk endpoint not implemented in code", "rule": "API-001"}
+    ],
+    "diagram": [
+      {"id": "DIAG-V1", "file": "component-overview.puml", "violation": "Risk Engine shown connected to PostgreSQL, but Terraform provisions Oracle for some services", "rule": "DIAG-001"}
+    ]
+  },
+
+  "entity_aliases_extended": {
+    "from_terraform": {
+      "Kubernetes": ["google_container_cluster.app_cluster", "archisurance-app-cluster", "GKE cluster"],
+      "PostgreSQL 15": ["google_sql_database_instance.primary", "archisurance-db-primary", "Cloud SQL", "postgres:15"],
+      "Corporate LAN": ["google_compute_network.main", "archisurance-vpc"],
+      "DMZ Network": ["google_compute_subnetwork.dmz", "dmz-subnet"]
+    },
+    "from_code": {
+      "Claims Management Platform": ["com.archisurance.claims", "claims-service", "ClaimsService.java"],
+      "Risk Engine": ["risk-engine", "risk_calculator.py", "RiskCalculator"],
+      "Customer Self-Service Portal": ["customer-portal", "@archisurance/customer-portal", "CustomerService"],
+      "Apache Kafka": ["confluent-kafka", "spring-kafka", "kafka.archisurance.internal"]
+    },
+    "from_dbt": {
+      "Claim Record": ["raw_claims.claims", "stg_claims", "ClaimEntity"],
+      "Fraud Score Dataset": ["fraud_scores", "fraud_signals", "FraudScoreResult"],
+      "Customer Profile": ["raw_customers.customers", "CustomerEntity"]
+    }
+  },
+
+  "total_counts": {
+    "original_entities": 196,
+    "new_entities_estimated": 55,
+    "total_entities_estimated": 251,
+    "original_relationships": 208,
+    "new_relationships_estimated": 45,
+    "total_relationships_estimated": 253,
+    "intentional_violations": 16,
+    "artifact_count": 60
+  }
+}

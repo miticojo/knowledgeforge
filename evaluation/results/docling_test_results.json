@@ -1,0 +1,47 @@
+[
+  {
+    "file": "doc_01_enterprise_overview.pdf",
+    "status": "OK",
+    "text_length": 169106,
+    "num_tables": 6,
+    "parse_time_ms": 256826,
+    "total_time_s": 257.1,
+    "text_preview": "## ArchiSurance Enterprise Architecture Overview\n\nAn integrated view across all ArchiMate layers\n\nDocument ID: EA-OVR-001\n\nThis document is the property of ArchiSurance B.V. and contains confidential "
+  },
+  {
+    "file": "doc_02_application_portfolio.pdf",
+    "status": "OK",
+    "text_length": 173884,
+    "num_tables": 6,
+    "parse_time_ms": 273571,
+    "total_time_s": 273.9,
+    "text_preview": "## Application Portfolio &amp; Inventory\n\nComplete catalog of ArchiSurance application components\n\nDocument ID: EA-APP-002\n\nThis document is the property of ArchiSurance B.V. and contains confidential"
+  },
+  {
+    "file": "doc_03_infrastructure_design.pdf",
+    "status": "OK",
+    "text_length": 164406,
+    "num_tables": 7,
+    "parse_time_ms": 262815,
+    "total_time_s": 263.2,
+    "text_preview": "## Infrastructure Design Document\n\nServers, networks, storage and platform services\n\nDocument ID: EA-INFRA-003\n\nThis document is the property of ArchiSurance B.V. and contains confidential information"
+  },
+  {
+    "file": "doc_04_crm_business_process.pdf",
+    "status": "OK",
+    "text_length": 73826,
+    "num_tables": 3,
+    "parse_time_ms": 96487,
+    "total_time_s": 96.7,
+    "text_preview": "## CRM Business Process Description\n\nCustomer onboarding, case management, and complaint handling\n\nDocument ID: EA-BIZ-004\n\nThis document is the property of ArchiSurance B.V. and contains confidential"
+  },
+  {
+    "file": "doc_05_claims_processing.pdf",
+    "status": "OK",
+    "text_length": 67535,
+    "num_tables": 5,
+    "parse_time_ms": 114279,
+    "total_time_s": 114.5,
+    "text_preview": "## Claims Processing Workflow\n\nDetailed process flow with actors and system support\n\nDocument ID: EA-CLM-005\n\nThis document is the property of ArchiSurance B.V. and contains confidential information. "
+  }
+]

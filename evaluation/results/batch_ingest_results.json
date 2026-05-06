@@ -1,0 +1,28 @@
+[
+  {
+    "steps": {
+      "metadata": {
+        "status": "ok",
+        "ms": 0
+      },
+      "process": {
+        "status": "ok",
+        "ms": 30979,
+        "nodes": 104,
+        "edges": 89,
+        "chunks": 136
+      },
+      "write": {
+        "status": "ok",
+        "ms": 54477,
+        "doc_id": "c7f2d2f0-9762-4268-be09-56ade4f6ae94",
+        "entities": 104,
+        "edges": 89,
+        "chunks": 136
+      }
+    },
+    "document": "doc_21_data_governance_handbook.pdf",
+    "text_length": 166565,
+    "total_seconds": 86.8
+  }
+]

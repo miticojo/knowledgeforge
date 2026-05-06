@@ -1,0 +1,224 @@
+{
+  "benchmark": "flash_vs_pro_fair",
+  "config": "thinking_budget=0, temperature=0.7",
+  "flash": {
+    "full_recall": 0.278,
+    "vec_recall": 0.736
+  },
+  "pro": {
+    "full_recall": 0.448,
+    "vec_recall": 0.736
+  },
+  "per_question": [
+    {
+      "id": "single_hop_1",
+      "flash_full": 0.0,
+      "pro_full": 0.333,
+      "flash_vec": 0.667,
+      "pro_vec": 0.667
+    },
+    {
+      "id": "single_hop_2",
+      "flash_full": 0.0,
+      "pro_full": 1.0,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "single_hop_3",
+      "flash_full": 0.5,
+      "pro_full": 0.5,
+      "flash_vec": 0.5,
+      "pro_vec": 0.5
+    },
+    {
+      "id": "single_hop_4",
+      "flash_full": 0.0,
+      "pro_full": 1.0,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "single_hop_5",
+      "flash_full": 0.0,
+      "pro_full": 1.0,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "single_hop_6",
+      "flash_full": 0.5,
+      "pro_full": 0.5,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "single_hop_7",
+      "flash_full": 0.333,
+      "pro_full": 1.0,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "single_hop_8",
+      "flash_full": 0.75,
+      "pro_full": 0.25,
+      "flash_vec": 0.5,
+      "pro_vec": 0.5
+    },
+    {
+      "id": "multi_hop_1",
+      "flash_full": 0.0,
+      "pro_full": 0.2,
+      "flash_vec": 0.4,
+      "pro_vec": 0.4
+    },
+    {
+      "id": "multi_hop_2",
+      "flash_full": 0.0,
+      "pro_full": 0.4,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "multi_hop_3",
+      "flash_full": 0.375,
+      "pro_full": 0.0,
+      "flash_vec": 0.625,
+      "pro_vec": 0.625
+    },
+    {
+      "id": "multi_hop_4",
+      "flash_full": 0.2,
+      "pro_full": 0.6,
+      "flash_vec": 0.6,
+      "pro_vec": 0.6
+    },
+    {
+      "id": "multi_hop_5",
+      "flash_full": 0.0,
+      "pro_full": 0.6,
+      "flash_vec": 0.6,
+      "pro_vec": 0.6
+    },
+    {
+      "id": "multi_hop_6",
+      "flash_full": 0.333,
+      "pro_full": 0.333,
+      "flash_vec": 0.833,
+      "pro_vec": 0.833
+    },
+    {
+      "id": "multi_hop_7",
+      "flash_full": 0.0,
+      "pro_full": 0.5,
+      "flash_vec": 0.5,
+      "pro_vec": 0.5
+    },
+    {
+      "id": "multi_hop_8",
+      "flash_full": 0.4,
+      "pro_full": 0.2,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "cross_doc_1",
+      "flash_full": 0.5,
+      "pro_full": 0.25,
+      "flash_vec": 0.5,
+      "pro_vec": 0.5
+    },
+    {
+      "id": "cross_doc_2",
+      "flash_full": 0.0,
+      "pro_full": 0.25,
+      "flash_vec": 0.5,
+      "pro_vec": 0.5
+    },
+    {
+      "id": "cross_doc_3",
+      "flash_full": 0.167,
+      "pro_full": 0.167,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "cross_doc_4",
+      "flash_full": 1.0,
+      "pro_full": 1.0,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "cross_doc_5",
+      "flash_full": 0.0,
+      "pro_full": 0.0,
+      "flash_vec": 0.5,
+      "pro_vec": 0.5
+    },
+    {
+      "id": "cross_doc_6",
+      "flash_full": 0.273,
+      "pro_full": 0.0,
+      "flash_vec": 0.182,
+      "pro_vec": 0.182
+    },
+    {
+      "id": "entity_resolution_1",
+      "flash_full": 0.0,
+      "pro_full": 0.0,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "entity_resolution_2",
+      "flash_full": 1.0,
+      "pro_full": 1.0,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "entity_resolution_3",
+      "flash_full": 1.0,
+      "pro_full": 1.0,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "entity_resolution_4",
+      "flash_full": 1.0,
+      "pro_full": 1.0,
+      "flash_vec": 1.0,
+      "pro_vec": 1.0
+    },
+    {
+      "id": "completeness_1",
+      "flash_full": 0.0,
+      "pro_full": 0.0,
+      "flash_vec": 0.65,
+      "pro_vec": 0.65
+    },
+    {
+      "id": "completeness_2",
+      "flash_full": 0.0,
+      "pro_full": 0.0,
+      "flash_vec": 0.75,
+      "pro_vec": 0.75
+    },
+    {
+      "id": "graph_advantage_1",
+      "flash_full": 0.0,
+      "pro_full": 0.167,
+      "flash_vec": 0.167,
+      "pro_vec": 0.167
+    },
+    {
+      "id": "graph_advantage_2",
+      "flash_full": 0.0,
+      "pro_full": 0.2,
+      "flash_vec": 0.6,
+      "pro_vec": 0.6
+    }
+  ]
+}

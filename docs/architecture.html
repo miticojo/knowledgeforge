@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KnowledgeForge Architecture: Ingestion & Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ THEME ============ */
+  :root {
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'Fira Code', 'SF Mono', Consolas, monospace;
+
+    /* Dark theme — Blueprint aesthetic */
+    --bg: #0b0f19;
+    --surface: #131927;
+    --surface2: #1a2235;
+    --surface-elevated: #1c263b;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(255, 255, 255, 0.16);
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    
+    --accent: #38bdf8;
+    --accent-dim: rgba(56, 189, 248, 0.1);
+    --green: #22c55e;
+    --green-dim: rgba(34, 197, 94, 0.1);
+    --orange: #f97316;
+    --orange-dim: rgba(249, 115, 22, 0.1);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface2: #f1f5f9;
+      --surface-elevated: #ffffff;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-bright: rgba(0, 0, 0, 0.15);
+      --text: #0f172a;
+      --text-dim: #64748b;
+      
+      --accent: #0284c7;
+      --accent-dim: rgba(2, 132, 199, 0.08);
+      --green: #16a34a;
+      --green-dim: rgba(22, 163, 74, 0.08);
+      --orange: #ea580c;
+      --orange-dim: rgba(234, 88, 12, 0.08);
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: var(--text);
+    font-family: var(--font-body);
+    padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card {
+    animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i, 0) * 0.08s);
+  }
+
+  h1 { font-size: 36px; font-weight: 700; margin-bottom: 8px; text-align: center; }
+  .subtitle { color: var(--text-dim); font-size: 14px; margin-bottom: 48px; font-family: var(--font-mono); text-align: center; }
+
+  .architecture-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px 1fr;
+    gap: 32px;
+    max-width: 1400px;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card--accent { border-top: 3px solid var(--accent); }
+  .card--green { border-top: 3px solid var(--green); }
+
+  .card-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  .card-title { font-size: 18px; font-weight: 700; color: var(--text); }
+  .card-badge { font-family: var(--font-mono); font-size: 11px; background: var(--surface2); color: var(--text-dim); padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); }
+
+  .node { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .node-title { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+  .node-title::before { content: ''; display: inline-block; width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
+  .node-title--green { color: var(--green); }
+  .node-desc { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+  .node-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .tag { font-family: var(--font-mono); font-size: 10px; background: var(--bg); border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; }
+
+  .spanner-pillar {
+    background: linear-gradient(to bottom, var(--surface-elevated), var(--surface));
+    border: 1px solid var(--orange);
+    box-shadow: 0 0 30px var(--orange-dim);
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .spanner-glow { position: absolute; width: 150px; height: 150px; background: var(--orange); opacity: 0.08; filter: blur(60px); border-radius: 50%; z-index: 0; }
+  .spanner-content { z-index: 1; display: flex; flex-direction: column; gap: 24px; width: 100%; }
+  .schema-box { background: rgba(0,0,0,0.2); border: 1px dashed var(--orange); border-radius: 12px; padding: 16px; text-align: left; }
+  .schema-row { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 12px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .schema-row:last-child { border: 0; }
+  .schema-row span:last-child { color: var(--orange); opacity: 0.8; }
+
+  @media (max-width: 1024px) { .architecture-grid { grid-template-columns: 1fr; } .spanner-pillar { border-width: 2px 1px; } }
+</style>
+</head>
+<body>
+
+<h1>KnowledgeForge Platform</h1>
+<p class="subtitle">Blueprint / Reference Flow: Processing vs Query Orchestration</p>
+
+<div class="architecture-grid">
+
+  <!-- LEFT: Processing Phase -->
+  <div class="card card--accent" style="--i:1">
+    <div class="card-header">
+      <div class="card-title">Processing Phase</div>
+      <div class="card-badge">Vertex Agent Engine</div>
+    </div>
+    <div class="node">
+      <div class="node-title">1. Fonti / Ingest</div>
+      <div class="node-desc">Raccolta automatizzata e manuale da storage remoti e repository aziendali.</div>
+      <div class="node-tags"><span class="tag">GCS</span><span class="tag">Sharepoint</span><span class="tag">App Integration</span></div>
+    </div>
+    <div class="node">
+      <div class="node-title">2. Processing Agent (ADK)</div>
+      <div class="node-desc">Agente specializzato nella normalizzazione di documenti (PDF, DOCX, XLSX) tramite Google GenAI.</div>
+    </div>
+    <div class="node">
+      <div class="node-title">3. Vertex Multi-Modal Extraction</div>
+      <div class="node-desc">Delega a Gemini 3.1 Flash per l'estrazione di nodi, archi e costrutti semantici strutturati.</div>
+      <div class="node-tags"><span class="tag">Graph Nouns</span><span class="tag">Rel Types</span></div>
+    </div>
+    <div class="node">
+      <div class="node-title">4. Vectorization</div>
+      <div class="node-desc">Generazione di chunk e array float via <code>Gemini Embeddings 2.0</code>.</div>
+    </div>
+  </div>
+
+  <!-- CENTER: Spanner Pillar -->
+  <div class="spanner-pillar" style="--i:2">
+    <div class="spanner-glow"></div>
+    <div class="spanner-content">
+      <div style="font-family: var(--font-mono); color: var(--orange); font-weight: 700; font-size: 22px;">Google Cloud Spanner</div>
+      <div style="font-size: 13px; color: var(--text-dim);">Store unificato per Grafo di Relazioni + Base di Conoscenza Vettoriale.</div>
+      <div class="schema-box">
+        <div style="font-family:var(--font-mono); font-size:11px; opacity:0.5; margin-bottom:8px;">TABLE.DOCUMENTS</div>
+        <div class="schema-row"><span>id</span><span>STRING</span></div>
+        <div class="schema-row"><span>content_chunk</span><span>TEXT</span></div>
+        <div class="schema-row"><span>vector_embedding</span><span>ARRAY&lt;FLOAT64&gt;</span></div>
+      </div>
+      <div class="schema-box">
+        <div style="font-family:var(--font-mono); font-size:11px; opacity:0.5; margin-bottom:8px;">TABLE.RELATIONS (Graph)</div>
+        <div class="schema-row"><span>src_node</span><span>STRING</span></div>
+        <div class="schema-row"><span>rel_type</span><span>ENUM</span></div>
+        <div class="schema-row"><span>tgt_node</span><span>STRING</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Query Phase -->
+  <div class="card card--green" style="--i:3">
+    <div class="card-header">
+      <div class="card-title">Query Phase</div>
+      <div class="card-badge">Copilot / Chat Interface</div>
+    </div>
+    <div class="node">
+      <div class="node-title node-title--green">1. User Trigger</div>
+      <div class="node-desc">L'utente immette richieste in chat (SSE Streaming da Next.js).</div>
+    </div>
+    <div class="node">
+      <div class="node-title node-title--green">2. Coordinator Agent (ADK)</div>
+      <div class="node-desc">Interpreta il piano d'azione, de-duplica i tool ed evoca gli agenti figli (Search o Doc).</div>
+    </div>
+    <div class="node">
+      <div class="node-title node-title--green">3. Search Agent</div>
+      <div class="node-desc">Applica il routing ibrido con il Graph Traversal ed espansione BM25 + RRF.</div>
+      <div class="node-tags"><span class="tag">GQL</span><span class="tag">Tool Calling</span></div>
+    </div>
+    <div class="node">
+      <div class="node-title node-title--green">4. Analytical Outreaches</div>
+      <div class="node-desc">Integrazioni verticali con risorse esterne per fact-checking.</div>
+      <div class="node-tags"><span class="tag">BigQuery</span><span class="tag">DB Toolset</span><span class="tag">Dataplex</span></div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

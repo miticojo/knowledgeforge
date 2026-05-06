@@ -1,0 +1,49 @@
+version: 2
+
+sources:
+  - name: claims_raw
+    description: "Raw OLTP rows mirrored from CloudSQL ClaimsDB."
+    tables:
+      - name: customers
+      - name: policies
+      - name: claims
+      - name: settlements
+      - name: fraud_scores
+      - name: claim_events
+      - name: damage_reports
+
+models:
+  - name: stg_claims
+    description: "Staging view over claims."
+    columns:
+      - name: claim_id
+        tests: [unique, not_null]
+      - name: policy_id
+        tests: [not_null]
+  - name: stg_policies
+    columns:
+      - name: policy_id
+        tests: [unique, not_null]
+  - name: stg_settlements
+    columns:
+      - name: settlement_id
+        tests: [unique, not_null]
+  - name: stg_fraud_scores
+    columns:
+      - name: fraud_score_id
+        tests: [unique, not_null]
+  - name: dim_customers
+    description: "Customer dimension with denormalised policy count."
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+  - name: fct_claim_lifecycle
+    description: "One row per claim with cycle-time metrics."
+    columns:
+      - name: claim_id
+        tests: [unique, not_null]
+  - name: fct_fraud_signals
+    description: "Latest fraud score per claim with high-risk flag."
+    columns:
+      - name: claim_id
+        tests: [unique, not_null]

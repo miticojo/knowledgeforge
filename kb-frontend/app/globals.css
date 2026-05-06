@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #020617;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --primary: #f58220; /* Primary Orange */
+  
+  /* CopilotKit Light Theme */
+  --copilot-kit-primary-color: var(--primary);
+  --copilot-kit-background-color: transparent;
+  --copilot-kit-secondary-color: #f1f5f9;
+  --copilot-kit-contrast-color: #ffffff;
+  --copilot-kit-muted-color: #64748b;
+  --copilot-kit-separator-color: var(--card-border);
+  --copilot-kit-text-color: var(--foreground);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020617;
+    --foreground: #f8fafc;
+    --card-bg: rgba(15, 23, 42, 0.6);
+    --card-border: #1e293b;
+    --primary: #f58220; /* Primary Orange */
+    
+    /* CopilotKit Dark Theme */
+    --copilot-kit-primary-color: var(--primary);
+    --copilot-kit-background-color: transparent;
+    --copilot-kit-secondary-color: rgba(30, 41, 59, 0.7); /* translucent slate-800 */
+    --copilot-kit-contrast-color: #ffffff;
+    --copilot-kit-muted-color: #94a3b8;
+    --copilot-kit-separator-color: var(--card-border);
+    --copilot-kit-text-color: var(--foreground);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Rimuove il branding "Powered by CopilotKit" */
+.poweredBy {
+  display: none !important;
+}

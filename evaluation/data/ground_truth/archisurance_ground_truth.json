@@ -1,0 +1,2054 @@
+{
+  "entities": {
+    "Capability": [
+      "Digital Customer Experience",
+      "Claims Processing Automation",
+      "Risk Assessment Intelligence",
+      "Omnichannel Distribution",
+      "Data-Driven Underwriting",
+      "Regulatory Compliance Management",
+      "Operational Resilience",
+      "Cyber Risk Mitigation",
+      "Product Innovation",
+      "Partner Ecosystem Integration"
+    ],
+    "BusinessActor": [
+      "ArchiSurance HQ",
+      "Claims Department",
+      "Underwriting Team",
+      "Customer",
+      "Sales Division",
+      "Finance Department",
+      "IT Operations",
+      "Legal & Compliance",
+      "Broker Network",
+      "Reinsurance Partner",
+      "Call Center",
+      "Product Development Unit",
+      "Internal Audit",
+      "Data Analytics Team",
+      "HR Department",
+      "Board of Directors"
+    ],
+    "BusinessRole": [
+      "Claims Handler",
+      "Policy Administrator",
+      "Risk Analyst",
+      "Customer Service Representative",
+      "Underwriter",
+      "Compliance Officer",
+      "IT Service Manager",
+      "Data Steward",
+      "Security Officer",
+      "Business Analyst",
+      "Release Manager"
+    ],
+    "BusinessProcess": [
+      "Customer Onboarding",
+      "Policy Issuance",
+      "Claims Registration",
+      "Claims Assessment",
+      "Premium Calculation",
+      "Risk Evaluation",
+      "Policy Renewal",
+      "Fraud Detection",
+      "Complaint Handling",
+      "Regulatory Reporting",
+      "Broker Commission Settlement",
+      "Reinsurance Ceding",
+      "Customer Identity Verification",
+      "Document Digitization",
+      "SLA Monitoring"
+    ],
+    "BusinessService": [
+      "Insurance Policy Service",
+      "Claims Handling Service",
+      "Customer Portal Service",
+      "Underwriting Service",
+      "Premium Collection Service",
+      "Fraud Investigation Service",
+      "Regulatory Filing Service",
+      "Broker Portal Service"
+    ],
+    "BusinessObject": [
+      "Insurance Policy",
+      "Claim",
+      "Customer Profile",
+      "Risk Score",
+      "Invoice",
+      "Commission Statement",
+      "Regulatory Report",
+      "Complaint Ticket",
+      "Fraud Alert",
+      "Reinsurance Treaty"
+    ],
+    "Contract": [
+      "SLA Premium Support",
+      "Reinsurance Agreement",
+      "Broker Distribution Agreement",
+      "Cloud Hosting SLA",
+      "Third-Party Data Provider Contract"
+    ],
+    "ApplicationComponent": [
+      "CRM System",
+      "Policy Administration System",
+      "Claims Management Platform",
+      "Risk Engine",
+      "Customer Self-Service Portal",
+      "Document Management System",
+      "Notification Service",
+      "Fraud Detection Engine",
+      "Reporting & Analytics Platform",
+      "Enterprise Service Bus",
+      "Identity & Access Management",
+      "Billing System",
+      "Broker Portal",
+      "Data Warehouse",
+      "Workflow Engine",
+      "API Gateway",
+      "Content Delivery Network",
+      "Email Service",
+      "Mobile App Backend",
+      "Batch Processing Engine"
+    ],
+    "ApplicationService": [
+      "Policy API",
+      "Claims API",
+      "Risk Scoring API",
+      "Customer API",
+      "Notification API",
+      "Document API",
+      "Fraud Scoring API",
+      "Payment API",
+      "Reporting API",
+      "Authentication API"
+    ],
+    "ApplicationInterface": [
+      "REST API Gateway",
+      "Mobile App Interface",
+      "Partner Integration Hub",
+      "SOAP Legacy Interface",
+      "GraphQL Analytics Endpoint"
+    ],
+    "DataObject": [
+      "Policy Record",
+      "Claim Record",
+      "Customer Record",
+      "Premium Calculation Data",
+      "Fraud Score Dataset",
+      "Commission Ledger",
+      "Audit Log",
+      "Regulatory Submission Record",
+      "Document Metadata",
+      "Analytics Cube"
+    ],
+    "Node": [
+      "App Server Cluster",
+      "Database Server Primary",
+      "Database Server Replica",
+      "Batch Processing Node",
+      "CI/CD Build Server",
+      "Monitoring Server",
+      "Log Aggregation Node",
+      "DR Recovery Node",
+      "Edge Cache Node",
+      "GPU Analytics Node"
+    ],
+    "Device": [
+      "Load Balancer F5",
+      "Firewall Palo Alto",
+      "SAN Storage Array",
+      "Backup Tape Library",
+      "HSM Appliance",
+      "WAN Accelerator",
+      "Network Switch Cisco Nexus",
+      "Wireless Access Controller"
+    ],
+    "SystemSoftware": [
+      "PostgreSQL 15",
+      "Red Hat Linux 9",
+      "Docker Engine",
+      "Kubernetes",
+      "Apache Kafka",
+      "Elasticsearch",
+      "Redis",
+      "Nginx",
+      "Oracle Database 19c",
+      "Microsoft SQL Server 2022"
+    ],
+    "TechnologyService": [
+      "Database Service",
+      "Container Orchestration",
+      "Message Queue Service",
+      "Object Storage Service",
+      "DNS Service",
+      "Certificate Management Service",
+      "Log Aggregation Service",
+      "Secrets Management Service"
+    ],
+    "Artifact": [
+      "claims-service.jar",
+      "policy-api-v2.war",
+      "risk-model-weights.pkl",
+      "fraud-scoring-model.onnx",
+      "notification-worker.jar",
+      "etl-pipeline-config.yaml",
+      "api-gateway-routes.json"
+    ],
+    "CommunicationNetwork": [
+      "Corporate LAN",
+      "DMZ Network",
+      "Cloud VPN",
+      "Management VLAN"
+    ],
+    "Goal": [
+      "Reduce Claims Processing Time by 40%",
+      "Achieve 99.9% System Availability",
+      "Increase Customer Satisfaction to NPS 60+",
+      "Automate 80% of Underwriting Decisions",
+      "Zero Data Breaches by 2026",
+      "Reduce IT Operational Costs by 25%",
+      "Achieve Full Regulatory Compliance",
+      "Migrate 100% Workloads to Cloud by 2027"
+    ],
+    "Requirement": [
+      "Real-time Risk Scoring",
+      "GDPR Compliance",
+      "Multi-channel Access",
+      "PCI-DSS Level 1 Certification",
+      "SOX Audit Trail",
+      "Sub-second API Response Time",
+      "RPO of 15 minutes",
+      "RTO of 1 hour",
+      "Data Encryption at Rest and in Transit",
+      "Role-based Access Control"
+    ],
+    "Constraint": [
+      "Legacy Oracle DB Migration Deadline Q4 2026",
+      "Budget Cap EUR 2M Annual",
+      "No Public Cloud for PII Data (until 2026 review)",
+      "Minimum 3 Availability Zones",
+      "Vendor Lock-in Avoidance"
+    ],
+    "Stakeholder": [
+      "CTO",
+      "Head of Claims",
+      "Chief Risk Officer",
+      "Enterprise Architect",
+      "CISO",
+      "CFO"
+    ]
+  },
+  "relationships": [
+    {
+      "source": "BusinessActor:Claims Department",
+      "type": "Assignment",
+      "target": "BusinessProcess:Claims Registration"
+    },
+    {
+      "source": "BusinessActor:Claims Department",
+      "type": "Assignment",
+      "target": "BusinessProcess:Claims Assessment"
+    },
+    {
+      "source": "BusinessActor:Claims Department",
+      "type": "Assignment",
+      "target": "BusinessProcess:Fraud Detection"
+    },
+    {
+      "source": "BusinessActor:Underwriting Team",
+      "type": "Assignment",
+      "target": "BusinessProcess:Risk Evaluation"
+    },
+    {
+      "source": "BusinessActor:Underwriting Team",
+      "type": "Assignment",
+      "target": "BusinessProcess:Premium Calculation"
+    },
+    {
+      "source": "BusinessActor:Sales Division",
+      "type": "Assignment",
+      "target": "BusinessProcess:Customer Onboarding"
+    },
+    {
+      "source": "BusinessActor:Sales Division",
+      "type": "Assignment",
+      "target": "BusinessProcess:Broker Commission Settlement"
+    },
+    {
+      "source": "BusinessActor:Finance Department",
+      "type": "Assignment",
+      "target": "BusinessProcess:Broker Commission Settlement"
+    },
+    {
+      "source": "BusinessActor:Legal & Compliance",
+      "type": "Assignment",
+      "target": "BusinessProcess:Regulatory Reporting"
+    },
+    {
+      "source": "BusinessActor:IT Operations",
+      "type": "Assignment",
+      "target": "BusinessProcess:SLA Monitoring"
+    },
+    {
+      "source": "BusinessActor:Call Center",
+      "type": "Assignment",
+      "target": "BusinessProcess:Complaint Handling"
+    },
+    {
+      "source": "BusinessActor:Call Center",
+      "type": "Assignment",
+      "target": "BusinessProcess:Customer Onboarding"
+    },
+    {
+      "source": "BusinessActor:Broker Network",
+      "type": "Assignment",
+      "target": "BusinessProcess:Customer Onboarding"
+    },
+    {
+      "source": "BusinessActor:Reinsurance Partner",
+      "type": "Assignment",
+      "target": "BusinessProcess:Reinsurance Ceding"
+    },
+    {
+      "source": "BusinessActor:Data Analytics Team",
+      "type": "Assignment",
+      "target": "BusinessProcess:Fraud Detection"
+    },
+    {
+      "source": "BusinessActor:Internal Audit",
+      "type": "Assignment",
+      "target": "BusinessProcess:Regulatory Reporting"
+    },
+    {
+      "source": "BusinessProcess:Customer Onboarding",
+      "type": "Triggering",
+      "target": "BusinessProcess:Policy Issuance"
+    },
+    {
+      "source": "BusinessProcess:Customer Onboarding",
+      "type": "Triggering",
+      "target": "BusinessProcess:Customer Identity Verification"
+    },
+    {
+      "source": "BusinessProcess:Claims Registration",
+      "type": "Triggering",
+      "target": "BusinessProcess:Claims Assessment"
+    },
+    {
+      "source": "BusinessProcess:Claims Assessment",
+      "type": "Flow",
+      "target": "BusinessProcess:Premium Calculation"
+    },
+    {
+      "source": "BusinessProcess:Claims Assessment",
+      "type": "Triggering",
+      "target": "BusinessProcess:Fraud Detection"
+    },
+    {
+      "source": "BusinessProcess:Policy Issuance",
+      "type": "Triggering",
+      "target": "BusinessProcess:Premium Calculation"
+    },
+    {
+      "source": "BusinessProcess:Policy Issuance",
+      "type": "Triggering",
+      "target": "BusinessProcess:Document Digitization"
+    },
+    {
+      "source": "BusinessProcess:Complaint Handling",
+      "type": "Triggering",
+      "target": "BusinessProcess:SLA Monitoring"
+    },
+    {
+      "source": "BusinessProcess:Regulatory Reporting",
+      "type": "Flow",
+      "target": "BusinessProcess:SLA Monitoring"
+    },
+    {
+      "source": "BusinessService:Insurance Policy Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Policy Issuance"
+    },
+    {
+      "source": "BusinessService:Insurance Policy Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Policy Renewal"
+    },
+    {
+      "source": "BusinessService:Claims Handling Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Claims Registration"
+    },
+    {
+      "source": "BusinessService:Claims Handling Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Claims Assessment"
+    },
+    {
+      "source": "BusinessService:Customer Portal Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Complaint Handling"
+    },
+    {
+      "source": "BusinessService:Underwriting Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Risk Evaluation"
+    },
+    {
+      "source": "BusinessService:Underwriting Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Premium Calculation"
+    },
+    {
+      "source": "BusinessService:Premium Collection Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Broker Commission Settlement"
+    },
+    {
+      "source": "BusinessService:Fraud Investigation Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Fraud Detection"
+    },
+    {
+      "source": "BusinessService:Regulatory Filing Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Regulatory Reporting"
+    },
+    {
+      "source": "BusinessService:Broker Portal Service",
+      "type": "Serving",
+      "target": "BusinessProcess:Broker Commission Settlement"
+    },
+    {
+      "source": "BusinessRole:Claims Handler",
+      "type": "Assignment",
+      "target": "BusinessProcess:Claims Registration"
+    },
+    {
+      "source": "BusinessRole:Claims Handler",
+      "type": "Assignment",
+      "target": "BusinessProcess:Claims Assessment"
+    },
+    {
+      "source": "BusinessRole:Policy Administrator",
+      "type": "Assignment",
+      "target": "BusinessProcess:Policy Issuance"
+    },
+    {
+      "source": "BusinessRole:Policy Administrator",
+      "type": "Assignment",
+      "target": "BusinessProcess:Policy Renewal"
+    },
+    {
+      "source": "BusinessRole:Risk Analyst",
+      "type": "Assignment",
+      "target": "BusinessProcess:Risk Evaluation"
+    },
+    {
+      "source": "BusinessRole:Underwriter",
+      "type": "Assignment",
+      "target": "BusinessProcess:Premium Calculation"
+    },
+    {
+      "source": "BusinessRole:Compliance Officer",
+      "type": "Assignment",
+      "target": "BusinessProcess:Regulatory Reporting"
+    },
+    {
+      "source": "BusinessRole:IT Service Manager",
+      "type": "Assignment",
+      "target": "BusinessProcess:SLA Monitoring"
+    },
+    {
+      "source": "BusinessRole:Data Steward",
+      "type": "Assignment",
+      "target": "BusinessProcess:Fraud Detection"
+    },
+    {
+      "source": "BusinessRole:Security Officer",
+      "type": "Assignment",
+      "target": "BusinessProcess:Customer Identity Verification"
+    },
+    {
+      "source": "BusinessRole:Customer Service Representative",
+      "type": "Assignment",
+      "target": "BusinessProcess:Complaint Handling"
+    },
+    {
+      "source": "BusinessRole:Business Analyst",
+      "type": "Assignment",
+      "target": "BusinessProcess:Document Digitization"
+    },
+    {
+      "source": "ApplicationComponent:CRM System",
+      "type": "Serving",
+      "target": "BusinessProcess:Customer Onboarding"
+    },
+    {
+      "source": "ApplicationComponent:CRM System",
+      "type": "Serving",
+      "target": "BusinessProcess:Complaint Handling"
+    },
+    {
+      "source": "ApplicationComponent:Policy Administration System",
+      "type": "Serving",
+      "target": "BusinessProcess:Policy Issuance"
+    },
+    {
+      "source": "ApplicationComponent:Policy Administration System",
+      "type": "Serving",
+      "target": "BusinessProcess:Policy Renewal"
+    },
+    {
+      "source": "ApplicationComponent:Claims Management Platform",
+      "type": "Serving",
+      "target": "BusinessProcess:Claims Registration"
+    },
+    {
+      "source": "ApplicationComponent:Claims Management Platform",
+      "type": "Serving",
+      "target": "BusinessProcess:Claims Assessment"
+    },
+    {
+      "source": "ApplicationComponent:Risk Engine",
+      "type": "Serving",
+      "target": "BusinessProcess:Risk Evaluation"
+    },
+    {
+      "source": "ApplicationComponent:Risk Engine",
+      "type": "Serving",
+      "target": "BusinessProcess:Premium Calculation"
+    },
+    {
+      "source": "ApplicationComponent:Customer Self-Service Portal",
+      "type": "Serving",
+      "target": "BusinessActor:Customer"
+    },
+    {
+      "source": "ApplicationComponent:Customer Self-Service Portal",
+      "type": "Serving",
+      "target": "BusinessProcess:Complaint Handling"
+    },
+    {
+      "source": "ApplicationComponent:Document Management System",
+      "type": "Serving",
+      "target": "BusinessProcess:Document Digitization"
+    },
+    {
+      "source": "ApplicationComponent:Document Management System",
+      "type": "Serving",
+      "target": "BusinessProcess:Regulatory Reporting"
+    },
+    {
+      "source": "ApplicationComponent:Fraud Detection Engine",
+      "type": "Serving",
+      "target": "BusinessProcess:Fraud Detection"
+    },
+    {
+      "source": "ApplicationComponent:Reporting & Analytics Platform",
+      "type": "Serving",
+      "target": "BusinessProcess:Regulatory Reporting"
+    },
+    {
+      "source": "ApplicationComponent:Reporting & Analytics Platform",
+      "type": "Serving",
+      "target": "BusinessProcess:SLA Monitoring"
+    },
+    {
+      "source": "ApplicationComponent:Billing System",
+      "type": "Serving",
+      "target": "BusinessProcess:Broker Commission Settlement"
+    },
+    {
+      "source": "ApplicationComponent:Billing System",
+      "type": "Serving",
+      "target": "BusinessProcess:Premium Calculation"
+    },
+    {
+      "source": "ApplicationComponent:Broker Portal",
+      "type": "Serving",
+      "target": "BusinessActor:Broker Network"
+    },
+    {
+      "source": "ApplicationComponent:Broker Portal",
+      "type": "Serving",
+      "target": "BusinessProcess:Broker Commission Settlement"
+    },
+    {
+      "source": "ApplicationComponent:Identity & Access Management",
+      "type": "Serving",
+      "target": "BusinessProcess:Customer Identity Verification"
+    },
+    {
+      "source": "ApplicationComponent:Workflow Engine",
+      "type": "Serving",
+      "target": "BusinessProcess:Claims Assessment"
+    },
+    {
+      "source": "ApplicationComponent:Workflow Engine",
+      "type": "Serving",
+      "target": "BusinessProcess:Policy Issuance"
+    },
+    {
+      "source": "ApplicationComponent:Claims Management Platform",
+      "type": "Serving",
+      "target": "ApplicationComponent:Notification Service"
+    },
+    {
+      "source": "ApplicationComponent:Risk Engine",
+      "type": "Serving",
+      "target": "ApplicationComponent:Policy Administration System"
+    },
+    {
+      "source": "ApplicationComponent:Fraud Detection Engine",
+      "type": "Serving",
+      "target": "ApplicationComponent:Claims Management Platform"
+    },
+    {
+      "source": "ApplicationComponent:Enterprise Service Bus",
+      "type": "Serving",
+      "target": "ApplicationComponent:CRM System"
+    },
+    {
+      "source": "ApplicationComponent:Enterprise Service Bus",
+      "type": "Serving",
+      "target": "ApplicationComponent:Billing System"
+    },
+    {
+      "source": "ApplicationComponent:Enterprise Service Bus",
+      "type": "Serving",
+      "target": "ApplicationComponent:Policy Administration System"
+    },
+    {
+      "source": "ApplicationComponent:API Gateway",
+      "type": "Serving",
+      "target": "ApplicationComponent:Customer Self-Service Portal"
+    },
+    {
+      "source": "ApplicationComponent:API Gateway",
+      "type": "Serving",
+      "target": "ApplicationComponent:Mobile App Backend"
+    },
+    {
+      "source": "ApplicationComponent:API Gateway",
+      "type": "Serving",
+      "target": "ApplicationComponent:Broker Portal"
+    },
+    {
+      "source": "ApplicationComponent:Data Warehouse",
+      "type": "Serving",
+      "target": "ApplicationComponent:Reporting & Analytics Platform"
+    },
+    {
+      "source": "ApplicationComponent:Batch Processing Engine",
+      "type": "Serving",
+      "target": "ApplicationComponent:Data Warehouse"
+    },
+    {
+      "source": "ApplicationComponent:Email Service",
+      "type": "Serving",
+      "target": "ApplicationComponent:Notification Service"
+    },
+    {
+      "source": "ApplicationComponent:Content Delivery Network",
+      "type": "Serving",
+      "target": "ApplicationComponent:Customer Self-Service Portal"
+    },
+    {
+      "source": "ApplicationComponent:Mobile App Backend",
+      "type": "Serving",
+      "target": "BusinessActor:Customer"
+    },
+    {
+      "source": "ApplicationService:Claims API",
+      "type": "Realization",
+      "target": "ApplicationComponent:Claims Management Platform"
+    },
+    {
+      "source": "ApplicationService:Policy API",
+      "type": "Realization",
+      "target": "ApplicationComponent:Policy Administration System"
+    },
+    {
+      "source": "ApplicationService:Risk Scoring API",
+      "type": "Realization",
+      "target": "ApplicationComponent:Risk Engine"
+    },
+    {
+      "source": "ApplicationService:Customer API",
+      "type": "Realization",
+      "target": "ApplicationComponent:CRM System"
+    },
+    {
+      "source": "ApplicationService:Notification API",
+      "type": "Realization",
+      "target": "ApplicationComponent:Notification Service"
+    },
+    {
+      "source": "ApplicationService:Document API",
+      "type": "Realization",
+      "target": "ApplicationComponent:Document Management System"
+    },
+    {
+      "source": "ApplicationService:Fraud Scoring API",
+      "type": "Realization",
+      "target": "ApplicationComponent:Fraud Detection Engine"
+    },
+    {
+      "source": "ApplicationService:Payment API",
+      "type": "Realization",
+      "target": "ApplicationComponent:Billing System"
+    },
+    {
+      "source": "ApplicationService:Reporting API",
+      "type": "Realization",
+      "target": "ApplicationComponent:Reporting & Analytics Platform"
+    },
+    {
+      "source": "ApplicationService:Authentication API",
+      "type": "Realization",
+      "target": "ApplicationComponent:Identity & Access Management"
+    },
+    {
+      "source": "ApplicationComponent:CRM System",
+      "type": "Access",
+      "target": "DataObject:Customer Record"
+    },
+    {
+      "source": "ApplicationComponent:Policy Administration System",
+      "type": "Access",
+      "target": "DataObject:Policy Record"
+    },
+    {
+      "source": "ApplicationComponent:Claims Management Platform",
+      "type": "Access",
+      "target": "DataObject:Claim Record"
+    },
+    {
+      "source": "ApplicationComponent:Risk Engine",
+      "type": "Access",
+      "target": "DataObject:Premium Calculation Data"
+    },
+    {
+      "source": "ApplicationComponent:Fraud Detection Engine",
+      "type": "Access",
+      "target": "DataObject:Fraud Score Dataset"
+    },
+    {
+      "source": "ApplicationComponent:Billing System",
+      "type": "Access",
+      "target": "DataObject:Commission Ledger"
+    },
+    {
+      "source": "ApplicationComponent:Reporting & Analytics Platform",
+      "type": "Access",
+      "target": "DataObject:Analytics Cube"
+    },
+    {
+      "source": "ApplicationComponent:Document Management System",
+      "type": "Access",
+      "target": "DataObject:Document Metadata"
+    },
+    {
+      "source": "ApplicationComponent:Identity & Access Management",
+      "type": "Access",
+      "target": "DataObject:Audit Log"
+    },
+    {
+      "source": "ApplicationComponent:Data Warehouse",
+      "type": "Access",
+      "target": "DataObject:Analytics Cube"
+    },
+    {
+      "source": "ApplicationComponent:Data Warehouse",
+      "type": "Access",
+      "target": "DataObject:Policy Record"
+    },
+    {
+      "source": "ApplicationComponent:Data Warehouse",
+      "type": "Access",
+      "target": "DataObject:Claim Record"
+    },
+    {
+      "source": "ApplicationComponent:Reporting & Analytics Platform",
+      "type": "Access",
+      "target": "DataObject:Regulatory Submission Record"
+    },
+    {
+      "source": "SystemSoftware:Kubernetes",
+      "type": "Assignment",
+      "target": "ApplicationComponent:Claims Management Platform"
+    },
+    {
+      "source": "SystemSoftware:Kubernetes",
+      "type": "Assignment",
+      "target": "ApplicationComponent:Risk Engine"
+    },
+    {
+      "source": "SystemSoftware:Kubernetes",
+      "type": "Assignment",
+      "target": "ApplicationComponent:Fraud Detection Engine"
+    },
+    {
+      "source": "SystemSoftware:Kubernetes",
+      "type": "Assignment",
+      "target": "ApplicationComponent:API Gateway"
+    },
+    {
+      "source": "SystemSoftware:Kubernetes",
+      "type": "Assignment",
+      "target": "ApplicationComponent:Notification Service"
+    },
+    {
+      "source": "SystemSoftware:Docker Engine",
+      "type": "Assignment",
+      "target": "ApplicationComponent:CRM System"
+    },
+    {
+      "source": "SystemSoftware:Docker Engine",
+      "type": "Assignment",
+      "target": "ApplicationComponent:Broker Portal"
+    },
+    {
+      "source": "SystemSoftware:Docker Engine",
+      "type": "Assignment",
+      "target": "ApplicationComponent:Mobile App Backend"
+    },
+    {
+      "source": "SystemSoftware:PostgreSQL 15",
+      "type": "Serving",
+      "target": "ApplicationComponent:Policy Administration System"
+    },
+    {
+      "source": "SystemSoftware:PostgreSQL 15",
+      "type": "Serving",
+      "target": "ApplicationComponent:Claims Management Platform"
+    },
+    {
+      "source": "SystemSoftware:PostgreSQL 15",
+      "type": "Serving",
+      "target": "ApplicationComponent:CRM System"
+    },
+    {
+      "source": "SystemSoftware:Oracle Database 19c",
+      "type": "Serving",
+      "target": "ApplicationComponent:Billing System"
+    },
+    {
+      "source": "SystemSoftware:Oracle Database 19c",
+      "type": "Serving",
+      "target": "ApplicationComponent:Data Warehouse"
+    },
+    {
+      "source": "SystemSoftware:Microsoft SQL Server 2022",
+      "type": "Serving",
+      "target": "ApplicationComponent:Reporting & Analytics Platform"
+    },
+    {
+      "source": "SystemSoftware:Apache Kafka",
+      "type": "Serving",
+      "target": "ApplicationComponent:Enterprise Service Bus"
+    },
+    {
+      "source": "SystemSoftware:Apache Kafka",
+      "type": "Serving",
+      "target": "ApplicationComponent:Batch Processing Engine"
+    },
+    {
+      "source": "SystemSoftware:Elasticsearch",
+      "type": "Serving",
+      "target": "ApplicationComponent:Document Management System"
+    },
+    {
+      "source": "SystemSoftware:Redis",
+      "type": "Serving",
+      "target": "ApplicationComponent:API Gateway"
+    },
+    {
+      "source": "SystemSoftware:Redis",
+      "type": "Serving",
+      "target": "ApplicationComponent:Customer Self-Service Portal"
+    },
+    {
+      "source": "SystemSoftware:Nginx",
+      "type": "Serving",
+      "target": "ApplicationComponent:Content Delivery Network"
+    },
+    {
+      "source": "SystemSoftware:Nginx",
+      "type": "Serving",
+      "target": "ApplicationComponent:Customer Self-Service Portal"
+    },
+    {
+      "source": "Node:App Server Cluster",
+      "type": "Assignment",
+      "target": "SystemSoftware:Kubernetes"
+    },
+    {
+      "source": "Node:App Server Cluster",
+      "type": "Assignment",
+      "target": "SystemSoftware:Docker Engine"
+    },
+    {
+      "source": "Node:App Server Cluster",
+      "type": "Assignment",
+      "target": "SystemSoftware:Red Hat Linux 9"
+    },
+    {
+      "source": "Node:Database Server Primary",
+      "type": "Assignment",
+      "target": "SystemSoftware:PostgreSQL 15"
+    },
+    {
+      "source": "Node:Database Server Primary",
+      "type": "Assignment",
+      "target": "SystemSoftware:Oracle Database 19c"
+    },
+    {
+      "source": "Node:Database Server Replica",
+      "type": "Assignment",
+      "target": "SystemSoftware:PostgreSQL 15"
+    },
+    {
+      "source": "Node:Batch Processing Node",
+      "type": "Assignment",
+      "target": "SystemSoftware:Apache Kafka"
+    },
+    {
+      "source": "Node:Log Aggregation Node",
+      "type": "Assignment",
+      "target": "SystemSoftware:Elasticsearch"
+    },
+    {
+      "source": "Node:Edge Cache Node",
+      "type": "Assignment",
+      "target": "SystemSoftware:Nginx"
+    },
+    {
+      "source": "Node:Edge Cache Node",
+      "type": "Assignment",
+      "target": "SystemSoftware:Redis"
+    },
+    {
+      "source": "Node:GPU Analytics Node",
+      "type": "Assignment",
+      "target": "SystemSoftware:Microsoft SQL Server 2022"
+    },
+    {
+      "source": "Node:Monitoring Server",
+      "type": "Assignment",
+      "target": "SystemSoftware:Elasticsearch"
+    },
+    {
+      "source": "Node:CI/CD Build Server",
+      "type": "Assignment",
+      "target": "SystemSoftware:Docker Engine"
+    },
+    {
+      "source": "Node:DR Recovery Node",
+      "type": "Assignment",
+      "target": "SystemSoftware:PostgreSQL 15"
+    },
+    {
+      "source": "TechnologyService:Database Service",
+      "type": "Realization",
+      "target": "Node:Database Server Primary"
+    },
+    {
+      "source": "TechnologyService:Database Service",
+      "type": "Realization",
+      "target": "Node:Database Server Replica"
+    },
+    {
+      "source": "TechnologyService:Container Orchestration",
+      "type": "Realization",
+      "target": "SystemSoftware:Kubernetes"
+    },
+    {
+      "source": "TechnologyService:Message Queue Service",
+      "type": "Realization",
+      "target": "SystemSoftware:Apache Kafka"
+    },
+    {
+      "source": "TechnologyService:Object Storage Service",
+      "type": "Realization",
+      "target": "Node:Batch Processing Node"
+    },
+    {
+      "source": "TechnologyService:Log Aggregation Service",
+      "type": "Realization",
+      "target": "Node:Log Aggregation Node"
+    },
+    {
+      "source": "TechnologyService:Secrets Management Service",
+      "type": "Realization",
+      "target": "Device:HSM Appliance"
+    },
+    {
+      "source": "TechnologyService:DNS Service",
+      "type": "Realization",
+      "target": "Node:Edge Cache Node"
+    },
+    {
+      "source": "TechnologyService:Certificate Management Service",
+      "type": "Realization",
+      "target": "Device:HSM Appliance"
+    },
+    {
+      "source": "Artifact:claims-service.jar",
+      "type": "Realization",
+      "target": "ApplicationComponent:Claims Management Platform"
+    },
+    {
+      "source": "Artifact:policy-api-v2.war",
+      "type": "Realization",
+      "target": "ApplicationComponent:Policy Administration System"
+    },
+    {
+      "source": "Artifact:risk-model-weights.pkl",
+      "type": "Realization",
+      "target": "ApplicationComponent:Risk Engine"
+    },
+    {
+      "source": "Artifact:fraud-scoring-model.onnx",
+      "type": "Realization",
+      "target": "ApplicationComponent:Fraud Detection Engine"
+    },
+    {
+      "source": "Artifact:notification-worker.jar",
+      "type": "Realization",
+      "target": "ApplicationComponent:Notification Service"
+    },
+    {
+      "source": "Artifact:etl-pipeline-config.yaml",
+      "type": "Realization",
+      "target": "ApplicationComponent:Batch Processing Engine"
+    },
+    {
+      "source": "Artifact:api-gateway-routes.json",
+      "type": "Realization",
+      "target": "ApplicationComponent:API Gateway"
+    },
+    {
+      "source": "Device:Load Balancer F5",
+      "type": "Assignment",
+      "target": "CommunicationNetwork:DMZ Network"
+    },
+    {
+      "source": "Device:Firewall Palo Alto",
+      "type": "Assignment",
+      "target": "CommunicationNetwork:DMZ Network"
+    },
+    {
+      "source": "Device:Firewall Palo Alto",
+      "type": "Assignment",
+      "target": "CommunicationNetwork:Corporate LAN"
+    },
+    {
+      "source": "Device:SAN Storage Array",
+      "type": "Serving",
+      "target": "Node:Database Server Primary"
+    },
+    {
+      "source": "Device:SAN Storage Array",
+      "type": "Serving",
+      "target": "Node:Database Server Replica"
+    },
+    {
+      "source": "Device:Backup Tape Library",
+      "type": "Serving",
+      "target": "Node:DR Recovery Node"
+    },
+    {
+      "source": "Device:WAN Accelerator",
+      "type": "Assignment",
+      "target": "CommunicationNetwork:Cloud VPN"
+    },
+    {
+      "source": "Device:Network Switch Cisco Nexus",
+      "type": "Assignment",
+      "target": "CommunicationNetwork:Corporate LAN"
+    },
+    {
+      "source": "Device:Network Switch Cisco Nexus",
+      "type": "Assignment",
+      "target": "CommunicationNetwork:Management VLAN"
+    },
+    {
+      "source": "Device:Wireless Access Controller",
+      "type": "Assignment",
+      "target": "CommunicationNetwork:Corporate LAN"
+    },
+    {
+      "source": "Goal:Reduce Claims Processing Time by 40%",
+      "type": "Influence",
+      "target": "Requirement:Real-time Risk Scoring"
+    },
+    {
+      "source": "Goal:Achieve 99.9% System Availability",
+      "type": "Influence",
+      "target": "Requirement:RPO of 15 minutes"
+    },
+    {
+      "source": "Goal:Achieve 99.9% System Availability",
+      "type": "Influence",
+      "target": "Requirement:RTO of 1 hour"
+    },
+    {
+      "source": "Goal:Zero Data Breaches by 2026",
+      "type": "Influence",
+      "target": "Requirement:Data Encryption at Rest and in Transit"
+    },
+    {
+      "source": "Goal:Zero Data Breaches by 2026",
+      "type": "Influence",
+      "target": "Requirement:Role-based Access Control"
+    },
+    {
+      "source": "Goal:Achieve Full Regulatory Compliance",
+      "type": "Influence",
+      "target": "Requirement:GDPR Compliance"
+    },
+    {
+      "source": "Goal:Achieve Full Regulatory Compliance",
+      "type": "Influence",
+      "target": "Requirement:PCI-DSS Level 1 Certification"
+    },
+    {
+      "source": "Goal:Achieve Full Regulatory Compliance",
+      "type": "Influence",
+      "target": "Requirement:SOX Audit Trail"
+    },
+    {
+      "source": "Goal:Reduce IT Operational Costs by 25%",
+      "type": "Influence",
+      "target": "Requirement:Sub-second API Response Time"
+    },
+    {
+      "source": "Goal:Migrate 100% Workloads to Cloud by 2027",
+      "type": "Influence",
+      "target": "Constraint:Minimum 3 Availability Zones"
+    },
+    {
+      "source": "Goal:Automate 80% of Underwriting Decisions",
+      "type": "Influence",
+      "target": "Requirement:Real-time Risk Scoring"
+    },
+    {
+      "source": "Stakeholder:CTO",
+      "type": "Association",
+      "target": "Goal:Achieve 99.9% System Availability"
+    },
+    {
+      "source": "Stakeholder:CTO",
+      "type": "Association",
+      "target": "Goal:Migrate 100% Workloads to Cloud by 2027"
+    },
+    {
+      "source": "Stakeholder:CTO",
+      "type": "Association",
+      "target": "Goal:Reduce IT Operational Costs by 25%"
+    },
+    {
+      "source": "Stakeholder:Head of Claims",
+      "type": "Association",
+      "target": "Goal:Reduce Claims Processing Time by 40%"
+    },
+    {
+      "source": "Stakeholder:Chief Risk Officer",
+      "type": "Association",
+      "target": "Goal:Increase Customer Satisfaction to NPS 60+"
+    },
+    {
+      "source": "Stakeholder:Chief Risk Officer",
+      "type": "Association",
+      "target": "Goal:Zero Data Breaches by 2026"
+    },
+    {
+      "source": "Stakeholder:CISO",
+      "type": "Association",
+      "target": "Goal:Zero Data Breaches by 2026"
+    },
+    {
+      "source": "Stakeholder:CISO",
+      "type": "Association",
+      "target": "Goal:Achieve Full Regulatory Compliance"
+    },
+    {
+      "source": "Stakeholder:CFO",
+      "type": "Association",
+      "target": "Goal:Reduce IT Operational Costs by 25%"
+    },
+    {
+      "source": "Stakeholder:Enterprise Architect",
+      "type": "Association",
+      "target": "Goal:Migrate 100% Workloads to Cloud by 2027"
+    },
+    {
+      "source": "Stakeholder:Enterprise Architect",
+      "type": "Association",
+      "target": "Goal:Achieve 99.9% System Availability"
+    },
+    {
+      "source": "Capability:Claims Processing Automation",
+      "type": "Realization",
+      "target": "BusinessProcess:Claims Assessment"
+    },
+    {
+      "source": "Capability:Claims Processing Automation",
+      "type": "Realization",
+      "target": "BusinessProcess:Claims Registration"
+    },
+    {
+      "source": "Capability:Risk Assessment Intelligence",
+      "type": "Realization",
+      "target": "BusinessProcess:Risk Evaluation"
+    },
+    {
+      "source": "Capability:Risk Assessment Intelligence",
+      "type": "Realization",
+      "target": "BusinessProcess:Fraud Detection"
+    },
+    {
+      "source": "Capability:Digital Customer Experience",
+      "type": "Realization",
+      "target": "BusinessService:Customer Portal Service"
+    },
+    {
+      "source": "Capability:Digital Customer Experience",
+      "type": "Realization",
+      "target": "BusinessService:Broker Portal Service"
+    },
+    {
+      "source": "Capability:Omnichannel Distribution",
+      "type": "Realization",
+      "target": "BusinessProcess:Customer Onboarding"
+    },
+    {
+      "source": "Capability:Data-Driven Underwriting",
+      "type": "Realization",
+      "target": "BusinessProcess:Premium Calculation"
+    },
+    {
+      "source": "Capability:Regulatory Compliance Management",
+      "type": "Realization",
+      "target": "BusinessProcess:Regulatory Reporting"
+    },
+    {
+      "source": "Capability:Operational Resilience",
+      "type": "Realization",
+      "target": "BusinessProcess:SLA Monitoring"
+    },
+    {
+      "source": "Capability:Cyber Risk Mitigation",
+      "type": "Realization",
+      "target": "BusinessProcess:Customer Identity Verification"
+    },
+    {
+      "source": "Capability:Product Innovation",
+      "type": "Realization",
+      "target": "BusinessService:Underwriting Service"
+    },
+    {
+      "source": "Capability:Partner Ecosystem Integration",
+      "type": "Realization",
+      "target": "BusinessService:Broker Portal Service"
+    },
+    {
+      "source": "Capability:Partner Ecosystem Integration",
+      "type": "Realization",
+      "target": "BusinessProcess:Broker Commission Settlement"
+    },
+    {
+      "source": "Constraint:Legacy Oracle DB Migration Deadline Q4 2026",
+      "type": "Influence",
+      "target": "Goal:Migrate 100% Workloads to Cloud by 2027"
+    },
+    {
+      "source": "Constraint:Budget Cap EUR 2M Annual",
+      "type": "Influence",
+      "target": "Goal:Reduce IT Operational Costs by 25%"
+    },
+    {
+      "source": "Constraint:No Public Cloud for PII Data (until 2026 review)",
+      "type": "Influence",
+      "target": "Goal:Achieve Full Regulatory Compliance"
+    },
+    {
+      "source": "Constraint:Vendor Lock-in Avoidance",
+      "type": "Influence",
+      "target": "Goal:Migrate 100% Workloads to Cloud by 2027"
+    }
+  ],
+  "entity_counts": {
+    "Capability": 10,
+    "BusinessActor": 16,
+    "BusinessRole": 11,
+    "BusinessProcess": 15,
+    "BusinessService": 8,
+    "BusinessObject": 10,
+    "Contract": 5,
+    "ApplicationComponent": 20,
+    "ApplicationService": 10,
+    "ApplicationInterface": 5,
+    "DataObject": 10,
+    "Node": 10,
+    "Device": 8,
+    "SystemSoftware": 10,
+    "TechnologyService": 8,
+    "Artifact": 7,
+    "CommunicationNetwork": 4,
+    "Goal": 8,
+    "Requirement": 10,
+    "Constraint": 5,
+    "Stakeholder": 6
+  },
+  "relationship_count": 208,
+  "total_entities": 196,
+  "document_entity_presence": {
+    "doc_01": [
+      "API Gateway",
+      "Achieve 99.9% System Availability",
+      "Achieve Full Regulatory Compliance",
+      "Apache Kafka",
+      "App Server Cluster",
+      "ArchiSurance HQ",
+      "Automate 80% of Underwriting Decisions",
+      "Batch Processing Engine",
+      "Batch Processing Node",
+      "Billing System",
+      "Board of Directors",
+      "Broker Commission Settlement",
+      "Broker Distribution Agreement",
+      "Broker Network",
+      "Broker Portal",
+      "Broker Portal Service",
+      "Budget Cap EUR 2M Annual",
+      "Business Analyst",
+      "CFO",
+      "CI/CD Build Server",
+      "CISO",
+      "CRM System",
+      "CTO",
+      "Call Center",
+      "Chief Risk Officer",
+      "Claim",
+      "Claims Assessment",
+      "Claims Department",
+      "Claims Handler",
+      "Claims Management Platform",
+      "Claims Processing Automation",
+      "Claims Registration",
+      "Cloud Hosting SLA",
+      "Commission Statement",
+      "Complaint Handling",
+      "Complaint Ticket",
+      "Compliance Officer",
+      "Content Delivery Network",
+      "Customer",
+      "Customer Identity Verification",
+      "Customer Onboarding",
+      "Customer Portal Service",
+      "Customer Profile",
+      "Customer Self-Service Portal",
+      "Customer Service Representative",
+      "Cyber Risk Mitigation",
+      "DR Recovery Node",
+      "Data Analytics Team",
+      "Data Encryption at Rest and in Transit",
+      "Data Steward",
+      "Data Warehouse",
+      "Data-Driven Underwriting",
+      "Database Server Primary",
+      "Database Server Replica",
+      "Digital Customer Experience",
+      "Docker Engine",
+      "Document Digitization",
+      "Document Management System",
+      "Edge Cache Node",
+      "Elasticsearch",
+      "Email Service",
+      "Enterprise Architect",
+      "Enterprise Service Bus",
+      "Finance Department",
+      "Fraud Alert",
+      "Fraud Detection",
+      "Fraud Detection Engine",
+      "GDPR Compliance",
+      "GPU Analytics Node",
+      "HR Department",
+      "Head of Claims",
+      "IT Operations",
+      "IT Service Manager",
+      "Identity & Access Management",
+      "Increase Customer Satisfaction to NPS 60+",
+      "Insurance Policy",
+      "Internal Audit",
+      "Invoice",
+      "Kubernetes",
+      "Legacy Oracle DB Migration Deadline Q4 2026",
+      "Legal & Compliance",
+      "Log Aggregation Node",
+      "Migrate 100% Workloads to Cloud by 2027",
+      "Minimum 3 Availability Zones",
+      "Mobile App Backend",
+      "Monitoring Server",
+      "Multi-channel Access",
+      "No Public Cloud for PII Data (until 2026 review)",
+      "Notification Service",
+      "Omnichannel Distribution",
+      "Operational Resilience",
+      "PCI-DSS Level 1 Certification",
+      "Partner Ecosystem Integration",
+      "Policy Administration System",
+      "Policy Administrator",
+      "Policy Issuance",
+      "Policy Renewal",
+      "PostgreSQL 15",
+      "Premium Calculation",
+      "Product Development Unit",
+      "Product Innovation",
+      "RPO of 15 minutes",
+      "RTO of 1 hour",
+      "Real-time Risk Scoring",
+      "Red Hat Linux 9",
+      "Reduce Claims Processing Time by 40%",
+      "Reduce IT Operational Costs by 25%",
+      "Regulatory Compliance Management",
+      "Regulatory Report",
+      "Regulatory Reporting",
+      "Reinsurance Agreement",
+      "Reinsurance Partner",
+      "Reinsurance Treaty",
+      "Release Manager",
+      "Reporting & Analytics Platform",
+      "Risk Analyst",
+      "Risk Assessment Intelligence",
+      "Risk Engine",
+      "Risk Evaluation",
+      "Risk Score",
+      "Role-based Access Control",
+      "SLA Monitoring",
+      "SLA Premium Support",
+      "SOX Audit Trail",
+      "Sales Division",
+      "Security Officer",
+      "Sub-second API Response Time",
+      "Third-Party Data Provider Contract",
+      "Underwriter",
+      "Underwriting Service",
+      "Underwriting Team",
+      "Vendor Lock-in Avoidance",
+      "Workflow Engine",
+      "Zero Data Breaches by 2026"
+    ],
+    "doc_02": [
+      "API Gateway",
+      "Analytics Cube",
+      "Apache Kafka",
+      "Audit Log",
+      "Authentication API",
+      "Batch Processing Engine",
+      "Billing System",
+      "Broker Commission Settlement",
+      "Broker Portal",
+      "CRM System",
+      "Claim Record",
+      "Claims API",
+      "Claims Assessment",
+      "Claims Management Platform",
+      "Claims Registration",
+      "Commission Ledger",
+      "Complaint Handling",
+      "Content Delivery Network",
+      "Customer API",
+      "Customer Identity Verification",
+      "Customer Onboarding",
+      "Customer Record",
+      "Customer Self-Service Portal",
+      "Data Warehouse",
+      "Docker Engine",
+      "Document API",
+      "Document Digitization",
+      "Document Management System",
+      "Document Metadata",
+      "Elasticsearch",
+      "Email Service",
+      "Enterprise Service Bus",
+      "Fraud Detection",
+      "Fraud Detection Engine",
+      "Fraud Score Dataset",
+      "Fraud Scoring API",
+      "GraphQL Analytics Endpoint",
+      "Identity & Access Management",
+      "Kubernetes",
+      "Microsoft SQL Server 2022",
+      "Mobile App Backend",
+      "Mobile App Interface",
+      "Nginx",
+      "Notification API",
+      "Notification Service",
+      "Oracle Database 19c",
+      "Partner Integration Hub",
+      "Payment API",
+      "Policy API",
+      "Policy Administration System",
+      "Policy Issuance",
+      "Policy Record",
+      "Policy Renewal",
+      "PostgreSQL 15",
+      "Premium Calculation",
+      "Premium Calculation Data",
+      "REST API Gateway",
+      "Redis",
+      "Regulatory Reporting",
+      "Regulatory Submission Record",
+      "Reporting & Analytics Platform",
+      "Reporting API",
+      "Risk Engine",
+      "Risk Evaluation",
+      "Risk Scoring API",
+      "SLA Monitoring",
+      "SOAP Legacy Interface",
+      "Workflow Engine"
+    ],
+    "doc_03": [
+      "API Gateway",
+      "Apache Kafka",
+      "App Server Cluster",
+      "Backup Tape Library",
+      "Batch Processing Engine",
+      "Batch Processing Node",
+      "Billing System",
+      "Broker Portal",
+      "CI/CD Build Server",
+      "CRM System",
+      "Certificate Management Service",
+      "Claims Management Platform",
+      "Cloud VPN",
+      "Container Orchestration",
+      "Content Delivery Network",
+      "Corporate LAN",
+      "Customer Self-Service Portal",
+      "DMZ Network",
+      "DNS Service",
+      "DR Recovery Node",
+      "Data Warehouse",
+      "Database Server Primary",
+      "Database Server Replica",
+      "Database Service",
+      "Docker Engine",
+      "Document Management System",
+      "Edge Cache Node",
+      "Elasticsearch",
+      "Enterprise Service Bus",
+      "Firewall Palo Alto",
+      "Fraud Detection Engine",
+      "GPU Analytics Node",
+      "HSM Appliance",
+      "Kubernetes",
+      "Load Balancer F5",
+      "Log Aggregation Node",
+      "Log Aggregation Service",
+      "Management VLAN",
+      "Message Queue Service",
+      "Microsoft SQL Server 2022",
+      "Mobile App Backend",
+      "Monitoring Server",
+      "Network Switch Cisco Nexus",
+      "Nginx",
+      "Notification Service",
+      "Object Storage Service",
+      "Oracle Database 19c",
+      "Policy Administration System",
+      "PostgreSQL 15",
+      "Red Hat Linux 9",
+      "Redis",
+      "Reporting & Analytics Platform",
+      "Risk Engine",
+      "SAN Storage Array",
+      "Secrets Management Service",
+      "WAN Accelerator",
+      "Wireless Access Controller",
+      "api-gateway-routes.json",
+      "claims-service.jar",
+      "etl-pipeline-config.yaml",
+      "fraud-scoring-model.onnx",
+      "notification-worker.jar",
+      "policy-api-v2.war",
+      "risk-model-weights.pkl"
+    ],
+    "doc_04": [
+      "Billing System",
+      "Broker Network",
+      "Business Analyst",
+      "CRM System",
+      "Call Center",
+      "Complaint Handling",
+      "Complaint Ticket",
+      "Compliance Officer",
+      "Customer",
+      "Customer API",
+      "Customer Identity Verification",
+      "Customer Onboarding",
+      "Customer Record",
+      "Customer Self-Service Portal",
+      "Customer Service Representative",
+      "Email Service",
+      "Enterprise Service Bus",
+      "Identity & Access Management",
+      "Notification Service",
+      "Policy Administration System",
+      "Policy Administrator",
+      "Policy Issuance",
+      "SLA Monitoring",
+      "SLA Premium Support",
+      "Sales Division",
+      "Security Officer"
+    ],
+    "doc_05": [
+      "Billing System",
+      "CRM System",
+      "Call Center",
+      "Claim Record",
+      "Claims Assessment",
+      "Claims Department",
+      "Claims Handler",
+      "Claims Handling Service",
+      "Claims Management Platform",
+      "Claims Registration",
+      "Customer",
+      "Customer Self-Service Portal",
+      "Data Analytics Team",
+      "Data Steward",
+      "Document Management System",
+      "Email Service",
+      "Fraud Alert",
+      "Fraud Detection",
+      "Fraud Detection Engine",
+      "Fraud Score Dataset",
+      "Insurance Policy Service",
+      "Notification Service",
+      "Policy Administration System",
+      "Policy Record",
+      "Premium Calculation",
+      "Premium Calculation Data",
+      "Risk Engine",
+      "Risk Score",
+      "Underwriter",
+      "Underwriting Team",
+      "Workflow Engine"
+    ],
+    "doc_06": [
+      "API Gateway",
+      "Achieve Full Regulatory Compliance",
+      "Audit Log",
+      "Authentication API",
+      "CISO",
+      "Certificate Management Service",
+      "Chief Risk Officer",
+      "Content Delivery Network",
+      "Corporate LAN",
+      "Customer Identity Verification",
+      "DMZ Network",
+      "Data Encryption at Rest and in Transit",
+      "Elasticsearch",
+      "Firewall Palo Alto",
+      "GDPR Compliance",
+      "HSM Appliance",
+      "Identity & Access Management",
+      "Load Balancer F5",
+      "Log Aggregation Node",
+      "Log Aggregation Service",
+      "Monitoring Server",
+      "No Public Cloud for PII Data (until 2026 review)",
+      "Oracle Database 19c",
+      "PCI-DSS Level 1 Certification",
+      "PostgreSQL 15",
+      "Role-based Access Control",
+      "SOX Audit Trail",
+      "Secrets Management Service",
+      "Zero Data Breaches by 2026"
+    ],
+    "doc_07": [
+      "API Gateway",
+      "Apache Kafka",
+      "Authentication API",
+      "Batch Processing Engine",
+      "Billing System",
+      "Broker Portal",
+      "CRM System",
+      "Claims API",
+      "Claims Management Platform",
+      "Customer API",
+      "Customer Self-Service Portal",
+      "Data Warehouse",
+      "Document API",
+      "Document Management System",
+      "Enterprise Service Bus",
+      "Fraud Detection Engine",
+      "Fraud Scoring API",
+      "GraphQL Analytics Endpoint",
+      "Identity & Access Management",
+      "Mobile App Backend",
+      "Mobile App Interface",
+      "Notification API",
+      "Notification Service",
+      "Partner Integration Hub",
+      "Payment API",
+      "Policy API",
+      "Policy Administration System",
+      "REST API Gateway",
+      "Redis",
+      "Reporting & Analytics Platform",
+      "Reporting API",
+      "Risk Engine",
+      "Risk Scoring API",
+      "SOAP Legacy Interface"
+    ],
+    "doc_08": [
+      "Analytics Cube",
+      "Audit Log",
+      "Batch Processing Engine",
+      "Billing System",
+      "CRM System",
+      "Claim Record",
+      "Claims Management Platform",
+      "Commission Ledger",
+      "Compliance Officer",
+      "Customer Record",
+      "Data Analytics Team",
+      "Data Steward",
+      "Data Warehouse",
+      "Document Management System",
+      "Document Metadata",
+      "Elasticsearch",
+      "Enterprise Service Bus",
+      "Fraud Detection Engine",
+      "Fraud Score Dataset",
+      "GDPR Compliance",
+      "Identity & Access Management",
+      "Microsoft SQL Server 2022",
+      "Oracle Database 19c",
+      "Policy Administration System",
+      "Policy Record",
+      "PostgreSQL 15",
+      "Premium Calculation Data",
+      "Redis",
+      "Regulatory Submission Record",
+      "Reporting & Analytics Platform",
+      "Risk Engine",
+      "SOX Audit Trail"
+    ],
+    "doc_09": [
+      "API Gateway",
+      "Achieve 99.9% System Availability",
+      "Apache Kafka",
+      "App Server Cluster",
+      "Batch Processing Engine",
+      "Batch Processing Node",
+      "Billing System",
+      "Broker Portal",
+      "Budget Cap EUR 2M Annual",
+      "CFO",
+      "CI/CD Build Server",
+      "CRM System",
+      "CTO",
+      "Claims Management Platform",
+      "Content Delivery Network",
+      "Customer Self-Service Portal",
+      "DR Recovery Node",
+      "Data Warehouse",
+      "Database Server Primary",
+      "Database Server Replica",
+      "Docker Engine",
+      "Document Management System",
+      "Edge Cache Node",
+      "Elasticsearch",
+      "Email Service",
+      "Enterprise Architect",
+      "Enterprise Service Bus",
+      "Fraud Detection Engine",
+      "GPU Analytics Node",
+      "Identity & Access Management",
+      "Kubernetes",
+      "Legacy Oracle DB Migration Deadline Q4 2026",
+      "Log Aggregation Node",
+      "Microsoft SQL Server 2022",
+      "Migrate 100% Workloads to Cloud by 2027",
+      "Minimum 3 Availability Zones",
+      "Mobile App Backend",
+      "Monitoring Server",
+      "Nginx",
+      "No Public Cloud for PII Data (until 2026 review)",
+      "Notification Service",
+      "Oracle Database 19c",
+      "Policy Administration System",
+      "PostgreSQL 15",
+      "Red Hat Linux 9",
+      "Redis",
+      "Reduce IT Operational Costs by 25%",
+      "Reporting & Analytics Platform",
+      "Risk Engine",
+      "Vendor Lock-in Avoidance",
+      "Workflow Engine"
+    ],
+    "doc_10": [
+      "Achieve 99.9% System Availability",
+      "App Server Cluster",
+      "Backup Tape Library",
+      "Billing System",
+      "CRM System",
+      "Claims Management Platform",
+      "Cloud VPN",
+      "Corporate LAN",
+      "DMZ Network",
+      "DR Recovery Node",
+      "Database Server Primary",
+      "Database Server Replica",
+      "Docker Engine",
+      "Firewall Palo Alto",
+      "Kubernetes",
+      "Load Balancer F5",
+      "Notification Service",
+      "Oracle Database 19c",
+      "Policy Administration System",
+      "PostgreSQL 15",
+      "RPO of 15 minutes",
+      "RTO of 1 hour",
+      "Risk Engine",
+      "SAN Storage Array",
+      "WAN Accelerator"
+    ],
+    "doc_11": [
+      "API Gateway",
+      "Backup Tape Library",
+      "Cloud VPN",
+      "Corporate LAN",
+      "DMZ Network",
+      "DR Recovery Node",
+      "Database Server Primary",
+      "Database Server Replica",
+      "Firewall Palo Alto",
+      "HSM Appliance",
+      "Load Balancer F5",
+      "Management VLAN",
+      "Network Switch Cisco Nexus",
+      "SAN Storage Array",
+      "WAN Accelerator",
+      "Wireless Access Controller"
+    ],
+    "doc_12": [
+      "Achieve 99.9% System Availability",
+      "Achieve Full Regulatory Compliance",
+      "Automate 80% of Underwriting Decisions",
+      "Broker Commission Settlement",
+      "Broker Portal Service",
+      "Budget Cap EUR 2M Annual",
+      "CFO",
+      "CISO",
+      "CTO",
+      "Chief Risk Officer",
+      "Claims Assessment",
+      "Claims Processing Automation",
+      "Claims Registration",
+      "Customer Identity Verification",
+      "Customer Onboarding",
+      "Customer Portal Service",
+      "Cyber Risk Mitigation",
+      "Data Encryption at Rest and in Transit",
+      "Data-Driven Underwriting",
+      "Digital Customer Experience",
+      "Enterprise Architect",
+      "Fraud Detection",
+      "GDPR Compliance",
+      "Head of Claims",
+      "Increase Customer Satisfaction to NPS 60+",
+      "Legacy Oracle DB Migration Deadline Q4 2026",
+      "Migrate 100% Workloads to Cloud by 2027",
+      "Minimum 3 Availability Zones",
+      "Multi-channel Access",
+      "No Public Cloud for PII Data (until 2026 review)",
+      "Omnichannel Distribution",
+      "Operational Resilience",
+      "PCI-DSS Level 1 Certification",
+      "Partner Ecosystem Integration",
+      "Premium Calculation",
+      "Product Innovation",
+      "RPO of 15 minutes",
+      "RTO of 1 hour",
+      "Real-time Risk Scoring",
+      "Reduce Claims Processing Time by 40%",
+      "Reduce IT Operational Costs by 25%",
+      "Regulatory Compliance Management",
+      "Regulatory Reporting",
+      "Risk Assessment Intelligence",
+      "Risk Evaluation",
+      "Role-based Access Control",
+      "SLA Monitoring",
+      "SOX Audit Trail",
+      "Sub-second API Response Time",
+      "Underwriting Service",
+      "Vendor Lock-in Avoidance",
+      "Zero Data Breaches by 2026"
+    ],
+    "doc_13": [
+      "Apache Kafka",
+      "Batch Processing Node",
+      "Broker Commission Settlement",
+      "Broker Distribution Agreement",
+      "Broker Portal Service",
+      "Certificate Management Service",
+      "Claims Assessment",
+      "Claims Handling Service",
+      "Claims Registration",
+      "Cloud Hosting SLA",
+      "Complaint Handling",
+      "Container Orchestration",
+      "Customer Portal Service",
+      "DNS Service",
+      "Database Server Primary",
+      "Database Server Replica",
+      "Database Service",
+      "Edge Cache Node",
+      "Fraud Detection",
+      "Fraud Investigation Service",
+      "HSM Appliance",
+      "IT Operations",
+      "IT Service Manager",
+      "Insurance Policy Service",
+      "Kubernetes",
+      "Log Aggregation Node",
+      "Log Aggregation Service",
+      "Message Queue Service",
+      "Object Storage Service",
+      "Policy Issuance",
+      "Policy Renewal",
+      "Premium Calculation",
+      "Premium Collection Service",
+      "Regulatory Filing Service",
+      "Regulatory Reporting",
+      "Reinsurance Agreement",
+      "Reporting & Analytics Platform",
+      "Risk Evaluation",
+      "SLA Monitoring",
+      "SLA Premium Support",
+      "Secrets Management Service",
+      "Third-Party Data Provider Contract",
+      "Underwriting Service"
+    ],
+    "doc_14": [
+      "API Gateway",
+      "Apache Kafka",
+      "Batch Processing Engine",
+      "Billing System",
+      "Broker Portal",
+      "CRM System",
+      "Claims Management Platform",
+      "Content Delivery Network",
+      "Customer Self-Service Portal",
+      "Data Warehouse",
+      "Docker Engine",
+      "Document Management System",
+      "Elasticsearch",
+      "Enterprise Service Bus",
+      "Fraud Detection Engine",
+      "Kubernetes",
+      "Legacy Oracle DB Migration Deadline Q4 2026",
+      "Microsoft SQL Server 2022",
+      "Mobile App Backend",
+      "Nginx",
+      "Notification Service",
+      "Oracle Database 19c",
+      "Policy Administration System",
+      "PostgreSQL 15",
+      "Redis",
+      "Reporting & Analytics Platform",
+      "Risk Engine",
+      "Third-Party Data Provider Contract",
+      "Vendor Lock-in Avoidance"
+    ],
+    "doc_15": [
+      "API Gateway",
+      "Apache Kafka",
+      "App Server Cluster",
+      "Batch Processing Node",
+      "Claims Management Platform",
+      "Database Server Primary",
+      "Database Server Replica",
+      "Elasticsearch",
+      "Enterprise Service Bus",
+      "Fraud Detection Engine",
+      "IT Operations",
+      "IT Service Manager",
+      "Kubernetes",
+      "Log Aggregation Node",
+      "Log Aggregation Service",
+      "Monitoring Server",
+      "Notification Service",
+      "Oracle Database 19c",
+      "PostgreSQL 15",
+      "Release Manager",
+      "Risk Engine",
+      "SLA Monitoring"
+    ],
+    "doc_16": [
+      "Achieve Full Regulatory Compliance",
+      "Audit Log",
+      "Billing System",
+      "Budget Cap EUR 2M Annual",
+      "CRM System",
+      "Commission Ledger",
+      "Compliance Officer",
+      "Customer Record",
+      "Data Encryption at Rest and in Transit",
+      "Data Warehouse",
+      "GDPR Compliance",
+      "HSM Appliance",
+      "Identity & Access Management",
+      "Internal Audit",
+      "Legacy Oracle DB Migration Deadline Q4 2026",
+      "Legal & Compliance",
+      "Migrate 100% Workloads to Cloud by 2027",
+      "Minimum 3 Availability Zones",
+      "No Public Cloud for PII Data (until 2026 review)",
+      "PCI-DSS Level 1 Certification",
+      "Policy Administration System",
+      "Policy Record",
+      "Reduce IT Operational Costs by 25%",
+      "Regulatory Filing Service",
+      "Regulatory Submission Record",
+      "Reporting & Analytics Platform",
+      "Role-based Access Control",
+      "SOX Audit Trail",
+      "Vendor Lock-in Avoidance"
+    ],
+    "doc_17": [
+      "Analytics Cube",
+      "Backup Tape Library",
+      "Batch Processing Engine",
+      "Billing System",
+      "Broker Commission Settlement",
+      "CI/CD Build Server",
+      "CRM System",
+      "Commission Ledger",
+      "DR Recovery Node",
+      "Data Warehouse",
+      "Database Server Primary",
+      "Database Server Replica",
+      "Enterprise Service Bus",
+      "Finance Department",
+      "Legacy Oracle DB Migration Deadline Q4 2026",
+      "Microsoft SQL Server 2022",
+      "Oracle Database 19c",
+      "Policy Administration System",
+      "PostgreSQL 15",
+      "Premium Calculation",
+      "Reduce IT Operational Costs by 25%",
+      "Regulatory Reporting",
+      "Reporting & Analytics Platform",
+      "SAN Storage Array"
+    ]
+  }
+}

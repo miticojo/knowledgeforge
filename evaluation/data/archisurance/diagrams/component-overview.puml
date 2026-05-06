@@ -1,0 +1,47 @@
+@startuml ArchiSurance Component Overview
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title ArchiSurance — Application Component Overview
+
+package "Application Layer" {
+  [CRM System] as CRM <<ApplicationComponent>>
+  [Claims Management Platform] as CMP <<ApplicationComponent>>
+  [Risk Engine] as RE <<ApplicationComponent>>
+  [Fraud Detection Engine] as FDE <<ApplicationComponent>>
+  [Policy Administration System] as PAS <<ApplicationComponent>>
+  [Customer Self-Service Portal] as CSP <<ApplicationComponent>>
+  [API Gateway] as GW <<ApplicationComponent>>
+  [Billing System] as BS <<ApplicationComponent>>
+  [Data Warehouse] as DW <<ApplicationComponent>>
+  [Notification Service] as NS <<ApplicationComponent>>
+  [Enterprise Service Bus] as ESB <<ApplicationComponent>>
+}
+
+package "Technology Layer" {
+  [Kubernetes] as K8S <<SystemSoftware>>
+  [PostgreSQL 15] as PG <<SystemSoftware>>
+  [Apache Kafka] as KAFKA <<SystemSoftware>>
+  ' INTENTIONAL DEVIATION: Diagram shows Risk Engine connected to PostgreSQL
+  ' but Terraform provisions Oracle for some services
+  RE --> PG : accesses
+}
+
+' Serving relationships
+CMP --> CRM : serves (customer data)
+GW --> CSP : routes to
+CMP --> RE : calls (risk scoring)
+CMP --> FDE : calls (fraud check)
+ESB --> CMP : integrates
+ESB --> BS : integrates
+ESB --> PAS : integrates
+
+' Infrastructure
+K8S --> CMP : hosts
+K8S --> RE : hosts
+K8S --> FDE : hosts
+K8S --> CSP : hosts
+
+KAFKA --> ESB : streams events
+KAFKA --> FDE : streams events
+
+@enduml

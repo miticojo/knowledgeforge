@@ -1,0 +1,652 @@
+{
+  "L3_Answer_Quality": {
+    "layer": "L3_Answer_Quality",
+    "per_question": [
+      {
+        "id": "single_hop_1",
+        "category": "single_hop",
+        "question": "Which business processes does the Claims Management Platform serve?",
+        "answer_preview": "The Claims Management Platform, also referred to as the 2.x Claims Processing System or Claims Platform, serves several key business processes:\n\n1.  **FNOL Process (First Notice of Loss)**: This is th",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 4,
+            "reason": "The answer accurately identifies FNOL Process and Claim Evaluation as business processes served by the platform, directly from the context. Claims Assessment is also strongly supported by the context. However, 'Claim Submissions' is largely covered by FNOL and not explicitly listed as a separate process served by the platform, and 'Notification and Settlement' is described as being handled by downstream consumers, not directly by the Claims Platform itself, making these points less faithful to the explicit context of processes *served by* the platform."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question by listing and describing several business processes that the Claims Management Platform serves."
+          },
+          "correctness": {
+            "score": 3,
+            "reason": "The answer correctly identifies 'FNOL Process' (which covers Claims Registration) and 'Claims Assessment,' aligning with the expected answer. It also correctly identifies 'Claim Evaluation' from the context. However, 'Claim Submissions' is largely redundant with FNOL, and 'Notification and Settlement' is primarily served by downstream applications rather than the Claims Platform itself, making these additions less accurate as processes *served by* the Claims Management Platform."
+          }
+        }
+      },
+      {
+        "id": "single_hop_2",
+        "category": "single_hop",
+        "question": "What database system does the Policy Administration System use?",
+        "answer_preview": "STEP 1 — EXTRACT:\n*   **Chunk 1/15**: \"Operational data is stored in PostgreSQL DB (primary OLTP) and Oracle Database 19c (legacy billing and DWH).\"\n*   **Chunk 2/15**: The \"2.x PAS\" (Policy Admin Sys",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "The answer is entirely grounded in the provided retrieved context chunks. It accurately extracts information about PostgreSQL being the primary OLTP database and the Policy Admin System's dependency on the primary relational database, then synthesizes these facts without hallucination."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question 'What database system does the Policy Administration System use?' by concluding that 'the Policy Administration System uses PostgreSQL DB.' The preceding steps (extract, synthesize, verify) lead clearly to this relevant conclusion."
+          },
+          "correctness": {
+            "score": 4,
+            "reason": "The answer correctly identifies 'PostgreSQL DB' as the database system used by the Policy Administration System, which aligns with the main part of the expected answer. However, it does not specify the version '15' as present in the expected answer. The version '15' was not found within the provided retrieved context chunks, making the answer as complete as possible given the available context, but not perfectly matching the full expected answer."
+          }
+        }
+      },
+      {
+        "id": "single_hop_3",
+        "category": "single_hop",
+        "question": "Who is responsible for Risk Evaluation?",
+        "answer_preview": "Based on the provided context:\n\nRisk Evaluation is identified as a key business process. The \"Risk Assessment Intelligence\" function or system is responsible for realizing Risk Evaluation.",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 0,
+            "reason": "The answer states that 'The \"Risk Assessment Intelligence\" function or system is responsible for realizing Risk Evaluation.' This entity ('Risk Assessment Intelligence') is not mentioned anywhere in the provided retrieved context. This is a critical hallucination regarding the core of the question."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly attempts to identify who is responsible for Risk Evaluation, which is the exact question asked."
+          },
+          "correctness": {
+            "score": 0,
+            "reason": "The actual answer identifies 'Risk Assessment Intelligence' as responsible, while the expected answer states 'The Underwriting Team is assigned to Risk Evaluation.' These are completely different entities, so the actual answer does not convey the same information as the expected answer. Furthermore, the actual answer's claim is a hallucination, making it incorrect based on the provided context."
+          }
+        }
+      },
+      {
+        "id": "single_hop_4",
+        "category": "single_hop",
+        "question": "What data objects does the Fraud Detection Engine access?",
+        "answer_preview": "The Fraud Detection Engine accesses the following data objects:\n\n*   **Fraud Score Dataset** (Chunk 1, Chunk 9)",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "The answer directly extracts 'Fraud Score Dataset' from Chunk 1 of the retrieved context, where it is explicitly listed under 'Data objects accessed' for the 'Fraud Detection Engine'."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly and completely addresses the question by listing the data objects accessed by the Fraud Detection Engine."
+          },
+          "correctness": {
+            "score": 5,
+            "reason": "The actual answer provides 'Fraud Score Dataset', which is identical to the expected answer. The additional framing text and chunk references do not detract from the correctness of the information."
+          }
+        }
+      },
+      {
+        "id": "single_hop_5",
+        "category": "single_hop",
+        "question": "Which application component realizes the Payment API?",
+        "answer_preview": "STEP 1 — EXTRACT:\n*   From Chunk 1/15 (Integration Architecture): The Payment API is realized by the Billing System.\n*   From Chunk 2/15 (Application Portfolio): The Payment API is realized by the Bil",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "All facts presented in the actual answer (both 'Billing System' and 'Billing Engine') are directly and accurately extracted from the provided chunks of the retrieved context."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question by identifying the application components that realize the Payment API, referencing the sources where the information was found."
+          },
+          "correctness": {
+            "score": 3,
+            "reason": "The actual answer correctly identifies 'Billing System' as a component realizing the Payment API, which matches the expected answer. However, it also includes 'Billing Engine' from another chunk, which is not part of the expected answer and introduces a contradiction from the context. While both are factually present in the context, including the conflicting information without reconciliation means it doesn't convey *only* the same information as the expected answer."
+          }
+        }
+      },
+      {
+        "id": "single_hop_6",
+        "category": "single_hop",
+        "question": "What system software hosts the API Gateway?",
+        "answer_preview": "The API Gateway is identified as the Kong API Gateway. This gateway, also referred to as the \"2.x Gateway,\" has technology dependencies that include Nginx and Kubernetes.",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "The actual answer states 'Kubernetes' as a technology dependency for the API Gateway. However, 'Kubernetes' is not mentioned anywhere in the provided retrieved context chunks. This crucial piece of information is a hallucination relative to the given context."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question by identifying the API Gateway and then listing 'Kubernetes' as a technology dependency, which is system software that hosts applications, thus answering what system software hosts it."
+          },
+          "correctness": {
+            "score": 4,
+            "reason": "The actual answer includes 'Kubernetes,' which is the expected answer. However, it also adds 'Nginx' as a dependency (which is not typically hosting software in the same sense as Kubernetes) and includes some introductory sentences, making it more verbose than the precise expected answer."
+          }
+        }
+      },
+      {
+        "id": "single_hop_7",
+        "category": "single_hop",
+        "question": "Which stakeholder champions the goal 'Zero Data Breaches by 2026'?",
+        "answer_preview": "STEP 1 — EXTRACT:\n*   **Chunk 1/15**: The goal \"Zero Data Breaches by 2026\" is championed by the Chief Risk Officer and the CISO.\n*   **Chunk 2/15**: The strategic goal \"Zero Data Breaches by 2026\" is",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "The answer directly extracts the names of the champions from the provided context (Chunk 1 and Chunk 2). The additional sentence about alignment with security architecture is also present in Chunk 2."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly and completely addresses the question by identifying the stakeholders who champion the specified goal."
+          },
+          "correctness": {
+            "score": 5,
+            "reason": "The answer correctly identifies the 'Chief Risk Officer' and 'CISO' as the champions, which matches the expected answer exactly. The order is slightly different but the content is the same."
+          }
+        }
+      },
+      {
+        "id": "single_hop_8",
+        "category": "single_hop",
+        "question": "What does the Enterprise Service Bus serve?",
+        "answer_preview": "The Enterprise Service Bus (ESB) serves as the backbone of ArchiSurance's integration layer. It connects key systems such as the Salesforce CRM, Billing Engine, and Policy Admin through message-based ",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "All information presented in the actual answer, including the connected systems (Salesforce CRM, Billing Engine, Policy Admin), its functions (routing, transformation, delivery), underlying technology (Apache Kafka), security (TLS 1.3, OAuth 2.0), management (Data Team T2 Team-D), and mention of MuleSoft ESB, is directly supported by the retrieved context chunks."
+          },
+          "relevancy": {
+            "score": 3,
+            "reason": "The answer correctly identifies the systems the ESB serves (Salesforce CRM, Billing Engine, Policy Admin) which directly addresses the question. However, it then includes a significant amount of additional, largely irrelevant detail about the ESB's functions, technology stack, security measures, management team, and a separate mention of 'MuleSoft ESB' in the application portfolio. This verbosity detracts from the conciseness and directness required for relevancy to the specific question asked."
+          },
+          "correctness": {
+            "score": 5,
+            "reason": "The actual answer correctly identifies 'Salesforce CRM, Billing Engine, and Policy Admin' as the key systems the ESB connects. This perfectly matches the core information conveyed in the expected answer ('CRM System, Billing System, and Policy Administration System'), using slightly more specific but equivalent terminology found in the context."
+          }
+        }
+      },
+      {
+        "id": "multi_hop_1",
+        "category": "multi_hop",
+        "question": "If we decommission Kubernetes, which business processes would be affected?",
+        "answer_preview": "If Kubernetes were decommissioned, the following business processes and critical workloads would be affected:\n\n1.  **Claims Management:** The **Claims Management Platform** (also referred to as Claims",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "The actual answer makes several specific claims about platforms and modules (e.g., Claims Management Platform, Actuarial Risk Module, Anti-Fraud Module, FDE, Kong API Gateway, Messaging Service) being critical workloads on Kubernetes and linking them to business processes. However, these specific details and their direct linkage to Kubernetes are not present in the *provided* 'RETRIEVED CONTEXT (first 5 chunks)'. The answer cites chunks (e.g., 5, 8, 14, 15) whose full content is not available for verification, making most of its specific claims ungrounded from the evaluator's perspective based on the context provided for evaluation."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly and comprehensively addresses the question by listing and explaining the business processes that would be affected by decommissioning Kubernetes."
+          },
+          "correctness": {
+            "score": 4,
+            "reason": "The actual answer correctly identifies most of the business processes and the underlying systems mentioned in the expected answer (Claims Management, Risk Assessment via Risk Engine, Fraud Detection via Anti-Fraud/Fraud Detection, API Gateway). It provides a slightly more generalized view for some (e.g., 'Interoperability and API-based Interactions' instead of specific customer processes). It also correctly infers the impact of the Messaging Service, which is a plausible additional effect. The information conveyed aligns very well with the expected answer's core points, albeit with different phrasing and additional detail."
+          }
+        }
+      },
+      {
+        "id": "multi_hop_2",
+        "category": "multi_hop",
+        "question": "What data objects are accessed by applications that serve Claims Assessment?",
+        "answer_preview": "STEP 1 — EXTRACT:\n*   **Chunk 1/15**: The `claims` data model includes `policy_id`, `customer_id`, `claim_status`, `submitted_at`, `assessed_at`, `settled_at`, and `handler_id` (referencing `employees",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "The answer meticulously grounds every piece of information, including data objects and the applications accessing them, in the provided context chunks. No hallucination detected."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly and comprehensively addresses the question by identifying applications serving Claims Assessment and then listing all associated data objects they access, along with relevant details and justifications."
+          },
+          "correctness": {
+            "score": 4,
+            "reason": "The answer correctly identifies and explains the access for 'Claim Record', 'Premium Calculation Data', and 'Fraud Score Dataset' (matching the expected answer). It goes beyond the expected answer by providing a more comprehensive list of additional data objects accessed, which is correct and well-supported by the context, but makes it more detailed than the concise expected answer. It does not contradict the expected answer."
+          }
+        }
+      },
+      {
+        "id": "multi_hop_3",
+        "category": "multi_hop",
+        "question": "Which stakeholders are affected if the Database Server Primary fails?",
+        "answer_preview": "A failure of the Database Server Primary would affect a wide range of stakeholders due to its critical role in system operations and data management. These stakeholders include:\n\n*   **End Users and C",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "The actual answer frequently references 'chunks' (e.g., Chunk 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) that are not provided in the 'RETRIEVED CONTEXT'. While some points are grounded in the provided context (e.g., End Users via user satisfaction scores from Chunk 1, Technical teams via KPIs from Chunk 1, Architecture Review Board from Chunk 1, Vendor support from Chunk 2), a significant portion of the answer's detailed justifications and stakeholder mentions are based on information outside the provided context, making it largely unfaithful."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The actual answer directly addresses the question by identifying a wide range of stakeholders and detailing how each would be affected by a Database Server Primary failure. It is highly relevant to the prompt."
+          },
+          "correctness": {
+            "score": 2,
+            "reason": "The actual answer does not convey the same specific information as the expected answer. The expected answer identifies 'Head of Claims', 'CTO', and 'CFO' with precise, contextualized impact chains (e.g., CFO via Oracle -> Billing -> cost reduction goal). The actual answer mentions 'CTO' (but references out-of-context Chunk 6 and provides a different justification) and 'Finance Department' (which could relate to CFO, but also relies on out-of-context chunks for justification and does not specifically mention 'Oracle -> Billing -> cost reduction goal'). It completely misses 'Head of Claims' as a distinct, specifically linked stakeholder. While the actual answer lists many plausible stakeholders, it fails to match the specificity and detailed reasoning provided in the expected answer for those key stakeholders."
+          }
+        }
+      },
+      {
+        "id": "multi_hop_4",
+        "category": "multi_hop",
+        "question": "Trace the dependency chain from the SAN Storage Array to business processes.",
+        "answer_preview": "The dependency chain from the SAN Storage Array to business processes can be traced as follows:\n\n**1. SAN Storage Array to Database Servers:**\nThe SAN Storage Array directly serves and connects to the",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "The answer correctly identifies the direct connection from the SAN Storage Array to the Database Server Primary and Replica (Chunk 1, Chunk 2). However, it then references information from chunks 11, 14, and 15, which were not included in the 'RETRIEVED CONTEXT (first 5 chunks)' provided for this evaluation. This constitutes a hallucination relative to the given context."
+          },
+          "relevancy": {
+            "score": 3,
+            "reason": "The answer attempts to trace the dependency chain as requested and correctly identifies the initial link. It then lists various business processes, which are relevant to the question. However, the section on 'Business Process Management' primarily discusses standards and governance rather than direct operational processes being served, slightly reducing overall relevancy to the specific dependency chain asked for."
+          },
+          "correctness": {
+            "score": 1,
+            "reason": "The answer correctly identifies the first step (SAN Storage Array to Database Server Primary and Replica). However, it completely misses the crucial intermediate layers present in the expected answer: specific database technologies (PostgreSQL 15, Oracle Database 19c) and specific applications/platforms (Claims Management Platform, Policy Administration System, CRM System, Billing System, Data Warehouse). The business processes listed are also much more general categories or management-related items, rather than the specific operational processes outlined in the expected answer. The 'dependency chain' is therefore largely incomplete and lacks the specificity of the expected answer."
+          }
+        }
+      },
+      {
+        "id": "multi_hop_5",
+        "category": "multi_hop",
+        "question": "What capabilities are realized by processes that the Risk Engine serves?",
+        "answer_preview": "The Risk Scoring Engine serves the business processes of Risk Evaluation and Premium Calculation (Chunk 1/15).\n\nThe \"Risk Evaluation\" process realizes the \"Risk Assessment Intelligence\" capability (Ch",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "All information presented in the answer, including the identification of processes, capabilities, and the 'Real-time Risk Scoring' requirement, is explicitly attributed to specific chunks from the retrieved context. This demonstrates direct grounding in the provided sources."
+          },
+          "relevancy": {
+            "score": 4,
+            "reason": "The answer correctly identifies the primary capabilities realized by the processes the Risk Engine serves ('Risk Assessment Intelligence' and 'Data-Driven Underwriting'). However, it also includes information about 'Real-time Risk Scoring,' which the context describes as a *requirement* realized by the *engine* itself, not a *capability* realized by the *processes* the engine serves. This additional detail, while related to the engine, is slightly outside the scope defined by the question's phrasing."
+          },
+          "correctness": {
+            "score": 4,
+            "reason": "The answer accurately identifies the two main capabilities as 'Risk Assessment Intelligence' and 'Data-Driven Underwriting', which perfectly matches the core of the expected answer. It correctly links these to their respective processes. The inclusion of 'Real-time Risk Scoring' as a 'requirement' realized by the *engine* rather than a 'capability' realized by its *processes* makes it less precise than the expected answer, which strictly adheres to the 'capabilities realized by processes' criteria."
+          }
+        }
+      },
+      {
+        "id": "multi_hop_6",
+        "category": "multi_hop",
+        "question": "If Apache Kafka goes down, which business services would be impacted?",
+        "answer_preview": "Apache Kafka is extensively used to provide durable, ordered event streams for event-driven patterns, decoupling producers from consumers and enabling replay for debugging and reprocessing scenarios. ",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "While the initial description of Kafka's role is faithful to the context, the specific details of how Risk Engine and Notification Service interact with Kafka (e.g., consuming all topics, subscribing to specific events) are not explicitly stated in the provided chunks. Furthermore, the 'FDE (Fraud Detection Engine)' is not mentioned anywhere in the retrieved context, making its inclusion and the dependency chain for the Claims Platform a hallucination. The provided context only lists the services, not their specific Kafka dependencies."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question by listing specific business services that would be impacted if Apache Kafka goes down."
+          },
+          "correctness": {
+            "score": 0,
+            "reason": "The actual answer identifies a completely different set of impacted services (Risk Engine, Notification Service, FDE, Claims Platform) and a different impact chain compared to the expected answer (Enterprise Service Bus, Batch Processing Engine, CRM System, Billing System, Policy Administration System, Insurance Policy Service, Claims Handling Service, Premium Collection Service). The information conveyed is not the same as the expected answer."
+          }
+        }
+      },
+      {
+        "id": "multi_hop_7",
+        "category": "multi_hop",
+        "question": "What infrastructure supports the Fraud Scoring API end-to-end?",
+        "answer_preview": "The Fraud Scoring API is supported by a comprehensive end-to-end infrastructure.\n\n**Core Components and Data Flow:**\n*   The **Fraud Scoring API** is realized by the **Fraud Detection Engine (FDE)**.\n",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 2,
+            "reason": "While some components like the Fraud Detection Engine's role, IAM platform, WAF, Load Balancer, CDN, synthetic monitoring, 3-2-1 backup, strangler-fig pattern, and operational runbook are supported by the retrieved context, a significant portion of the detailed infrastructure (e.g., Apache Kafka explicitly, .onnx artifact, Fraud Score Dataset, API Gateway as the exposure point, Partner Integration Hub, full observability stack, DR Recovery Node, CI/CD pipeline, and detailed deployment/operations processes) is not found in the provided 5 chunks of context."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer is highly relevant and comprehensively addresses the question by detailing numerous end-to-end infrastructure components supporting the Fraud Scoring API, covering core components, security, observability, scalability, and operations."
+          },
+          "correctness": {
+            "score": 2,
+            "reason": "The answer correctly states that the Fraud Scoring API is realized by the Fraud Detection Engine, aligning with the first part of the expected answer. However, it completely omits the other specific infrastructure details mentioned in the expected answer: 'which runs on Kubernetes, deployed on App Server Cluster, connected via Corporate LAN'. Instead, it provides a different, albeit plausible and more extensive, set of infrastructure details."
+          }
+        }
+      },
+      {
+        "id": "multi_hop_8",
+        "category": "multi_hop",
+        "question": "Which goals are impacted by the constraint 'Legacy Oracle DB Migration Deadline Q4 2026'?",
+        "answer_preview": "The constraint 'Legacy Oracle DB Migration Deadline Q4 2026' impacts the following goals:\n\n1.  **Reduce IT Operational Costs by 25%**: This goal is explicitly driven by the 'Legacy Oracle DB Migration",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 2,
+            "reason": "The answer provides justifications for 'Reduce IT Operational Costs by 25%' (Chunk 1, Chunk 2) and 'Migration from Oracle Database 19c to PostgreSQL' (Chunk 1, Chunk 5) that are grounded in the provided context. However, the justifications for 'Oracle Decommission' (Chunk 6) and 'Migrate 100% Workloads to Cloud by 2027' (Chunk 6, Chunk 15) explicitly reference chunks that are not part of the 'RETRIEVED CONTEXT (first 5 chunks)', making these parts unverified/unfaithful to the provided context."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question by listing goals (or relevant impacted items that can be considered goals/objectives in this context) that are impacted by the specified constraint. All listed items are relevant to the question."
+          },
+          "correctness": {
+            "score": 4,
+            "reason": "The actual answer correctly identifies both 'Reduce IT Operational Costs by 25%' and 'Migrate 100% Workloads to Cloud by 2027', which are the two goals mentioned in the expected answer. It also adds 'Oracle Decommission' and 'Migration from Oracle Database 19c to PostgreSQL' as impacted items, which are indeed direct consequences or objectives driven by the deadline, and can be considered project-level goals. The actual answer is more comprehensive and accurate than the expected answer, even with a slightly broader interpretation of 'goals'."
+          }
+        }
+      },
+      {
+        "id": "cross_doc_1",
+        "category": "cross_document",
+        "question": "How does the CRM System relate to the strategic goal of Customer Satisfaction?",
+        "answer_preview": "The CRM System is directly related to the strategic goal of Customer Satisfaction through several key aspects:\n\n1.  **Strategic Focus and Measurement**: The CRM System has been a critical area of focu",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "Only the first point of the actual answer, regarding CRM's strategic focus and user satisfaction KPIs, is directly supported by the retrieved context. The detailed explanations in points 2 and 3 (complaint handling processes, SLAs, task completion time reduction, UAT feedback) are not found in the provided 'RETRIEVED CONTEXT (first 5 chunks)'."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The actual answer directly addresses the question by explaining how the CRM System relates to customer satisfaction through strategic focus and measurement, complaint handling mechanisms, and improved user experience and efficiency."
+          },
+          "correctness": {
+            "score": 0,
+            "reason": "The actual answer conveys entirely different information than the expected answer. It does not mention any of the specific elements listed in the expected answer, such as Customer Onboarding, Omnichannel Distribution, Digital Customer Experience, Customer Portal Service, NPS 60+, or the Chief Risk Officer."
+          }
+        }
+      },
+      {
+        "id": "cross_doc_2",
+        "category": "cross_document",
+        "question": "What infrastructure supports the Risk Scoring API?",
+        "answer_preview": "The Risk Scoring API is supported by the following infrastructure:\n\n1.  **Risk Calculator**: This service directly realizes the Risk Scoring API.\n2.  **REST API Gateway**: The Risk Calculator service,",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 3,
+            "reason": "Points 1, 2, and 3 (Risk Calculator, REST API Gateway, Identity & Access Management platform) are directly supported by the retrieved context. However, point 4 regarding 'K8s (Kubernetes)' and the mention of 'The broader Risk Scoring Engine' are not explicitly found or supported by the provided context chunks in relation to the Risk Scoring API."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question by listing specific infrastructure components and services that support the Risk Scoring API, explaining their role."
+          },
+          "correctness": {
+            "score": 1,
+            "reason": "The actual answer conveys significantly different information from the expected answer. While both mention Kubernetes/K8s, the core 'Risk Engine' vs 'Risk Calculator' is different, the actual answer omits 'App Server Cluster', and the actual answer includes 'REST API Gateway' and 'Identity & Access Management platform' which are not in the expected answer. There is minimal overlap in the specific details provided."
+          }
+        }
+      },
+      {
+        "id": "cross_doc_3",
+        "category": "cross_document",
+        "question": "What is the full impact chain of the Oracle Database 19c migration on business processes?",
+        "answer_preview": "The Oracle Database 19c migration primarily targets billing and data warehousing workloads.\n\nThe full impact chain of this migration on business processes is as follows:\n1.  **Billing System**: This s",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "The answer hallucinates most of the specific impact chain details (Billing System, Data Warehousing, Broker Commission Settlement, Premium Calculation, Regulatory Reporting) and technical details (SQL conversion, ETL changes, ESB). The provided context only offers very general mentions of 'impact analysis on downstream systems and business processes' and 'Finance Department' which are insufficient to ground the detailed claims."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question by attempting to outline the impact chain of the migration on business processes, identifying various affected systems and processes."
+          },
+          "correctness": {
+            "score": 2,
+            "reason": "While the answer correctly identifies several key impacted processes like Billing System, Data Warehousing, Broker Commission Settlement, Premium Calculation, and Regulatory Reporting, it misses 'Reporting & Analytics Platform' and 'SLA Monitoring' from the expected answer's impact chain. Furthermore, it includes a significant amount of additional technical details and unrelated information (ESB, specific SQL conversions, unaffected systems, Finance Department as stakeholder) that are not present in the expected answer, thus not conveying the 'same information'."
+          }
+        }
+      },
+      {
+        "id": "cross_doc_4",
+        "category": "cross_document",
+        "question": "Which documents describe the Fraud Detection Engine and its role?",
+        "answer_preview": "The Fraud Detection Engine (FDE) and its role are described in the following documents:\n\n*   **Application Portfolio (EA-APP-002) [Chunk 1/15]:** This document identifies the Fraud Detection Engine as",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "While the details for chunks 1 and 2 are faithfully extracted from the provided `RETRIEVED CONTEXT`, the information attributed to chunks 3, 4, 5, 6, 9, 10, and 15 cannot be verified, as their content is not displayed in the provided `RETRIEVED CONTEXT` (which only shows content for the first two chunks)."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question by identifying multiple documents and providing detailed descriptions of how each relates to the Fraud Detection Engine and its role. All points, if verifiable, are highly relevant to the question asked."
+          },
+          "correctness": {
+            "score": 2,
+            "reason": "The answer correctly identifies the Application Portfolio (doc 02) and Claims Processing (doc 05) and their descriptions largely align with the expected answer. However, for Integration Architecture (doc 07), it misses the specific 'Kafka integration' detail, only mentioning the 'Fraud Scoring API'. Crucially, for document 15, the actual answer refers to 'Strategic Roadmap' with a description about external assessments, which is a complete mismatch with the expected 'Operational Runbook' covering 'operational procedures'."
+          }
+        }
+      },
+      {
+        "id": "cross_doc_5",
+        "category": "cross_document",
+        "question": "How do security requirements trace from regulatory frameworks to technology controls?",
+        "answer_preview": "Security requirements at ArchiSurance trace from regulatory frameworks to technology controls through a structured approach, encompassing mandatory architectural constraints, specific implementation d",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 2,
+            "reason": "While key elements like the customer identity verification process, threat modeling, ArchiMate model traceability, DPIA, and internal audit findings are directly supported by the retrieved context, a significant portion of the detailed examples and specific technologies (e.g., PCI-DSS, SOX specific details, Okta IAM, Prometheus, Grafana, 3-2-1 backup strategy, standardized deployments) are not present in the provided two context chunks, indicating substantial hallucination relative to the given context."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly and comprehensively addresses the question of how security requirements trace from regulatory frameworks to technology controls. It provides a structured approach, detailing how frameworks become constraints, how specific directives lead to controls, general security practices, and explicit mechanisms for traceability and oversight."
+          },
+          "correctness": {
+            "score": 4,
+            "reason": "The answer accurately describes the tracing process from regulatory frameworks to technology controls, providing many valid and correct examples of frameworks (GDPR, AML), general security controls (encryption, access control, audit logging, threat modeling), and specific technology implementations (Access Management System, Okta IAM, Prometheus, Grafana). While it uses different specific technology examples than the expected answer (e.g., Okta/Prometheus vs. HSM/Elasticsearch), the overall approach and the types of controls and technologies mentioned are correct and effectively illustrate the tracing mechanism."
+          }
+        }
+      },
+      {
+        "id": "cross_doc_6",
+        "category": "cross_document",
+        "question": "Describe the end-to-end claims processing flow from customer to settlement, including systems and infrastructure.",
+        "answer_preview": "The end-to-end claims processing workflow at ArchiSurance, a critical area of focus since the digital transformation initiative began in 2023, encompasses stages from first notice of loss (FNOL) throu",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "While some general points like the need for modernization, partner integration hub, on-call procedures, PMO tracking, and cost allocation are present in the retrieved context, a vast amount of detailed information in the actual answer (e.g., DigiD system, Salesforce CRM, specific dates like 2023/2024/2025, Kafka, observability stack components like Elasticsearch/Prometheus/Grafana, DR node in Rotterdam, chaos engineering, specific security frameworks like STRIDE, data classification details, technical debt, budget allocation) is not found in the provided first 5 chunks of the retrieved context. This indicates significant hallucination relative to the provided context."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer comprehensively addresses the question, detailing the end-to-end claims processing flow from FNOL (customer submission) through assessment, fraud screening, and settlement. It explicitly lists numerous systems involved in the process and dedicates a substantial section to describing the underlying systems and infrastructure, including specific technologies and architectural patterns."
+          },
+          "correctness": {
+            "score": 2,
+            "reason": "The actual answer matches some key points from the expected answer, such as customer submission methods, claims record creation, notification, and payment processing via a billing system. It also correctly identifies Kubernetes and PostgreSQL as infrastructure components. However, it deviates by not explicitly mentioning a 'Workflow Engine' or 'Risk Engine' as distinct components, and while it covers fraud screening, it doesn't name a 'Fraud Detection Engine' explicitly. It also misses 'Docker' and 'App Server Cluster' by name. Furthermore, the actual answer includes a considerable amount of additional information not present in the expected answer, which means it does not convey 'the same information' as requested by the correctness dimension."
+          }
+        }
+      },
+      {
+        "id": "entity_resolution_1",
+        "category": "entity_resolution",
+        "question": "Are 'Salesforce CRM', 'Customer Management Platform', and 'CRM System' the same entity?",
+        "answer_preview": "The provided context chunks extensively discuss a \"CRM System.\" This system is described as realizing the Customer API, having automated deployment pipelines, and undergoing disaster recovery failover",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "The answer accurately extracts details about the 'CRM System' directly from the provided context chunks. It also correctly states that 'Salesforce CRM' and 'Customer Management Platform' are not mentioned in the given context. There are no hallucinations."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question by discussing what information can be gleaned from the context regarding 'CRM System' and explicitly stating what cannot be determined regarding the other two entities, due to context limitations. It remains focused on the question."
+          },
+          "correctness": {
+            "score": 1,
+            "reason": "The actual answer explicitly states that it's 'not possible to determine if Salesforce CRM, Customer Management Platform, and CRM System are the same entity' based on the provided context. This directly contradicts the expected answer, which states 'Yes, they are all aliases for the CRM System application component.' While the actual answer is faithful to the *provided* context, it does not convey the same information as the expected answer's conclusion."
+          }
+        }
+      },
+      {
+        "id": "entity_resolution_2",
+        "category": "entity_resolution",
+        "question": "What is the relationship between 'PAS', 'Guidewire PolicyCenter', and 'Policy Administration System'?",
+        "answer_preview": "STEP 1 — EXTRACT:\n*   **[Chunk 1/15]**: Defines \"PAS\" as \"Policy Administration System\".\n*   **[Chunk 2/15]**: Defines \"PAS\" as \"Policy Administration System\".\n*   **[Chunk 3/15]**: Defines \"PAS\" as \"",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "The answer is entirely grounded in the retrieved context, with explicit chunk references provided in the 'EXTRACT' section and the 'SYNTHESIZE' section clearly deriving all information from those chunks. No hallucination is present."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the relationship between 'PAS', 'Guidewire PolicyCenter', and 'Policy Administration System'. It states 'PAS' is an acronym for 'Policy Administration System' and 'Guidewire PolicyCenter' is the 'implementation of the Policy Administration System'. While it includes additional details about the Policy Administration System, these details enrich the understanding without distracting from the core relationships requested."
+          },
+          "correctness": {
+            "score": 5,
+            "reason": "The answer correctly identifies 'PAS' as an acronym for 'Policy Administration System'. It also correctly identifies 'Guidewire PolicyCenter' as the 'implementation' or specific realization of the 'Policy Administration System', which is a more precise and accurate description than simply 'another name' for it, as implied by the expected answer. The actual answer, therefore, conveys the same core information as the expected answer but with greater precision regarding the Guidewire PolicyCenter relationship."
+          }
+        }
+      },
+      {
+        "id": "entity_resolution_3",
+        "category": "entity_resolution",
+        "question": "Is 'First Notice of Loss' the same as 'Claims Registration'?",
+        "answer_preview": "STEP 1 — EXTRACT:\n*   **Chunk 1/15:** The Claims Registration process is also known as First Notice of Loss (FNOL). It is the starting point of all claims.\n*   **Chunk 2/15:** FNOL is defined as First",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "The answer is entirely grounded in the extracted chunks. Chunk 1 explicitly states 'The Claims Registration process, also known as First Notice of Loss (FNOL)', and Chunk 2 defines FNOL as 'First Notice of Loss'. Other chunks referenced (3 and 6) further reinforce this equivalence with phrases like 'Register a new claim (FNOL)' and 'FNOL claims registration'."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question 'Is 'First Notice of Loss' the same as 'Claims Registration'?' by starting with a clear 'Yes' and then providing comprehensive justification from the context."
+          },
+          "correctness": {
+            "score": 5,
+            "reason": "The actual answer conveys the exact same core information as the expected answer: that 'First Notice of Loss' (FNOL) is indeed the same as 'Claims Registration'. It elaborates more than the expected answer, but the fundamental conclusion is identical and correct."
+          }
+        }
+      },
+      {
+        "id": "entity_resolution_4",
+        "category": "entity_resolution",
+        "question": "When documents mention 'K8s', 'the container orchestration platform', and 'Kubernetes Cluster', are they referring to the same thing?",
+        "answer_preview": "Based on the provided context chunks, 'K8s', 'the container orchestration platform', and 'Kubernetes Cluster' are indeed referring to the same thing.\n\nHere's the breakdown of facts from the chunks:\n* ",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "The answer is entirely grounded in the retrieved context. It explicitly references specific chunks and accurately summarizes their content to support its claim, without hallucination."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question asked by stating whether the terms refer to the same thing and then provides a detailed, relevant breakdown of facts from the context to justify its conclusion."
+          },
+          "correctness": {
+            "score": 5,
+            "reason": "The actual answer conveys the same core information as the expected answer ('Yes, they are referring to the same thing'). It also implicitly confirms their role as a container orchestration platform/system software through the cited context, providing a robust justification."
+          }
+        }
+      },
+      {
+        "id": "completeness_1",
+        "category": "completeness",
+        "question": "List all application components in the ArchiSurance architecture.",
+        "answer_preview": "STEP 1 — EXTRACT:\n*   **[Chunk 1/15]**:\n    *   The Risk Scoring Engine is a core component of the ArchiSurance application landscape.\n    *   It was first deployed in 2022 and has undergone multiple ",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 5,
+            "reason": "The answer is meticulously grounded in the retrieved chunks. Each application component listed in the synthesis is directly traceable to its mention in the 'STEP 1 — EXTRACT' section, which explicitly cites the chunk numbers. The model also correctly identifies and excludes unnamed applications. This demonstrates excellent adherence to the provided context."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly addresses the question 'List all application components'. The entire structure, from extraction to synthesis, is focused on identifying and presenting these components. It also includes relevant contextual information about the total number of components (twenty) from the source document, even if it couldn't list them all."
+          },
+          "correctness": {
+            "score": 2,
+            "reason": "The answer correctly identifies and names a subset of the application components. Specifically, it lists 6 components (CRM, Policy Admin, Claims Processing System, Risk Scoring Engine, Customer Self-Service Portal, IAM) that match the expected answer. It also identifies 2 additional valid components (Revenue Management System, Guidewire PolicyCenter) from the text that were not in the expected list. However, the answer is significantly incomplete, listing only 8 components when the context explicitly states 'ArchiSurance operates twenty application components' and the expected answer lists 20. Furthermore, the model's 'STEP 1 — EXTRACT' identified 'Notification Engine', 'Billing', and 'Oracle DWH' as related applications/consumers, which are also present in the expected answer's list (Notification Service, Billing System, Data Warehouse), but failed to include them in its synthesized list of application components. This indicates a failure in fully interpreting or synthesizing all relevant application components from the available information."
+          }
+        }
+      },
+      {
+        "id": "completeness_2",
+        "category": "completeness",
+        "question": "List all strategic goals defined in the ArchiSurance architecture.",
+        "answer_preview": "The strategic goals defined in the ArchiSurance architecture are:\n\n*   **Zero Data Breaches by 2026**: This goal is championed by the CISO and the Chief Risk Officer. It drives requirements for Data E",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 2,
+            "reason": "Out of the 7 goals listed, 3 (40% Claims STP Target, Achieve Full Regulatory Compliance, Reduce Claims Processing Time by 40%) are not found in the provided retrieved context. Additionally, the 'and the CFO' detail for 'Reduce IT Operational Costs by 25%' is not explicitly supported by the context provided for that specific goal. This indicates a significant level of hallucination."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The actual answer directly addresses the question by listing strategic goals. All items presented are indeed strategic goals, even if some are not grounded in the provided context."
+          },
+          "correctness": {
+            "score": 3,
+            "reason": "The actual answer correctly identifies 6 out of the 8 strategic goals listed in the expected answer. It misses 'Increase Customer Satisfaction to NPS 60+' and 'Automate 80% of Underwriting Decisions'. It also includes '40% Claims STP Target' which is a partial match or variation of 'Reduce Claims Processing Time by 40%', and then lists 'Reduce Claims Processing Time by 40%' separately, indicating some redundancy or imprecision."
+          }
+        }
+      },
+      {
+        "id": "graph_advantage_1",
+        "category": "graph_advantage",
+        "question": "What is the full dependency chain from the Load Balancer F5 to business goals?",
+        "answer_preview": "The full dependency chain from the Load Balancer F5 to business goals is as follows:\n\nThe **Load Balancer F5** is deployed at the boundary between the DMZ and the Corporate Ethernet, sitting in the DM",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "The actual answer frequently references chunk numbers (e.g., Chunk 7, 9, 10, 11, 12, 14, 15) that are not included in the provided 'RETRIEVED CONTEXT (first 5 chunks)'. This indicates significant 'hallucination' or reliance on external information not provided for this evaluation. While some initial F5 details and two business goals are faithful to the provided context, a large portion of the detailed capabilities listed are not."
+          },
+          "relevancy": {
+            "score": 3,
+            "reason": "The answer attempts to trace a dependency from F5 to business goals, which is relevant to the question. However, the 'chain' it constructs is very high-level and abstract, focusing on broad capabilities (security, performance, etc.) that the F5 'contributes' to, rather than a direct, step-by-step technical or application-level dependency chain. Many listed items are general enterprise initiatives, not direct dependencies of the F5."
+          },
+          "correctness": {
+            "score": 1,
+            "reason": "The actual answer's dependency chain is fundamentally different from the expected answer. It largely omits the specific intermediate technical and application components (e.g., Palo Alto Firewall, Corporate LAN, Kubernetes, Claims Management Platform, Risk Engine) that the expected answer identifies as part of the direct flow from F5 to business goals. While it identifies two correct business goals, the core 'dependency chain' information is not aligned with the expected answer."
+          }
+        }
+      },
+      {
+        "id": "graph_advantage_2",
+        "category": "graph_advantage",
+        "question": "If the HSM Appliance fails, what is the blast radius across all architecture layers?",
+        "answer_preview": "If the HSM Appliance fails, the blast radius across all architecture layers would be significant, primarily impacting security, data, and critical services, leading to compliance failures.\n\nSpecifical",
+        "chunks_used": 15,
+        "scores": {
+          "faithfulness": {
+            "score": 1,
+            "reason": "The actual answer introduces many specific details (e.g., security architecture decision SEC-001, AES-256 encryption, Postgres, Oracle Database 19c, GDPR) that are not mentioned or supported by the provided retrieved context. While the general subject (HSM Appliance) is in context, the specific impacts and dependencies are not."
+          },
+          "relevancy": {
+            "score": 5,
+            "reason": "The answer directly and comprehensively addresses the question about the blast radius across all architecture layers, providing a structured breakdown of impacts on security, data, service, and compliance layers."
+          },
+          "correctness": {
+            "score": 2,
+            "reason": "The actual answer shares some overlap with the expected answer regarding the failure of Secrets Management Service, Certificate Management Service, and impact on PCI-DSS compliance. However, it omits several specifics mentioned in the expected answer (e.g., TLS certificate expiration, network communication, specific applications like CRM/PAS, the 'Zero Data Breaches by 2026' goal) and introduces new information (e.g., GDPR, AES-256, specific databases, SEC-001) not present in the expected answer. Therefore, it does not convey 'the same information' entirely."
+          }
+        }
+      }
+    ],
+    "aggregates": {
+      "avg_faithfulness": 2.87,
+      "avg_relevancy": 4.77,
+      "avg_correctness": 2.83,
+      "overall_score": 3.49,
+      "evaluated": 30,
+      "errors": 0
+    }
+  },
+  "metadata": {
+    "timestamp": "20260408_073115",
+    "elapsed_seconds": 956.8,
+    "layers_run": [
+      "L3_Answer_Quality"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+# Ruff config for kb-agent.
+#
+# Goal in CI: catch real bugs (undefined names, syntax issues) without
+# blocking the build on cosmetic style choices that the legacy code mixes.
+#
+# Tighten these rules later; for now we want CI green and a clear allow-list.
+
+target-version = "py311"
+line-length = 120
+
+[lint]
+# Only enforce rules that catch likely bugs.
+select = [
+  "F",   # pyflakes (undefined names, unused imports — but see ignore below)
+  "E9",  # syntax errors
+  "W6",  # deprecated invalid escape sequences
+]
+
+# Ignore noisy / stylistic rules so existing code keeps passing.
+ignore = [
+  "F401",  # unused imports — many modules re-export by design
+  "F403",  # star imports — used in a few helper modules
+  "F405",  # may be undefined from star import (paired with F403)
+  "F811",  # redefined-while-unused — common in conditional imports / overloads
+  "F841",  # unused local — sometimes intentional in tests
+  "E402",  # module-level import not at top — many files set env BEFORE importing
+  "F541",  # f-string without placeholders — common with multi-line GQL templates
+]
+
+[lint.per-file-ignores]
+"tests/**" = ["F", "E"]   # tests freely re-import / use temp vars
+"scripts/**" = ["F", "E"]

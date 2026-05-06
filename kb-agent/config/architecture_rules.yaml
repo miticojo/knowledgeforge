@@ -1,0 +1,98 @@
+# Architecture & Data Governance Rules
+# Validated by check_conformance() against the ArchiMate Knowledge Graph.
+# Rule types: minimum_connections, forbidden_edge, reachability, no_orphans,
+#             ambiguous_only, high_fan_in, min_entities_per_doc, layer_coverage
+
+rules:
+  # --- Structural Rules ---
+  - id: "ARCH-001"
+    description: "Every ApplicationComponent must have at least one Serving relationship"
+    category: "structural"
+    severity: "warning"
+    type: "minimum_connections"
+    entity_type: "ApplicationComponent"
+    relationship_type: "Serving"
+    direction: "outgoing"
+    min_count: 1
+
+  - id: "ARCH-002"
+    description: "No direct SystemSoftware-to-BusinessProcess serving (layer violation)"
+    category: "structural"
+    severity: "error"
+    type: "forbidden_edge"
+    source_type: "SystemSoftware"
+    target_type: "BusinessProcess"
+    relationship_type: "Serving"
+
+  - id: "ARCH-003"
+    description: "Every BusinessProcess should be reachable from at least one ApplicationComponent"
+    category: "structural"
+    severity: "warning"
+    type: "minimum_connections"
+    entity_type: "BusinessProcess"
+    relationship_type: "Serving"
+    direction: "incoming"
+    min_count: 1
+
+  - id: "ARCH-004"
+    description: "Every DataObject should have at least one Access relationship"
+    category: "structural"
+    severity: "warning"
+    type: "minimum_connections"
+    entity_type: "DataObject"
+    relationship_type: "Access"
+    direction: "incoming"
+    min_count: 1
+
+  # --- Quality Rules ---
+  - id: "QUAL-001"
+    description: "No orphan entities (zero connections across all edge tables)"
+    category: "quality"
+    severity: "warning"
+    type: "no_orphans"
+
+  - id: "QUAL-002"
+    description: "Entities with only AMBIGUOUS connections need review"
+    category: "quality"
+    severity: "info"
+    type: "ambiguous_only"
+
+  - id: "QUAL-003"
+    description: "High fan-in DataObjects (>3 consumers) should be documented"
+    category: "quality"
+    severity: "info"
+    type: "high_fan_in"
+    entity_type: "DataObject"
+    relationship_type: "Access"
+    direction: "incoming"
+    threshold: 3
+
+  # --- Completeness Rules ---
+  - id: "COMP-001"
+    description: "Every document should produce at least 5 entities"
+    category: "completeness"
+    severity: "warning"
+    type: "min_entities_per_doc"
+    min_count: 5
+
+  - id: "COMP-002"
+    description: "All four ArchiMate layers should be represented"
+    category: "completeness"
+    severity: "error"
+    type: "layer_coverage"
+    required_layers:
+      - "Business"
+      - "Application"
+      - "Technology"
+      - "Motivation"
+
+  # --- Data Governance Rules ---
+  - id: "DG-001"
+    description: "DataObjects accessed by >3 ApplicationComponents should have documentation"
+    category: "data_governance"
+    severity: "warning"
+    type: "high_fan_in"
+    entity_type: "DataObject"
+    relationship_type: "Access"
+    direction: "incoming"
+    threshold: 3

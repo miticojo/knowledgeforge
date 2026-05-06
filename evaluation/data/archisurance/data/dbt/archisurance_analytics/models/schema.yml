@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_claims
+    description: "Staged claims data with type casting and basic filtering"
+    columns:
+      - name: claim_id
+        description: "Unique claim identifier"
+        # INTENTIONAL VIOLATION (DG-009): Missing not_null test on PK
+        tests:
+          - unique
+      - name: customer_id
+        description: "Customer identifier (FK to CRM)"
+      - name: claim_amount
+        description: "Claim amount in EUR"
+        tests:
+          - not_null
+      - name: claim_status
+        description: "Current claim status"
+        tests:
+          - accepted_values:
+              values: ['REGISTERED', 'PENDING_ASSESSMENT', 'APPROVED', 'REJECTED']
+
+  - name: fraud_scores
+    description: "Combined fraud scoring from internal and external signals"
+    columns:
+      - name: claim_id
+        tests:
+          - unique
+          - not_null
+      - name: combined_fraud_score
+        description: "Composite fraud risk score (0.0-1.0)"
+        tests:
+          - not_null
+
+  - name: premium_analytics
+    # INTENTIONAL VIOLATION (DG-003): Missing description
+    columns:
+      - name: policy_id
+        tests:
+          - not_null
+      - name: risk_category
+        tests:
+          - accepted_values:
+              values: ['LOW_RISK', 'MEDIUM_RISK', 'HIGH_RISK']

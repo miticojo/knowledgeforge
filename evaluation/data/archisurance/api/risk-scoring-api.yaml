@@ -1,0 +1,48 @@
+openapi: "3.0.3"
+info:
+  title: Risk Scoring API
+  description: |
+    REST API for the Risk Engine (ApplicationComponent).
+    Serves Risk Evaluation and Premium Calculation business processes.
+  version: "2.1.0"
+
+servers:
+  - url: https://risk.archisurance.internal/api/v1
+
+paths:
+  /risk/score:
+    post:
+      operationId: calculateRiskScore
+      summary: Calculate risk score for a claim
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskScoreRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskScoreResponse'
+
+  /risk/premium:
+    post:
+      operationId: calculatePremium
+      summary: Calculate insurance premium
+
+components:
+  schemas:
+    RiskScoreRequest:
+      type: object
+      properties:
+        claim_id: { type: string }
+        customer_id: { type: string }
+        claim_amount: { type: number }
+
+    RiskScoreResponse:
+      type: object
+      properties:
+        claim_id: { type: string }
+        risk_score: { type: number }
+        risk_level: { type: string, enum: [LOW, MEDIUM, HIGH] }

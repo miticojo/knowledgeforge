@@ -1,0 +1,151 @@
+{
+  "benchmark": "HotpotQA Distractor",
+  "timestamp": "20260408_150607",
+  "config": {
+    "n_questions": 5,
+    "seed": 42,
+    "pipeline": "metadata_prefix + graph_gate + atomic_verification + compactrag"
+  },
+  "aggregates": {
+    "avg_em": 0.0,
+    "avg_f1": 0.0,
+    "avg_sp_recall": 0.0,
+    "by_type": {
+      "bridge": {
+        "em": 0.0,
+        "f1": 0.0,
+        "count": 5
+      }
+    },
+    "by_level": {
+      "hard": {
+        "em": 0.0,
+        "f1": 0.0,
+        "count": 5
+      }
+    },
+    "total_questions": 5,
+    "errors": 0,
+    "avg_time_ms": 1256.2
+  },
+  "paper_baselines": {
+    "A2RAG": {
+      "em": 32.2,
+      "f1": 43.7,
+      "r_at_2": 62.4,
+      "r_at_5": 73.6
+    },
+    "LightRAG(mix)": {
+      "em": 33.9,
+      "f1": 46.5
+    },
+    "CompactRAG (LLaMA KB)": {
+      "em": 45.2,
+      "f1": 66.2
+    },
+    "CompactRAG (GPT-4 KB)": {
+      "em": 49.6,
+      "f1": 69.5
+    },
+    "IRCoT": {
+      "em": 42.8,
+      "f1": 49.0
+    },
+    "Iter-RetGen": {
+      "em": 46.8,
+      "f1": 52.2
+    }
+  },
+  "per_question": [
+    {
+      "id": "5add1d575542992c1e3a2540",
+      "question": "What nationality was Oliver Reed's character in the film Royal Flash?",
+      "gold_answer": "Prussian",
+      "type": "bridge",
+      "level": "hard",
+      "gold_titles": [
+        "Otto von Bismarck",
+        "Royal Flash (film)"
+      ],
+      "predicted_answer": "",
+      "em": 0.0,
+      "f1": 0.0,
+      "sp_recall": 0.0,
+      "retrieved_titles": [],
+      "chunks_found": 0,
+      "time_ms": 1574.5
+    },
+    {
+      "id": "5ac55ea55542993e66e82377",
+      "question": "Pacific Mozart Ensemble performed which German composer's Der Lindberghflug in 2002?",
+      "gold_answer": "Kurt Julian Weill",
+      "type": "bridge",
+      "level": "hard",
+      "gold_titles": [
+        "Pacific Mozart Ensemble",
+        "Kurt Weill"
+      ],
+      "predicted_answer": "",
+      "em": 0.0,
+      "f1": 0.0,
+      "sp_recall": 0.0,
+      "retrieved_titles": [],
+      "chunks_found": 0,
+      "time_ms": 1056.6
+    },
+    {
+      "id": "5ac3a76e554299741d48a2be",
+      "question": "Who released the song \"With or Without You\" first, Jai McDowall or U2?",
+      "gold_answer": "U2",
+      "type": "bridge",
+      "level": "hard",
+      "gold_titles": [
+        "With or Without You",
+        "Believe (Jai McDowall album)"
+      ],
+      "predicted_answer": "",
+      "em": 0.0,
+      "f1": 0.0,
+      "sp_recall": 0.0,
+      "retrieved_titles": [],
+      "chunks_found": 0,
+      "time_ms": 1211.5
+    },
+    {
+      "id": "5a7133565542994082a3e65c",
+      "question": "What Kentucky county has a population of 60,316 and features the Lake Louisvilla neighborhood?",
+      "gold_answer": "Oldham County",
+      "type": "bridge",
+      "level": "hard",
+      "gold_titles": [
+        "Lake Louisvilla, Louisville",
+        "Oldham County, Kentucky"
+      ],
+      "predicted_answer": "",
+      "em": 0.0,
+      "f1": 0.0,
+      "sp_recall": 0.0,
+      "retrieved_titles": [],
+      "chunks_found": 0,
+      "time_ms": 1251.0
+    },
+    {
+      "id": "5ac1a4745542991316484b82",
+      "question": "Para Hills West, South Australia lies within a city with what estimated population?",
+      "gold_answer": "138,535",
+      "type": "bridge",
+      "level": "hard",
+      "gold_titles": [
+        "Para Hills West, South Australia",
+        "City of Salisbury"
+      ],
+      "predicted_answer": "",
+      "em": 0.0,
+      "f1": 0.0,
+      "sp_recall": 0.0,
+      "retrieved_titles": [],
+      "chunks_found": 0,
+      "time_ms": 1187.6
+    }
+  ]
+}

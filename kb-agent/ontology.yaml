@@ -1,0 +1,682 @@
+# =============================================================================
+# KnowledgeForge Ontology — ArchiMate 3.2 aligned
+# 22 entity types + 11 relationship types
+# =============================================================================
+
+entities:
+
+  # ---------------------------------------------------------------------------
+  # Strategy Layer
+  # ---------------------------------------------------------------------------
+
+  Capability:
+    description: "ArchiMate Capability. An ability that an active structure element, such as an organization, person, or system, possesses."
+    fields:
+      capability_id:
+        type: str
+        description: "Unique identifier for the capability"
+      capability_name:
+        type: str
+        description: "Name of the capability"
+      description:
+        type: str
+        description: "Brief description of the capability"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Strategy"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  # ---------------------------------------------------------------------------
+  # Business Layer
+  # ---------------------------------------------------------------------------
+
+  BusinessActor:
+    description: "ArchiMate Business Actor. A business entity, team, owner, or source system entity."
+    fields:
+      actor_id:
+        type: str
+        description: "Unique identifier"
+      actor_name:
+        type: str
+        description: "Name of the Team, Organization, or External Source System"
+      actor_type:
+        type: Optional[str]
+        description: "Type of actor, e.g., 'Owner Team', 'Source System', 'User'"
+      description:
+        type: str
+        description: "Brief description of the business actor"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Business"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  BusinessRole:
+    description: "ArchiMate Business Role. A named set of responsibilities representing behavior to which a business actor can be assigned."
+    fields:
+      role_id:
+        type: str
+        description: "Unique identifier for the business role"
+      role_name:
+        type: str
+        description: "Name of the business role"
+      description:
+        type: str
+        description: "Brief description of the role"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Business"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  BusinessProcess:
+    description: "ArchiMate Business Process. A process linked to applications."
+    fields:
+      process_id:
+        type: str
+        description: "Unique identifier"
+      process_name:
+        type: str
+        description: "Name of the process"
+      process_domain:
+        type: str
+        description: "Domain of the business process"
+      description:
+        type: str
+        description: "Brief description of the business process"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Business"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  BusinessFunction:
+    description: "ArchiMate Business Function. A collection of business behavior based on a chosen set of criteria (typically required business resources and/or competencies)."
+    fields:
+      function_id:
+        type: str
+        description: "Unique identifier for the business function"
+      function_name:
+        type: str
+        description: "Name of the business function"
+      description:
+        type: str
+        description: "Brief description of the business function"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Business"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  BusinessService:
+    description: "ArchiMate Business Service. An explicitly defined exposed business behavior."
+    fields:
+      service_id:
+        type: str
+        description: "Unique identifier for the business service"
+      service_name:
+        type: str
+        description: "Name of the business service"
+      description:
+        type: str
+        description: "Brief description of the business service"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Business"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  BusinessObject:
+    description: "ArchiMate Business Object. A concept used within a particular business domain. Represents information assets at the business level."
+    fields:
+      object_id:
+        type: str
+        description: "Unique identifier for the business object"
+      object_name:
+        type: str
+        description: "Name of the business object"
+      description:
+        type: str
+        description: "Brief description of the business object"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Business"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  Contract:
+    description: "ArchiMate Contract. A formal or informal specification of an agreement between a provider and a consumer that specifies the rights and obligations associated with a product and/or its delivery."
+    fields:
+      contract_id:
+        type: str
+        description: "Unique identifier for the contract"
+      contract_name:
+        type: str
+        description: "Name of the contract"
+      description:
+        type: str
+        description: "Brief description of the contract"
+      contract_type:
+        type: Optional[str]
+        description: "Type of contract (e.g., SLA, OLA, NDA)"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Business"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  # ---------------------------------------------------------------------------
+  # Application Layer
+  # ---------------------------------------------------------------------------
+
+  ApplicationComponent:
+    description: "ArchiMate Application Component. Defines a software application or microservice."
+    fields:
+      app_id:
+        type: str
+        description: "Unique identifier for the application component"
+      app_name:
+        type: str
+        description: "Name of the application component"
+      description:
+        type: str
+        description: "Brief overview of what the application component does"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Application"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  ApplicationService:
+    description: "ArchiMate Application Service. An explicitly defined exposed application behavior."
+    fields:
+      service_id:
+        type: str
+        description: "Unique identifier for the application service"
+      service_name:
+        type: str
+        description: "Name of the application service"
+      description:
+        type: str
+        description: "Brief description of the application service"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Application"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  ApplicationInterface:
+    description: "ArchiMate Application Interface. A point of access where application services are made available to a user, another application component, or a node."
+    fields:
+      interface_id:
+        type: str
+        description: "Unique identifier for the application interface"
+      interface_name:
+        type: str
+        description: "Name of the application interface"
+      description:
+        type: str
+        description: "Brief description of the application interface"
+      protocol:
+        type: Optional[str]
+        description: "Communication protocol (e.g., REST, SOAP, gRPC)"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Application"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  DataObject:
+    description: "ArchiMate Data Object. A data entity or dataset used by applications."
+    fields:
+      model_id:
+        type: str
+        description: "Unique identifier"
+      model_name:
+        type: str
+        description: "Name of the Data Object"
+      schema_definition:
+        type: str
+        description: "Schema structure or payload"
+      description:
+        type: str
+        description: "Brief description of the data object"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Application"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  # ---------------------------------------------------------------------------
+  # Technology Layer
+  # ---------------------------------------------------------------------------
+
+  Node:
+    description: "ArchiMate Node. A computational or physical resource (Server, VM, Container)."
+    fields:
+      node_id:
+        type: str
+        description: "Unique identifier"
+      node_name:
+        type: str
+        description: "Name of the Server or VM"
+      description:
+        type: str
+        description: "Brief description of the node"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Technology"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  Device:
+    description: "ArchiMate Device. A physical IT resource upon which system software and artifacts may be stored or deployed."
+    fields:
+      device_id:
+        type: str
+        description: "Unique identifier for the device"
+      device_name:
+        type: str
+        description: "Name of the device"
+      description:
+        type: str
+        description: "Brief description of the device"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Technology"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  SystemSoftware:
+    description: "ArchiMate System Software. OS or DBMS running on a Node (e.g. Oracle, Linux)."
+    fields:
+      software_id:
+        type: str
+        description: "Unique identifier"
+      software_name:
+        type: str
+        description: "Name and version of the software"
+      description:
+        type: str
+        description: "Brief description of the system software"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Technology"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  TechnologyService:
+    description: "ArchiMate Technology Service. An infrastructure service exposed to applications."
+    fields:
+      service_id:
+        type: str
+        description: "Unique identifier"
+      service_name:
+        type: str
+        description: "Name of the Technology Service (e.g. DNS, Storage, Networking)"
+      description:
+        type: str
+        description: "Brief description of the technology service"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Technology"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  CommunicationNetwork:
+    description: "ArchiMate Communication Network. A set of structures that connects devices or system software for transmission, routing, and reception of data."
+    fields:
+      network_id:
+        type: str
+        description: "Unique identifier for the communication network"
+      network_name:
+        type: str
+        description: "Name of the communication network"
+      description:
+        type: str
+        description: "Brief description of the communication network"
+      network_type:
+        type: Optional[str]
+        description: "Type of network (e.g., LAN, WAN, VPN)"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Technology"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  Artifact:
+    description: "ArchiMate Artifact. A piece of data that is used or produced in a software development process, or by deployment and operation of an IT system."
+    fields:
+      artifact_id:
+        type: str
+        description: "Unique identifier for the artifact"
+      artifact_name:
+        type: str
+        description: "Name of the artifact"
+      description:
+        type: str
+        description: "Brief description of the artifact"
+      artifact_type:
+        type: Optional[str]
+        description: "Type of artifact (e.g., WAR, JAR, Docker image, config file)"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Technology"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  # ---------------------------------------------------------------------------
+  # Motivation Layer
+  # ---------------------------------------------------------------------------
+
+  Stakeholder:
+    description: "ArchiMate Stakeholder. The role of an individual, team, or organization that represents their interests in the outcome of the architecture."
+    fields:
+      stakeholder_id:
+        type: str
+        description: "Unique identifier for the stakeholder"
+      stakeholder_name:
+        type: str
+        description: "Name of the stakeholder"
+      description:
+        type: str
+        description: "Brief description of the stakeholder"
+      stakeholder_type:
+        type: Optional[str]
+        description: "Type of stakeholder (e.g., Sponsor, End User, Regulator)"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Motivation"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  Goal:
+    description: "ArchiMate Goal. A high-level statement of intent, direction, or desired end state for an organization and its stakeholders."
+    fields:
+      goal_id:
+        type: str
+        description: "Unique identifier for the goal"
+      goal_name:
+        type: str
+        description: "Name of the goal"
+      description:
+        type: str
+        description: "Brief description of the goal"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Motivation"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  Requirement:
+    description: "ArchiMate Requirement. A business requirement mapped to software delivery."
+    fields:
+      req_id:
+        type: str
+        description: "Unique identifier"
+      req_code:
+        type: Optional[str]
+        description: "Business or JIRA code for the requirement"
+      title:
+        type: str
+        description: "Title or short summary of the requirement"
+      description:
+        type: str
+        description: "Detailed description of the requirement"
+      status:
+        type: Optional[str]
+        description: "Current status of the requirement"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Motivation"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+  Constraint:
+    description: "ArchiMate Constraint. A factor that limits the realization of goals. A specialization of Requirement."
+    fields:
+      constraint_id:
+        type: str
+        description: "Unique identifier for the constraint"
+      constraint_name:
+        type: str
+        description: "Name of the constraint"
+      description:
+        type: str
+        description: "Brief description of the constraint"
+      archimate_layer:
+        type: str
+        description: "ArchiMate layer: Motivation"
+      source_doc_id:
+        type: Optional[str]
+        description: "Traceability reference to the source document"
+
+# =============================================================================
+# ArchiMate Relationship Types
+# =============================================================================
+
+relationships:
+
+  Composition:
+    description: "Whole/part relationship with existence dependency. Source is the whole, target is the part."
+    category: "Structural"
+    valid_patterns:
+      - source: "same_type"
+        target: "same_type"
+        note: "Always allowed between same element types"
+
+  Aggregation:
+    description: "Whole/part relationship without existence dependency."
+    category: "Structural"
+    valid_patterns:
+      - source: "same_type"
+        target: "same_type"
+
+  Assignment:
+    description: "Allocation of responsibility, performance of behavior, storage, or execution."
+    category: "Structural"
+    valid_patterns:
+      - source: ["BusinessActor", "BusinessRole"]
+        target: ["BusinessProcess", "BusinessFunction", "BusinessService", "ApplicationComponent"]
+      - source: ["Node", "Device", "SystemSoftware"]
+        target: ["Artifact", "ApplicationComponent", "SystemSoftware", "TechnologyService"]
+
+  Realization:
+    description: "Source plays critical role in creation/achievement/sustenance of target."
+    category: "Structural"
+    valid_patterns:
+      - source: ["ApplicationComponent", "ApplicationService"]
+        target: ["BusinessProcess", "BusinessService", "BusinessFunction", "Requirement"]
+      - source: ["Node", "SystemSoftware", "Device"]
+        target: ["TechnologyService"]
+      - source: ["Artifact"]
+        target: ["ApplicationComponent", "DataObject"]
+      - source: ["DataObject"]
+        target: ["BusinessObject"]
+
+  Serving:
+    description: "Source provides its functionality to target."
+    category: "Dependency"
+    valid_patterns:
+      - source: ["ApplicationComponent", "ApplicationService"]
+        target: ["BusinessProcess", "BusinessFunction", "BusinessService", "ApplicationComponent"]
+      - source: ["TechnologyService", "SystemSoftware", "Node"]
+        target: ["ApplicationComponent", "Node", "SystemSoftware"]
+      - source: ["BusinessService"]
+        target: ["BusinessProcess", "BusinessFunction", "BusinessActor", "BusinessRole"]
+
+  Access:
+    description: "Ability of behavior/active structure elements to observe or act upon passive structure."
+    category: "Dependency"
+    valid_patterns:
+      - source: ["ApplicationComponent", "BusinessProcess", "BusinessFunction"]
+        target: ["DataObject", "BusinessObject", "Contract", "Artifact"]
+
+  Influence:
+    description: "Source affects implementation or achievement of a motivation element."
+    category: "Dependency"
+    valid_patterns:
+      - source: "any"
+        target: ["Goal", "Requirement", "Constraint", "Stakeholder"]
+
+  Association:
+    description: "Unspecified or generic relationship."
+    category: "Dependency"
+    valid_patterns:
+      - source: "any"
+        target: "any"
+
+  Triggering:
+    description: "Temporal/causal precedence."
+    category: "Dynamic"
+    valid_patterns:
+      - source: ["BusinessProcess", "BusinessFunction", "BusinessEvent", "ApplicationProcess", "ApplicationFunction", "ApplicationEvent"]
+        target: ["BusinessProcess", "BusinessFunction", "BusinessEvent", "ApplicationProcess", "ApplicationFunction", "ApplicationEvent"]
+
+  Flow:
+    description: "Transfer of information, goods, money between elements."
+    category: "Dynamic"
+    valid_patterns:
+      - source: ["BusinessProcess", "BusinessFunction", "ApplicationProcess", "ApplicationFunction", "ApplicationComponent"]
+        target: ["BusinessProcess", "BusinessFunction", "ApplicationProcess", "ApplicationFunction", "ApplicationComponent"]
+
+  Specialization:
+    description: "Source is a particular kind of target."
+    category: "Other"
+    valid_patterns:
+      - source: "same_type"
+        target: "same_type"
+
+# =============================================================================
+# Extraction Models
+# =============================================================================
+
+extracted_entities:
+  description: "Root object containing all extracted structured data from the document mapped to ArchiMate 3.2 elements"
+  fields:
+    # Strategy Layer
+    capabilities:
+      type: List[Capability]
+      description: "List of capabilities extracted"
+    # Business Layer
+    business_actors:
+      type: List[BusinessActor]
+      description: "List of business actors (Teams, Owners, Systems) extracted"
+    business_roles:
+      type: List[BusinessRole]
+      description: "List of business roles extracted"
+    business_processes:
+      type: List[BusinessProcess]
+      description: "List of business processes extracted"
+    business_functions:
+      type: List[BusinessFunction]
+      description: "List of business functions extracted"
+    business_services:
+      type: List[BusinessService]
+      description: "List of business services extracted"
+    business_objects:
+      type: List[BusinessObject]
+      description: "List of business objects extracted"
+    contracts:
+      type: List[Contract]
+      description: "List of contracts extracted"
+    # Application Layer
+    application_components:
+      type: List[ApplicationComponent]
+      description: "List of application components identified in the text"
+    application_services:
+      type: List[ApplicationService]
+      description: "List of application services extracted"
+    application_interfaces:
+      type: List[ApplicationInterface]
+      description: "List of application interfaces extracted"
+    data_objects:
+      type: List[DataObject]
+      description: "List of data objects or datasets extracted"
+    # Technology Layer
+    nodes:
+      type: List[Node]
+      description: "List of infrastructure nodes (servers, VMs) extracted"
+    devices:
+      type: List[Device]
+      description: "List of physical devices extracted"
+    system_softwares:
+      type: List[SystemSoftware]
+      description: "List of system softwares (DBMS, OS) extracted"
+    technology_services:
+      type: List[TechnologyService]
+      description: "List of technical services extracted"
+    communication_networks:
+      type: List[CommunicationNetwork]
+      description: "List of communication networks extracted"
+    artifacts:
+      type: List[Artifact]
+      description: "List of artifacts extracted"
+    # Motivation Layer
+    stakeholders:
+      type: List[Stakeholder]
+      description: "List of stakeholders extracted"
+    goals:
+      type: List[Goal]
+      description: "List of goals extracted"
+    requirements:
+      type: List[Requirement]
+      description: "List of business requirements identified in the text"
+    constraints:
+      type: List[Constraint]
+      description: "List of constraints extracted"
+
+# =============================================================================
+# Extracted Relationships
+# =============================================================================
+
+ExtractedRelationship:
+  description: "A single ArchiMate relationship between two extracted entities"
+  fields:
+    relationship_type:
+      type: str
+      description: "ArchiMate relationship type: Composition, Aggregation, Assignment, Realization, Serving, Access, Influence, Association, Triggering, Flow, Specialization"
+    source_entity_type:
+      type: str
+      description: "ArchiMate type of the source entity"
+    source_entity_name:
+      type: str
+      description: "Name of the source entity"
+    target_entity_type:
+      type: str
+      description: "ArchiMate type of the target entity"
+    target_entity_name:
+      type: str
+      description: "Name of the target entity"
+    description:
+      type: Optional[str]
+      description: "Optional description or context of the relationship"
+
+extracted_relationships:
+  description: "All ArchiMate relationships extracted from the document"
+  fields:
+    relationships:
+      type: List[ExtractedRelationship]
+      description: "List of relationships connecting extracted entities"

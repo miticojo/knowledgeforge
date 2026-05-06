@@ -1,0 +1,34 @@
+@startuml Infrastructure Deployment
+title ArchiSurance — Infrastructure Deployment View
+
+node "App Server Cluster\n(GKE)" as ASC {
+  [Claims Service] as CS
+  [Risk Engine] as RE
+  [Customer Portal] as CP
+  [Fraud Detection] as FD
+  [API Gateway] as GW
+}
+
+node "Database Server Primary" as DBP {
+  database "PostgreSQL 15" as PG
+}
+
+node "Database Server Replica" as DBR {
+  database "PostgreSQL 15\n(read replica)" as PGR
+}
+
+cloud "DMZ Network" as DMZ {
+  [Load Balancer F5] as LB
+  [Firewall Palo Alto] as FW
+}
+
+cloud "Corporate LAN" as LAN
+
+LB --> GW : routes traffic
+FW --> LAN : protects
+ASC --> PG : read/write
+ASC --> PGR : read-only
+LAN --> ASC : internal traffic
+DMZ --> LAN : filtered traffic
+
+@enduml

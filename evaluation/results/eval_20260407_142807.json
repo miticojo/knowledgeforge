@@ -1,0 +1,592 @@
+{
+  "L2_Retrieval_Quality": {
+    "layer": "L2_Retrieval_Quality",
+    "per_question": [
+      {
+        "id": "single_hop_1",
+        "category": "single_hop",
+        "hop_count": 1,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 0.667,
+          "chunks_found": 15,
+          "graph_connections": 14,
+          "graph_chunks": 0,
+          "time_ms": 8221.2
+        },
+        "vector_only": {
+          "context_recall": 0.667,
+          "chunks_found": 15,
+          "time_ms": 499.4
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "single_hop_2",
+        "category": "single_hop",
+        "hop_count": 1,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "graph_connections": 14,
+          "graph_chunks": 0,
+          "time_ms": 4552.3
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 668.3
+        },
+        "graph_uplift": -0.5
+      },
+      {
+        "id": "single_hop_3",
+        "category": "single_hop",
+        "hop_count": 1,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 0.0,
+          "chunks_found": 15,
+          "graph_connections": 14,
+          "graph_chunks": 0,
+          "time_ms": 5139.8
+        },
+        "vector_only": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "time_ms": 363.7
+        },
+        "graph_uplift": -0.5
+      },
+      {
+        "id": "single_hop_4",
+        "category": "single_hop",
+        "hop_count": 1,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "graph_connections": 12,
+          "graph_chunks": 0,
+          "time_ms": 6461.6
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 318.8
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "single_hop_5",
+        "category": "single_hop",
+        "hop_count": 1,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "graph_connections": 11,
+          "graph_chunks": 0,
+          "time_ms": 5127.7
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 477.2
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "single_hop_6",
+        "category": "single_hop",
+        "hop_count": 1,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "graph_connections": 12,
+          "graph_chunks": 0,
+          "time_ms": 6906.3
+        },
+        "vector_only": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "time_ms": 529.4
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "single_hop_7",
+        "category": "single_hop",
+        "hop_count": 1,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "graph_connections": 13,
+          "graph_chunks": 0,
+          "time_ms": 4859.6
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 501.4
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "single_hop_8",
+        "category": "single_hop",
+        "hop_count": 1,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "graph_connections": 10,
+          "graph_chunks": 0,
+          "time_ms": 36225.5
+        },
+        "vector_only": {
+          "context_recall": 0.25,
+          "chunks_found": 15,
+          "time_ms": 633.4
+        },
+        "graph_uplift": 0.25
+      },
+      {
+        "id": "multi_hop_1",
+        "category": "multi_hop",
+        "hop_count": 2,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.3,
+          "chunks_found": 15,
+          "graph_connections": 14,
+          "graph_chunks": 0,
+          "time_ms": 8944.3
+        },
+        "vector_only": {
+          "context_recall": 0.3,
+          "chunks_found": 15,
+          "time_ms": 606.0
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "multi_hop_2",
+        "category": "multi_hop",
+        "hop_count": 2,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.4,
+          "chunks_found": 15,
+          "graph_connections": 15,
+          "graph_chunks": 0,
+          "time_ms": 6376.9
+        },
+        "vector_only": {
+          "context_recall": 0.8,
+          "chunks_found": 15,
+          "time_ms": 595.0
+        },
+        "graph_uplift": -0.4
+      },
+      {
+        "id": "multi_hop_3",
+        "category": "multi_hop",
+        "hop_count": 3,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.375,
+          "chunks_found": 15,
+          "graph_connections": 17,
+          "graph_chunks": 0,
+          "time_ms": 6115.5
+        },
+        "vector_only": {
+          "context_recall": 0.375,
+          "chunks_found": 15,
+          "time_ms": 514.2
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "multi_hop_4",
+        "category": "multi_hop",
+        "hop_count": 3,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.6,
+          "chunks_found": 15,
+          "graph_connections": 16,
+          "graph_chunks": 0,
+          "time_ms": 6627.7
+        },
+        "vector_only": {
+          "context_recall": 0.6,
+          "chunks_found": 15,
+          "time_ms": 573.8
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "multi_hop_5",
+        "category": "multi_hop",
+        "hop_count": 2,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.4,
+          "chunks_found": 15,
+          "graph_connections": 23,
+          "graph_chunks": 0,
+          "time_ms": 9573.5
+        },
+        "vector_only": {
+          "context_recall": 0.4,
+          "chunks_found": 15,
+          "time_ms": 570.3
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "multi_hop_6",
+        "category": "multi_hop",
+        "hop_count": 3,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.667,
+          "chunks_found": 15,
+          "graph_connections": 17,
+          "graph_chunks": 0,
+          "time_ms": 4528.2
+        },
+        "vector_only": {
+          "context_recall": 0.333,
+          "chunks_found": 15,
+          "time_ms": 593.7
+        },
+        "graph_uplift": 0.334
+      },
+      {
+        "id": "multi_hop_7",
+        "category": "multi_hop",
+        "hop_count": 3,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.25,
+          "chunks_found": 15,
+          "graph_connections": 5,
+          "graph_chunks": 0,
+          "time_ms": 5814.4
+        },
+        "vector_only": {
+          "context_recall": 0.25,
+          "chunks_found": 15,
+          "time_ms": 531.2
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "multi_hop_8",
+        "category": "multi_hop",
+        "hop_count": 2,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.8,
+          "chunks_found": 15,
+          "graph_connections": 17,
+          "graph_chunks": 0,
+          "time_ms": 9225.2
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 575.8
+        },
+        "graph_uplift": -0.2
+      },
+      {
+        "id": "cross_doc_1",
+        "category": "cross_document",
+        "hop_count": 3,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.25,
+          "chunks_found": 15,
+          "graph_connections": 8,
+          "graph_chunks": 0,
+          "time_ms": 5517.3
+        },
+        "vector_only": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "time_ms": 505.7
+        },
+        "graph_uplift": -0.25
+      },
+      {
+        "id": "cross_doc_2",
+        "category": "cross_document",
+        "hop_count": 3,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.25,
+          "chunks_found": 15,
+          "graph_connections": 7,
+          "graph_chunks": 0,
+          "time_ms": 5438.7
+        },
+        "vector_only": {
+          "context_recall": 0.25,
+          "chunks_found": 15,
+          "time_ms": 505.8
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "cross_doc_3",
+        "category": "cross_document",
+        "hop_count": 3,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "graph_connections": 13,
+          "graph_chunks": 0,
+          "time_ms": 5484.7
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 531.4
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "cross_doc_4",
+        "category": "cross_document",
+        "hop_count": 0,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "graph_connections": 13,
+          "graph_chunks": 0,
+          "time_ms": 5014.1
+        },
+        "vector_only": {
+          "context_recall": 0.0,
+          "chunks_found": 15,
+          "time_ms": 592.1
+        },
+        "graph_uplift": 1.0
+      },
+      {
+        "id": "cross_doc_5",
+        "category": "cross_document",
+        "hop_count": 3,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "graph_connections": 10,
+          "graph_chunks": 0,
+          "time_ms": 6885.5
+        },
+        "vector_only": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "time_ms": 570.1
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "cross_doc_6",
+        "category": "cross_document",
+        "hop_count": 4,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.727,
+          "chunks_found": 15,
+          "graph_connections": 10,
+          "graph_chunks": 0,
+          "time_ms": 7661.4
+        },
+        "vector_only": {
+          "context_recall": 0.545,
+          "chunks_found": 15,
+          "time_ms": 644.4
+        },
+        "graph_uplift": 0.182
+      },
+      {
+        "id": "entity_resolution_1",
+        "category": "entity_resolution",
+        "hop_count": 0,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "graph_connections": 14,
+          "graph_chunks": 0,
+          "time_ms": 6308.7
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 545.2
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "entity_resolution_2",
+        "category": "entity_resolution",
+        "hop_count": 0,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "graph_connections": 9,
+          "graph_chunks": 0,
+          "time_ms": 9135.5
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 362.4
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "entity_resolution_3",
+        "category": "entity_resolution",
+        "hop_count": 0,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "graph_connections": 10,
+          "graph_chunks": 0,
+          "time_ms": 5609.5
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 580.8
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "entity_resolution_4",
+        "category": "entity_resolution",
+        "hop_count": 0,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "graph_connections": 4,
+          "graph_chunks": 0,
+          "time_ms": 7745.4
+        },
+        "vector_only": {
+          "context_recall": 1.0,
+          "chunks_found": 15,
+          "time_ms": 522.9
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "completeness_1",
+        "category": "completeness",
+        "hop_count": 0,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "graph_connections": 18,
+          "graph_chunks": 0,
+          "time_ms": 6191.5
+        },
+        "vector_only": {
+          "context_recall": 0.5,
+          "chunks_found": 15,
+          "time_ms": 501.7
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "completeness_2",
+        "category": "completeness",
+        "hop_count": 0,
+        "requires_graph": false,
+        "full_pipeline": {
+          "context_recall": 0.25,
+          "chunks_found": 15,
+          "graph_connections": 16,
+          "graph_chunks": 0,
+          "time_ms": 5394.5
+        },
+        "vector_only": {
+          "context_recall": 0.375,
+          "chunks_found": 15,
+          "time_ms": 327.4
+        },
+        "graph_uplift": -0.125
+      },
+      {
+        "id": "graph_advantage_1",
+        "category": "graph_advantage",
+        "hop_count": 5,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.167,
+          "chunks_found": 15,
+          "graph_connections": 15,
+          "graph_chunks": 0,
+          "time_ms": 6763.2
+        },
+        "vector_only": {
+          "context_recall": 0.167,
+          "chunks_found": 15,
+          "time_ms": 533.0
+        },
+        "graph_uplift": 0.0
+      },
+      {
+        "id": "graph_advantage_2",
+        "category": "graph_advantage",
+        "hop_count": 4,
+        "requires_graph": true,
+        "full_pipeline": {
+          "context_recall": 0.8,
+          "chunks_found": 15,
+          "graph_connections": 11,
+          "graph_chunks": 0,
+          "time_ms": 26359.8
+        },
+        "vector_only": {
+          "context_recall": 0.8,
+          "chunks_found": 15,
+          "time_ms": 557.9
+        },
+        "graph_uplift": 0.0
+      }
+    ],
+    "aggregates": {
+      "avg_full_pipeline_recall": 0.613,
+      "avg_vector_only_recall": 0.62,
+      "avg_graph_uplift": -0.007,
+      "avg_multihop_uplift": -0.022,
+      "questions_where_graph_helps": 4,
+      "questions_total": 30
+    }
+  },
+  "metadata": {
+    "timestamp": "20260407_142807",
+    "elapsed_seconds": 260.0,
+    "layers_run": [
+      "L2_Retrieval_Quality"
+    ]
+  }
+}
