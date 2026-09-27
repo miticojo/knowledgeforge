@@ -28,10 +28,15 @@ pip install -r requirements.txt
 # Full evaluation (requires running backend + Spanner with ingested data)
 python run_eval.py
 
-# Individual layers
+# Individual layers & dataset splits
 python run_eval.py --layer L1   # KG construction quality
 python run_eval.py --layer L2   # Retrieval comparison (graph vs vector)
+python run_eval.py --layer L2 --split dev   # Evaluation on dev split
+python run_eval.py --layer L2 --split test  # Evaluation on test split
 python run_eval.py --layer L3   # Answer quality (LLM-as-judge)
+
+# Unit tests (pure scoring, diagnostic arms, decomposition & sweeps — no DB needed)
+python -m pytest evaluation/tests -q
 
 # Generate test data
 python run_eval.py --generate-data          # Generate original 17 PDFs
@@ -120,6 +125,20 @@ Embedded in artifacts for conformance and governance testing:
 - **Confidence Distribution**: EXTRACTED/INFERRED/AMBIGUOUS breakdown
 
 ### L2: Retrieval Quality (Graph vs Vector A/B)
+- **Diagnostic Arms**:
+  - `graph`: Full hybrid search pipeline (keyword + vector + graph + HippoRAG)
+  - `vector_only`: Baseline keyword + vector search
+  - `oracle`: Upper bound / ceiling where all expected entities are present (reference only)
+  - `blind`: Lower bound / floor with empty context (reference only)
+  - `constant`: Majority-class / constant baseline
+- **Attrition Decomposition (graph arm)**:
+  - `C0_no_entities`: Question has no expected entities defined
+  - `C1_entity_never_in_pool`: Expected entity never appears in candidate pool
+  - `C2_below_topk`: Expected entity in candidate pool but truncated below top-k
+  - `C3_capped_by_limit`: Candidate pool truncated by configured limit constant
+  - `hit`: All expected entities retrieved in top-k chunks
+- **Candidate Pool Distribution**: min / median / p90 / max tracking vs configured limit
+- **Constant Sweeps**: Parameter sweep functions in `evaluation/constants.py` / `retrieval_quality.py`
 - **Context Recall@K**: Expected entities found in retrieved chunks
 - **Multi-hop Recall**: Graph traversal answers for 2+ hop questions
 - **Graph Uplift**: Delta between full pipeline and vector-only
