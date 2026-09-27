@@ -9,6 +9,10 @@ Usage:
   python run_eval.py --layer L2
   python run_eval.py --layer L3
 
+  # Evaluation on specific split (dev or test)
+  python run_eval.py --layer L2 --split dev
+  python run_eval.py --layer L2 --split test
+
   # Generate test PDFs first
   python run_eval.py --generate-data
 """
@@ -45,13 +49,13 @@ def run_l1():
     return run()
 
 
-def run_l2():
+def run_l2(split: str = "all"):
     """L2: Retrieval Quality (Graph vs Vector A/B)."""
     print("=" * 60)
-    print("L2: RETRIEVAL QUALITY — GRAPH vs VECTOR A/B")
+    print(f"L2: RETRIEVAL QUALITY — GRAPH vs VECTOR A/B (split={split})")
     print("=" * 60)
     from metrics.retrieval_quality import run
-    return run()
+    return run(split=split)
 
 
 def run_l3():
@@ -85,11 +89,33 @@ def print_summary(all_results: dict):
     if "L2_Retrieval_Quality" in all_results:
         l2 = all_results["L2_Retrieval_Quality"]["aggregates"]
         print(f"\nL2 — Retrieval Quality:")
-        print(f"  Full Pipeline Recall: {l2['avg_full_pipeline_recall']}")
-        print(f"  Vector-Only Recall:   {l2['avg_vector_only_recall']}")
-        print(f"  Graph Uplift (avg):   {l2['avg_graph_uplift']:+.3f}")
-        print(f"  Multi-hop Uplift:     {l2['avg_multihop_uplift']:+.3f}")
-        print(f"  Graph Helps in:       {l2['questions_where_graph_helps']}/{l2['questions_total']} questions")
+        if "arms" in l2:
+            arms = l2["arms"]
+            print(f"  Graph Pipeline Recall: {arms.get('graph', {}).get('avg_recall', 'N/A')}")
+            print(f"  Vector-Only Recall:    {arms.get('vector_only', {}).get('avg_recall', 'N/A')}")
+            print(f"  Oracle Recall (ceil):  {arms.get('oracle', {}).get('avg_recall', 'N/A')}")
+            print(f"  Blind Recall (floor):  {arms.get('blind', {}).get('avg_recall', 'N/A')}")
+            print(f"  Constant Baseline:     {arms.get('constant', {}).get('avg_recall', 'N/A')}")
+            print(f"  Winner Arm:            {l2.get('winner', 'N/A')}")
+        else:
+            print(f"  Full Pipeline Recall: {l2.get('avg_full_pipeline_recall')}")
+            print(f"  Vector-Only Recall:   {l2.get('avg_vector_only_recall')}")
+
+        print(f"  Graph Uplift (avg):    {l2.get('avg_graph_uplift', 0.0):+.3f}")
+        print(f"  Multi-hop Uplift:      {l2.get('avg_multihop_uplift', 0.0):+.3f}")
+        print(f"  Graph Helps in:        {l2.get('questions_where_graph_helps', 0)}/{l2.get('questions_total', 0)} questions")
+
+        if "attrition" in l2:
+            att_counts = l2["attrition"].get("counts", {})
+            att_shares = l2["attrition"].get("shares", {})
+            print(f"  Graph Attrition:")
+            for bucket, cnt in att_counts.items():
+                sh = att_shares.get(bucket, 0.0)
+                print(f"    - {bucket:23s}: {cnt:2d} ({sh*100:5.1f}%)")
+
+        if "candidate_pool_distribution" in l2:
+            cpd = l2["candidate_pool_distribution"]
+            print(f"  Candidate Pool Dist:   min={cpd.get('min')} med={cpd.get('median')} p90={cpd.get('p90')} max={cpd.get('max')} (cap={cpd.get('configured_limit')})")
 
     if "L3_Answer_Quality" in all_results:
         l3 = all_results["L3_Answer_Quality"]["aggregates"]
@@ -106,6 +132,7 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="KB Evaluation Runner")
     parser.add_argument("--layer", choices=["L1", "L2", "L3"], help="Run single layer")
+    parser.add_argument("--split", choices=["dev", "test", "all"], default="all", help="Dataset split (L2)")
     parser.add_argument("--generate-data", action="store_true", help="Generate test PDFs")
     args = parser.parse_args()
 
@@ -125,7 +152,7 @@ def main():
         print()
 
     if args.layer in (None, "L2"):
-        l2 = run_l2()
+        l2 = run_l2(split=args.split)
         all_results[l2["layer"]] = l2
         print()
 
@@ -141,6 +168,7 @@ def main():
         "timestamp": timestamp,
         "elapsed_seconds": round(elapsed, 1),
         "layers_run": list(all_results.keys()),
+        "split": args.split,
     }
 
     out_path = os.path.join(RESULTS_DIR, f"eval_{timestamp}.json")
