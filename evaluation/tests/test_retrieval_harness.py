@@ -1,27 +1,51 @@
 """Unit tests for the evaluation harness: diagnostic arms, pure scoring, attrition decomposition, sweeps, split enforcement, and error propagation."""
 
 import pytest
-from evaluation.constants import (
-    DEFAULT_CANDIDATE_LIMIT,
-    DEFAULT_TOP_K,
-    DEFAULT_CONTEXT_TRUNCATION_LIMIT,
-    DEFAULT_MIN_GRAPH_PATHS,
-    DEFAULT_SPLIT_SEED,
-    DEFAULT_DEV_RATIO,
-    CANDIDATE_LIMIT_SWEEP_VALUES,
-)
-from evaluation.metrics.retrieval_quality import (
-    compute_context_recall,
-    compute_uplift,
-    compute_percentiles,
-    score_question_arms,
-    decompose_graph_attrition,
-    aggregate_evaluation_results,
-    sweep_candidate_limit,
-    split_dataset,
-    filter_questions_by_split,
-    run_l2_evaluation,
-)
+
+try:
+    from evaluation.constants import (
+        DEFAULT_CANDIDATE_LIMIT,
+        DEFAULT_TOP_K,
+        DEFAULT_CONTEXT_TRUNCATION_LIMIT,
+        DEFAULT_MIN_GRAPH_PATHS,
+        DEFAULT_SPLIT_SEED,
+        DEFAULT_DEV_RATIO,
+        CANDIDATE_LIMIT_SWEEP_VALUES,
+    )
+    from evaluation.metrics.retrieval_quality import (
+        compute_context_recall,
+        compute_uplift,
+        compute_percentiles,
+        score_question_arms,
+        decompose_graph_attrition,
+        aggregate_evaluation_results,
+        sweep_candidate_limit,
+        split_dataset,
+        filter_questions_by_split,
+        run_l2_evaluation,
+    )
+except ImportError:
+    from constants import (
+        DEFAULT_CANDIDATE_LIMIT,
+        DEFAULT_TOP_K,
+        DEFAULT_CONTEXT_TRUNCATION_LIMIT,
+        DEFAULT_MIN_GRAPH_PATHS,
+        DEFAULT_SPLIT_SEED,
+        DEFAULT_DEV_RATIO,
+        CANDIDATE_LIMIT_SWEEP_VALUES,
+    )
+    from metrics.retrieval_quality import (
+        compute_context_recall,
+        compute_uplift,
+        compute_percentiles,
+        score_question_arms,
+        decompose_graph_attrition,
+        aggregate_evaluation_results,
+        sweep_candidate_limit,
+        split_dataset,
+        filter_questions_by_split,
+        run_l2_evaluation,
+    )
 
 
 def test_compute_context_recall_basic():
@@ -413,3 +437,20 @@ def test_run_l2_evaluation_end_to_end_synthetic():
     assert agg["arms"]["vector_only"]["avg_recall"] == 0.75
     assert agg["avg_graph_uplift"] == 0.25
     assert agg["attrition"]["counts"]["hit"] == 2
+
+
+def test_import_regression_from_evaluation_entrypoint():
+    """Regression test: importing metrics.retrieval_quality from evaluation/ entrypoint must succeed."""
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    eval_dir = Path(__file__).resolve().parents[1]
+    cmd = [
+        sys.executable,
+        "-c",
+        "import sys; sys.path.insert(0, '../kb-agent'); import metrics.retrieval_quality",
+    ]
+    result = subprocess.run(cmd, cwd=str(eval_dir), capture_output=True, text=True)
+    assert result.returncode == 0, f"Subprocess failed with stderr:\n{result.stderr}"
+

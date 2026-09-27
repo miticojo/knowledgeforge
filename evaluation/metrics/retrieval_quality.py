@@ -25,15 +25,26 @@ import sys
 from collections import Counter
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
-from evaluation.constants import (
-    DEFAULT_CANDIDATE_LIMIT,
-    DEFAULT_TOP_K,
-    DEFAULT_CONTEXT_TRUNCATION_LIMIT,
-    DEFAULT_MIN_GRAPH_PATHS,
-    DEFAULT_SPLIT_SEED,
-    DEFAULT_DEV_RATIO,
-    CANDIDATE_LIMIT_SWEEP_VALUES,
-)
+try:
+    from evaluation.constants import (
+        DEFAULT_CANDIDATE_LIMIT,
+        DEFAULT_TOP_K,
+        DEFAULT_CONTEXT_TRUNCATION_LIMIT,
+        DEFAULT_MIN_GRAPH_PATHS,
+        DEFAULT_SPLIT_SEED,
+        DEFAULT_DEV_RATIO,
+        CANDIDATE_LIMIT_SWEEP_VALUES,
+    )
+except ImportError:  # running from inside evaluation/ (documented entrypoint)
+    from constants import (
+        DEFAULT_CANDIDATE_LIMIT,
+        DEFAULT_TOP_K,
+        DEFAULT_CONTEXT_TRUNCATION_LIMIT,
+        DEFAULT_MIN_GRAPH_PATHS,
+        DEFAULT_SPLIT_SEED,
+        DEFAULT_DEV_RATIO,
+        CANDIDATE_LIMIT_SWEEP_VALUES,
+    )
 
 
 # ═══════════════════════════════════════════════════════════════════════
